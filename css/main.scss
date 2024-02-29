@@ -1,5 +1,5 @@
 //hieronder kunde bootstrap defaults veranderen
-$primary: red;
+// $primary: red;
 
 //importing bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap";
@@ -7,12 +7,12 @@ $primary: red;
 //custom css kan hier
 @font-face {
   font-family: 'Tolkien';
-  src: url('/assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
+  src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins';
-  src: url('/assets/fonts/Poppins-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
 }
 
 body {
@@ -38,23 +38,33 @@ body {
   font-size: 0.9rem;
 }
 
-h1 {
-  color: #ffffff;
-  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
-  font-weight: bold;
-  font-size: 3rem;
-  font-family: 'Tolkien', sans-serif !important;
-}
+// h1 {
+//   color: #ffffff;
+//   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
+//   font-weight: bold;
+//   font-size: 3rem;
+//   font-family: 'Tolkien', sans-serif !important;
+// }
 
-/* h1 {
+h1 {
   color: #161616;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
   font-weight: bold;
   font-size: 3rem;
-} */
+  font-family: 'poppins', sans-serif !important;
+}
+
 
 .required {
   color: darkred;
+}
+
+.card img {
+  border-radius: 3px !important;
+}
+
+.btn {
+  border-radius: 3px !important;
 }
 
 .game-video {
@@ -135,7 +145,7 @@ h1 {
 }
 
 .btn {
-  z-index: 100000;
+  z-index: 100;
 }
 
 textarea:focus,
@@ -200,48 +210,10 @@ input[type="color"],
 }
 
 .card {
-  background-color: #ffffffd5;
-  /* box-shadow: 0px 0px 3px #000000; */
-  border: solid black 1px;
+  background-color: #f8f9fa;
+  border: none;
 }
 
-
-
-/* buttons landingspagina */
-.btn {
-  background-color: #6e505b !important;
-  color: white !important;
-  border: 1px solid #6e505b !important;
-  border-radius: 300px !important;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) !important;
-  transition: transform 0.1s ease !important;
-}
-
-.btn:hover {
-  background-color: #442b34 !important;
-  color: white !important;
-  border-color: #442b34 !important;
-}
-
-.btn:active {
-  background-color: #442b34 !important;
-  color: white !important;
-  border-color: #442b34 !important;
-  transform: translateY(1px);
-}
-
-.SignupBtn {
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
-.SignupBtn:hover {
-    background-color: #218838 !important;
-    border-color: #218838 !important;
-}
-
-.SignupBtn:active {
-  background-color: #218838 !important;
-  border-color: #218838 !important;
-  color: white !important;
+form {
+  z-index: 10000;
 }
