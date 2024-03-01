@@ -1,0 +1,36 @@
+#footer-style {
+    background-color: bisque;
+}
+
+#select {
+    margin-top: 6.4rem;
+}
+
+#logo {
+    border-radius: 50px;
+}
+
+.nav-item {
+    opacity: 0.7;
+    transition: 1s;
+}
+
+.nav-item:hover {
+    opacity: 1;
+    transition: 1s;
+}
+
+#selection-img1,
+#selection-img2 {
+    transition: 2s;
+}
+
+#selection-img1:hover {
+    box-shadow: -10px 5px 5px grey;
+    transition: 2s;
+}
+
+#selection-img2:hover {
+    box-shadow: 10px 5px 5px grey;
+    transition: 2s;
+}

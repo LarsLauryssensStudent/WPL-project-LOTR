@@ -12003,13 +12003,8 @@ h1, .h1 {
   color: #161616;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
   font-weight: bold;
-<<<<<<< HEAD
   font-size: 2.5rem;
   font-family: "poppins", sans-serif !important;
-=======
-  font-size: 3rem;
-  font-family: "Poppins", sans-serif !important;
->>>>>>> refs/remotes/origin/main
 }
 
 .required {
