@@ -19,7 +19,6 @@
 }
 
 body {
-  background-image: url('../assets/images/lord-of-the-rings-fellowship-of-the-ring-the-silhouettes.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -41,14 +40,6 @@ body {
   font-size: 0.9rem;
 }
 
-// h1 {
-//   color: #ffffff;
-//   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
-//   font-weight: bold;
-//   font-size: 3rem;
-//   font-family: 'Tolkien', sans-serif !important;
-// }
-
 h1 {
   color: #161616;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
@@ -56,7 +47,6 @@ h1 {
   font-size: 3rem;
   font-family: 'Poppins', sans-serif !important;
 }
-
 
 .required {
   color: darkred;
