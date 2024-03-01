@@ -5,6 +5,9 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 //custom css kan hier
+
+
+//landing-pagina
 @font-face {
   font-family: 'Tolkien';
   src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
@@ -282,4 +285,9 @@ form {
 
 .custom-color {
   background-color: #212529 !important
+}
+
+.custom-bg-dark {
+  background-color: #e21010 !important; /* Use !important to ensure it overrides Bootstrap's default */
+  /* You can adjust the color value as needed */
 }
