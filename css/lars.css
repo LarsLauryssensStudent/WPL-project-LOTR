@@ -35,5 +35,7 @@
 @media screen and (max-width: 600px){
    .quizzAnswers {
     flex-direction: column;
+    margin: auto;
+    padding: auto;
    }
 }
