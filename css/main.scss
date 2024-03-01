@@ -5,6 +5,9 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 //custom css kan hier
+
+
+//fonts
 @font-face {
   font-family: 'Tolkien';
   src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
@@ -20,6 +23,8 @@
   src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
 }
 
+
+//landingpagina
 body {
   background-size: cover;
   background-position: center;
@@ -44,18 +49,14 @@ body {
 
 h1 {
   color: #161616;
-  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
   font-weight: bold;
   font-size: 2.5rem;
-  font-family: 'poppins', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .required {
   color: darkred;
-}
-
-.card img {
-  border-radius: 3px !important;
 }
 
 .btn {
@@ -70,6 +71,7 @@ h1 {
   height: 100%;
   object-fit: cover;
   display: none;
+  border-radius: 5px 5px 0 0 !important;
 }
 
 #togglePassword,
@@ -116,7 +118,7 @@ h1 {
 } */
 
 #passwordMatch {
-  margin-bottom: -0.45rem;
+  margin-top: -1rem;
 }
 
 .input-group {
@@ -271,9 +273,8 @@ form {
 }
 
 /*Other*/
-
 .unique-color-dark {
-  background-color: #212529 !important;
+  background-color: rgba(33, 37, 41) !important;
 }
 
 .bg-light {
@@ -288,12 +289,13 @@ form {
   background-color: #212529 !important
 }
 
-.quizzMain {
-  background-image: url(/assets/images/10rounds/QuestionOne.jpg);
+#createAccountForm,
+#loginForm {
+  font-size: 0.9rem;
 }
 
-//header
 
+//header
 .headerTemp {
   height: 100px;
   padding: auto;
