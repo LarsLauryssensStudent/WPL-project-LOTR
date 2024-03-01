@@ -12262,3 +12262,7 @@ form {
 .headerBackGround {
   background-color: beige;
 }
+
+.headerHover:hover {
+  background-color: rgba(33, 37, 41, 0.4392156863);
+}
