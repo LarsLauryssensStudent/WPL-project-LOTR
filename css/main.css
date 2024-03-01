@@ -12236,3 +12236,40 @@ form {
 .custom-color {
   background-color: #212529 !important;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: bisque;
+}
+
+#logo {
+  border-radius: 50px;
+}
+
+.nav-item {
+  opacity: 0.7;
+  transition: 1s;
+}
+
+.nav-item:hover {
+  opacity: 1;
+  transition: 1s;
+}
+
+#text-position {
+  position: absolute;
+  top: 80%;
+  right: 40%;
+}
+
+.selection-img {
+  border: 5px black groove;
+  transition: 2s;
+}
+
+.selection-img:hover {
+  box-shadow: 10px 5px 5px grey;
+  transition: 2s;
+}

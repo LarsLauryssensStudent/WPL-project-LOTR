@@ -163,7 +163,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: var(--bs-primary);
   box-shadow: 0px 0px 3px 0.4px #007bff6e;
   outline: none;
@@ -184,7 +184,7 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input {   
+.uneditable-input {
   border: 1px solid #ced4da;
 }
 
@@ -227,40 +227,49 @@ form {
   min-height: 100px;
   max-height: 400px;
 }
+
 /* Animation */
 .parallax>use {
   animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
 }
+
 .parallax>use:nth-child(1) {
   animation-delay: -2s;
   animation-duration: 7s;
 }
+
 .parallax>use:nth-child(2) {
   animation-delay: -3s;
   animation-duration: 10s;
 }
+
 .parallax>use:nth-child(3) {
   animation-delay: -4s;
   animation-duration: 13s;
 }
+
 .parallax>use:nth-child(4) {
   animation-delay: -5s;
   animation-duration: 20s;
 }
+
 @keyframes move-forever {
   0% {
     transform: translate3d(-90px, 0, 0);
   }
+
   100% {
     transform: translate3d(85px, 0, 0);
   }
 }
+
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
   .waves {
     height: 40px;
     min-height: 40px;
   }
+
   .content {
     height: 30vh;
   }
@@ -282,4 +291,44 @@ form {
 
 .custom-color {
   background-color: #212529 !important
+}
+
+// footer
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: bisque;
+}
+
+#logo {
+  border-radius: 50px;
+}
+
+.nav-item {
+  opacity: 0.7;
+  transition: 1s;
+}
+
+.nav-item:hover {
+  opacity: 1;
+  transition: 1s;
+}
+
+// selection page 
+#text-position {
+  position: absolute;
+  top: 80%;
+  right: 40%;
+
+}
+
+.selection-img {
+  border: 5px black groove;
+  transition: 2s;
+}
+
+.selection-img:hover {
+  box-shadow: 10px 5px 5px grey;
+  transition: 2s;
 }
