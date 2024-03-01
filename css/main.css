@@ -11973,6 +11973,10 @@ textarea.form-control-lg {
   font-family: "Poppins";
   src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "MiddleEarth";
+  src: url("../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf");
+}
 body {
   background-size: cover;
   background-position: center;
@@ -11999,8 +12003,13 @@ h1, .h1 {
   color: #161616;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
   font-weight: bold;
+<<<<<<< HEAD
   font-size: 2.5rem;
   font-family: "poppins", sans-serif !important;
+=======
+  font-size: 3rem;
+  font-family: "Poppins", sans-serif !important;
+>>>>>>> refs/remotes/origin/main
 }
 
 .required {
@@ -12158,10 +12167,106 @@ input[type=color],
 }
 
 .card {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border: none;
 }
 
 form {
   z-index: 10000;
+}
+
+/*Waves*/
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+  min-height: 100px;
+  max-height: 400px;
+}
+
+/* Animation */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh;
+  }
+}
+/*Other*/
+.unique-color-dark {
+  background-color: #212529 !important;
+}
+
+.bg-light {
+  background-color: #212529 !important;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.custom-color {
+  background-color: #212529 !important;
+}
+
+.quizzMain {
+  background-image: url(/assets/images/10rounds/QuestionOne.jpg);
+}
+
+.headerTemp {
+  height: 100px;
+  padding: auto;
+  font-style: Poppins;
+}
+
+.noPadding {
+  padding: 0;
+}
+
+.headerBackGroundNone {
+  background-color: transparent;
+}
+
+.headerBackGround {
+  background-color: beige;
+}
+
+.headerHover:hover {
+  background-color: rgba(33, 37, 41, 0.4392156863);
 }

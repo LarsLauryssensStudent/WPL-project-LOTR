@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="css/main.css">
   <script defer src="/js/bootstrap.bundle.min.js"></script>
-  <scrip defer src="/js/landingpage.js"></scrip>
+  <script defer src="/js/popper.min.js"></script>
+  <script defer src="/js/landingpage.js"></script>
   <title>Landingspagina</title>
 </head>
 <body>
 
-  <main class="container-fluid d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <h1 class="pt-4">Fellowship of the Code</h1>
+  <header class="container-fluid d-flex justify-content-center align-items-center">
+    <nav>
+      <h1 class="pt-4 my-3">Fellowship of the Code</h1>
+    </nav>
+  </header>
 
+  <main class="container-fluid">
     <section class="row gy-4 gx-4 py-4">
 
       <!-- Eerste afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary shadow-sm py-4 px-4">
-          <section class="card">
+        <div class="bg-body-tertiary py-4 px-4">
+          <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(1)" onmouseout="pauseVideo(1)">
               <img src="assets/images/landingpage/football-hd-3rdrqmypvpirwd6z.jpg" class="card-img-top game-img" alt="Game Image">
               <video id="video-1" class="game-video" loop muted>
-                <source src="assets/images/fifavideo.mp4" type="video/mp4">
+                <source src="assets/images/landingpage/fifavideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </figure>
@@ -41,8 +47,8 @@
 
       <!-- Tweede afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary shadow-sm py-4 px-4">
-          <section class="card">
+        <div class="bg-dark py-4 px-4">
+          <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(2)" onmouseout="pauseVideo(2)">
               <img src="assets/images/landingpage/Fortnite-Og-Battle-Pass-Skins-4K-Wallpaper-jpg.webp" class="card-img-top game-img" alt="Game Image">
               <video id="video-2" class="game-video" loop muted>
@@ -65,8 +71,8 @@
 
       <!-- Derde afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary shadow-sm py-4 px-4">
-          <section class="card">
+        <div class="bg-body-tertiary py-4 px-4">
+          <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(3)" onmouseout="pauseVideo(3)">
               <img src="assets/images/landingpage/476260.jpg" class="card-img-top game-img" alt="Game Image">
               <video id="video-3" class="game-video" loop muted>
@@ -89,8 +95,8 @@
 
       <!-- Vierde afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary shadow-sm py-4 px-4">
-          <section class="card">
+        <div class="bg-dark py-4 px-4">
+          <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(4)" onmouseout="pauseVideo(4)">
               <img src="assets/images/landingpage/137227-3840x2160-desktop-4k-the-lord-of-the-rings-background-image.jpg" class="card-img-top game-img" alt="Game Image">
               <video id="video-4" class="game-video" loop muted>
@@ -113,8 +119,8 @@
 
       <!-- Vijfde afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary shadow-sm py-4 px-4">
-          <section class="card">
+        <div class="bg-body-tertiary py-4 px-4">
+          <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(5)" onmouseout="pauseVideo(5)">
               <img src="assets/images/landingpage/1920x1080_px_magic_the_gathering-1307305.jpg!d" class="card-img-top game-img" alt="Game Image">
               <video id="video-5" class="game-video" loop muted>
@@ -137,8 +143,8 @@
 
       <!-- Zesde afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary shadow-sm py-4 px-4">
-          <section class="card">
+        <div class="bg-dark py-4 px-4">
+          <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(6)" onmouseout="pauseVideo(6)">
               <img src="assets/images/landingpage/1339449.png" class="card-img-top game-img" alt="Game Image">
               <video id="video-6" class="game-video" loop muted>
@@ -161,6 +167,45 @@
 
     </section>
   </main>
+
+  <!---Footer--->
+<div>
+  <svg class="waves pt-4" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(248,249,250,0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248,249,250,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(33, 37, 41, 0.1)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#212529" />
+      </g>
+  </svg>
+</div>
+
+<footer class="page-footer font-small unique-color-dark text-center">
+  <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+    <i class="fab fa-twitter"></i>
+  </a>
+
+  <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <article class="text-center p-1 text-light">
+    <p>© 2024 Fellowship of the Code</p>
+  </article>
+</footer>
+
+
 
 
   <!-- Modal for registration form -->
