@@ -1,0 +1,17 @@
+.quizzNav {
+  display: flex;
+  border: 2px solid red;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.quizzAnswers {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+@media screen and (max-width: 600px){
+   .quizzAnswers {
+    flex-direction: column;
+   }
+}
