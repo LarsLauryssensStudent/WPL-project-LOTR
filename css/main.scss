@@ -14,6 +14,10 @@
   font-family: 'Poppins';
   src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'MiddleEarth';
+  src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
+}
 
 body {
   background-image: url('../assets/images/lord-of-the-rings-fellowship-of-the-ring-the-silhouettes.jpg');
@@ -282,4 +286,26 @@ form {
 
 .custom-color {
   background-color: #212529 !important
+}
+
+.quizzMain {
+  background-image: url(/assets/images/10rounds/QuestionOne.jpg);
+}
+
+//header
+
+.headerTemp {
+  height: 100px;
+  padding: auto;
+  font-style: Poppins;
+  
+}
+.noPadding {
+  padding: 0;
+}
+.headerBackGroundNone {
+  background-color: transparent;
+}
+.headerBackGround {
+  background-color: beige;
 }
