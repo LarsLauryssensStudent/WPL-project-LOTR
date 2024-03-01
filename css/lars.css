@@ -7,7 +7,29 @@
 .quizzAnswers {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgba(240, 248, 255, 0.283)!important;
 
+}
+.quizzContainer * {
+  background: none;
+}
+.quizzContainer {
+  background-image: url(/assets/images/10rounds/QuestionOne.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 12px;
+}
+.biggerCard {
+  min-height: 240px;
+}
+
+.maxWidth {
+  width: 100%;
+  display: flex;
+  margin: auto;
+  padding: auto;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 600px){
