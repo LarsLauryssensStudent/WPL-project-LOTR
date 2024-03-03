@@ -1,27 +1,52 @@
+
+
+.quizzContainer * {
+  background: none;
+
+}
+
 .quizzNav {
   display: flex;
   border: 2px solid red;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 1rem 2rem;
+  background-color: rgba(245, 245, 220, 0.616);
+  align-items: center;
+  border-radius: 24px 24px 0px 0px;
+}
+.quizzNav > section {
+  border: 2px solid blue;
+  text-align: center;
+  padding: 0.4rem ;
+  font-size: 1.2rem;
+  
 }
 .quizzAnswers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: rgba(240, 248, 255, 0.283)!important;
+  
+}
 
-}
-.quizzContainer * {
-  background: none;
-}
 .quizzContainer {
   background-image: url(/assets/images/10rounds/QuestionOne.jpg);
   background-size: cover;
   background-position: center;
   padding: 12px;
+  margin: 2rem auto;
+  border: 4px ridge white;
+  border-radius: 32px;
 }
 .biggerCard {
-  min-height: 240px;
+  padding: 2rem 1rem;
+  margin: 4rem auto;
+  border: 2px solid black;
+  width: 80%;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(245, 245, 220, 0.562);
 }
 
 .maxWidth {
@@ -30,6 +55,10 @@
   margin: auto;
   padding: auto;
   justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.651);
+}
+.backGroundRadio{
+  background-color: rgba(255, 0, 0, 0.644);
 }
 
 @media screen and (max-width: 600px){
