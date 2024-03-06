@@ -1,7 +1,6 @@
 {
   "name": "wpl-project-lotr",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +14,6 @@
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3"
-  }
+  },
+  "description": ""
 }
