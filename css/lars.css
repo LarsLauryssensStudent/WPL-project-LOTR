@@ -8,20 +8,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: rgba(240, 248, 255, 0.283)!important;
 
 }
 .quizzContainer * {
   background: none;
+
 }
 .quizzContainer {
   background-image: url(/assets/images/10rounds/QuestionOne.jpg);
   background-size: cover;
   background-position: center;
-  padding: 12px;
+  
+  margin: 2rem 0;
+  
 }
 .biggerCard {
   min-height: 240px;
+}
+.quizzBody {
+  background-color: rgba(53, 53, 38, 0.469);
 }
 
 .maxWidth {
