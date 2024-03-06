@@ -11,28 +11,35 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem 2rem;
+  padding-bottom: 0rem;
   background-color: rgba(245, 245, 220, 0.616);
   align-items: center;
-  border-radius: 24px 24px 0px 0px;
+  border-radius: 28px 28px 0px 0px;
+  background-color: beige;
 }
 .quizzNav > section {
-  border: 2px solid blue;
+  border-bottom: 2px solid grey;
   text-align: center;
   padding: 0.4rem ;
-  font-size: 1.2rem;
   
+  font-size: 1.2rem;
+  text-decoration: 2px underline;
 }
 .quizzAnswers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
-
-}
-.quizzContainer * {
-  background: none;
+  margin: 0rem 1rem;
 
 }
+.quizzAnswers input:hover, .quizzAnswers label:hover {
+  background-color:green ;
+}
+
+.actorLabel:hover, .movieLabel:hover {
+  background-color: green!important;
+}
+
 
 
 
@@ -41,7 +48,7 @@
   background-size: cover;
   background-position: center;  
   margin: 2rem 0;
-  padding: 12px;
+  padding: 0px;
   margin: 2rem auto;
   border: 4px ridge white;
   border-radius: 32px;
@@ -71,6 +78,11 @@
 }
 .backGroundRadio{
   background-color: rgba(255, 0, 0, 0.644);
+}
+
+.submitButton {
+  border-radius: 0 0 28px 28px!important;
+  margin-top: 0.4rem;
 }
 
 @media screen and (max-width: 600px){
