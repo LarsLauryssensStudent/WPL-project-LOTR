@@ -26,32 +26,26 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-<<<<<<< HEAD
+
 
 }
 .quizzContainer * {
   background: none;
 
 }
-=======
-  
-}
 
->>>>>>> 6dd37fc6c06f558a94bbe3ce68b166408cfb1e9a
+
+
 .quizzContainer {
   background-image: url(/assets/images/10rounds/QuestionOne.jpg);
   background-size: cover;
-  background-position: center;
-<<<<<<< HEAD
-  
+  background-position: center;  
   margin: 2rem 0;
-  
-=======
   padding: 12px;
   margin: 2rem auto;
   border: 4px ridge white;
   border-radius: 32px;
->>>>>>> 6dd37fc6c06f558a94bbe3ce68b166408cfb1e9a
+
 }
 .biggerCard {
   padding: 2rem 1rem;
