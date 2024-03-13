@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl-BE">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,11 +23,11 @@
 
       <!-- eerste afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary py-4 px-4 rounded border border-dark">
+        <div class="bg-body-tertiary py-4 px-4 border rounded border-dark">
           <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(1)" onmouseout="pauseVideo(1)">
               <img src="assets/images/landingpage/football-hd-3rdrqmypvpirwd6z.jpg" class="card-img-top game-img" alt="Game Image">
-              <video id="video-1" class="game-video" loop muted>
+              <video id="video-1" class="game-video rounded" loop muted>
                 <source src="assets/images/landingpage/fifavideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -35,9 +35,9 @@
             <section class="card-body">
               <h2 class="card-title text-center">Fifa</h2>
               <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae praesentium illum adipisci quis architecto!
+                FIFA is een populaire voetbalvideogame-serie van EA Sports, bekend om realistische gameplay en jaarlijkse updates.
               </p>
-              <button id="profileButton" type="button" class="btn border-dark bg-body-tertiary d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <button id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
               </button>
             </section>
@@ -47,11 +47,11 @@
 
       <!-- tweede afbeelding -->
       <article class="col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-body-tertiary py-4 px-4 border border-dark rounded">
+        <div class="bg-body-tertiary py-4 px-4 rounded border border-dark">
           <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(2)" onmouseout="pauseVideo(2)">
               <img src="assets/images/landingpage/Fortnite-Og-Battle-Pass-Skins-4K-Wallpaper-jpg.webp" class="card-img-top game-img" alt="Game Image">
-              <video id="video-2" class="game-video" loop muted>
+              <video id="video-2" class="game-video rounded" loop muted>
                 <source src="assets/images/landingpage/fortnitevid.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -59,9 +59,9 @@
             <section class="card-body">
               <h2 class="card-title text-center">Fortnite</h2>
               <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae praesentium illum adipisci quis architecto!
+                Fortnite is een populaire 'battle royale' game met constante updates en een creatieve modus voor het bouwen van werelden.
               </p>
-              <button id="profileButton" type="button" class="btn border-dark bg-body-tertiary d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <button id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
               </button>
             </section>
@@ -75,7 +75,7 @@
           <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(3)" onmouseout="pauseVideo(3)">
               <img src="assets/images/landingpage/476260.jpg" class="card-img-top game-img" alt="Game Image">
-              <video id="video-3" class="game-video" loop muted>
+              <video id="video-3" class="game-video rounded" loop muted>
                 <source src="assets/images/landingpage/legomastersvideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -83,7 +83,7 @@
             <section class="card-body">
               <h2 class="card-title text-center">Lego Masters</h2>
               <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae praesentium illum adipisci quis architecto!
+                LEGO Masters is een reality-tv-programma waarin bouwers concurreren om LEGO-kunstwerken te maken.
               </p>
               <button id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
@@ -99,7 +99,7 @@
           <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(4)" onmouseout="pauseVideo(4)">
               <img src="assets/images/landingpage/137227-3840x2160-desktop-4k-the-lord-of-the-rings-background-image.jpg" class="card-img-top game-img" alt="Game Image">
-              <video id="video-4" class="game-video" loop muted>
+              <video id="video-4" class="game-video rounded" loop muted>
                 <source src="assets/images/landingpage/lotrvideonew.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -107,9 +107,9 @@
             <section class="card-body">
               <h2 class="card-title text-center">Lord of the Rings</h2>
               <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae praesentium illum adipisci quis architecto!
+                Lord of the Rings is een episch fantasy-verhaal van J.R.R. Tolkien, met avonturen in de fictieve wereld van Midden-aarde.
               </p>
-              <button id="profileButton" type="button" class="btn border-dark bg-body-tertiary d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <button onclick="handleLogin()" id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
               </button>
             </section>
@@ -123,7 +123,7 @@
           <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(5)" onmouseout="pauseVideo(5)">
               <img src="assets/images/landingpage/1920x1080_px_magic_the_gathering-1307305.jpg!d" class="card-img-top game-img" alt="Game Image">
-              <video id="video-5" class="game-video" loop muted>
+              <video id="video-5" class="game-video rounded" loop muted>
                 <source src="assets/images/landingpage/mtgvideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -131,9 +131,9 @@
             <section class="card-body">
               <h2 class="card-title text-center">Magic: The Gathering</h2>
               <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae praesentium illum adipisci quis architecto!
+                Magic The Gathering is een iconisch verzamelbaar kaartspel met diepgaande strategieën en een uitgebreide lore.
               </p>
-              <button id="profileButton" type="button" class="btn border-dark bg-body-tertiary d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <button id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
               </button>
             </section>
@@ -147,7 +147,7 @@
           <section class="card shadow-sm">
             <figure class="game-container" onmouseover="playVideo(6)" onmouseout="pauseVideo(6)">
               <img src="assets/images/landingpage/1339449.png" class="card-img-top game-img" alt="Game Image">
-              <video id="video-6" class="game-video" loop muted>
+              <video id="video-6" class="game-video rounded" loop muted>
                 <source src="assets/images/landingpage/pokemonvideo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -155,9 +155,9 @@
             <section class="card-body">
               <h2 class="card-title text-center">Pokemon</h2>
               <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores beatae praesentium illum adipisci quis architecto!
+                Pokémon is een wereldberoemde franchise met games, animatieseries en kaartspellen waarin spelers Pokémons vangen.
               </p>
-              <button id="profileButton" type="button" class="btn border-dark bg-body-tertiary d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <button id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
               </button>
             </section>
@@ -237,14 +237,14 @@
             <div class="mb-3">
               <!-- <input type="checkbox" class="form-check-input" id="rememberMe">
               <label class="form-check-label" for="rememberMe">onthoud mij</label> -->
-              <button type="submit" class="btn border-dark bg-body-tertiary">aanmelden</button>
+              <button type="submit" class="btn bg-body-tertiary border-dark mb-1">aanmelden</button>
             </div>
             <a href="#" class="text-decoration-none">wachtwoord vergeten?</a>
           </div>
     
           <div id="loginError" class="mt-2 text-danger" style="display: none;"></div>
             <p style="margin: 0;">nog geen account? 
-              <span id="showCreateAccountBtn" class="btn-link">account aanmaken</span></p>
+              <span id="showCreateAccountBtn" class="btn-link" style="cursor: pointer;">account aanmaken</span></p>
         </form>
         
         <!-- account aanmaken formulier -->
@@ -289,9 +289,9 @@
 
             <p class="tos">Door een account aan te maken, ga je akkoord met de verwerking van je persoonlijke gegevens in overeenstemming met onze <a href="#">privacyverklaring</a>.</p>
             
-            <button type="submit" class="btn border-dark bg-body-tertiary mb-3 SignupBtn">account aanmaken</button>
+            <button type="submit" class="btn bg-body-tertiary border-dark mb-3 SignupBtn">account aanmaken</button>
             <p style="margin: 0;">terug naar 
-              <span id="backToLoginBtn" class="btn-link">aanmelden</span></p>
+              <span id="backToLoginBtn" class="btn-link" style="cursor: pointer;">aanmelden</span></p>
           </form>
       </div>
     </div>
