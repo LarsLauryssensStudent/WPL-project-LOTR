@@ -1,54 +1,74 @@
-.navsectie1 {
-  background-color: aliceblue;
+
+@font-face {
+  font-family: 'Tolkien';
+  src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
 }
-.headerTemp {
-  background-color: aqua;
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
 }
-header section {
-  background-color: blue!important;
+
+@font-face {
+  font-family: 'MiddleEarth';
+  src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
 }
-.navbar {
-  background-color: brown;
-}
+
 
 .quizzContainer * {
   background: none;
-
 }
+
+.headerTemp {
+  background-color:#FCECBB;
+}
+
+
+.titelZ {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2.6rem;
+  margin-top: 1.4rem;
+}
+
+
+
 /*testcommit*/
+.quizzMain {
+  background-image: url(../assets/images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
+  margin: auto;
+}
+
+
 .quizzNav {
   display: flex;
-  border: 2px solid red;
+  border: 4px solid rgba(0, 0, 0, 0.242);
   justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 1rem 2rem;
-  padding-bottom: 0rem;
-  background-color: rgba(245, 245, 220, 0.616);
+
+  flex-wrap: nowrap;
+  padding: 0.6rem 0;
+
+
+
+  background-color: #FCECBB;
   align-items: center;
   border-radius: 28px 28px 0px 0px;
-  background-color: beige;
+
 }
 .quizzNav > section {
-  border-bottom: 2px solid grey;
   text-align: center;
   padding: 0.4rem ;
-  
   font-size: 1.2rem;
-  text-decoration: 2px underline;
+  
 }
 .quizzAnswers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0rem 1rem;
+  margin-top: 2rem;
 
-}
-.quizzAnswers input:hover, .quizzAnswers label:hover {
-  background-color:green ;
-}
-
-.actorLabel:hover, .movieLabel:hover {
-  background-color: green!important;
 }
 
 
@@ -58,13 +78,13 @@ header section {
   background-image: url(/assets/images/10rounds/QuestionOne.jpg);
   background-size: cover;
   background-position: center;  
-  margin: 2rem 0;
+  margin: auto 0;
   padding: 0px;
   margin: 2rem auto;
-  border: 4px ridge white;
-  border-radius: 32px;
-
+  border: 2px solid white;
+  border-radius: 30px;
 }
+
 .biggerCard {
   padding: 2rem 1rem;
   margin: 4rem auto;
@@ -73,12 +93,17 @@ header section {
   border-radius: 32px;
   display: flex;
   align-items: center;
-  background-color: rgba(245, 245, 220, 0.562);
+  background-color: rgba(245, 245, 220, 0.562)!important;
 }
+
 .quizzBody {
   background-size: cover;
   background-position: center;
   background-color: transparent;
+
+  display: flex;
+  flex-direction: column;
+
 }
 
 .maxWidth {
@@ -87,25 +112,66 @@ header section {
   margin: auto;
   padding: auto;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.651);
-}
-.backGroundRadio{
-  background-color: rgba(255, 0, 0, 0.644);
+
 }
 
+.offcanvas-title {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2rem;
+}
+.actorLabel, .movieLabel {
+  border: 2px solid black;
+  background-color: #fcecbbac;
+  
+}
+
+.actorLabel:hover, .movieLabel:hover {
+  background-color: rgb(45, 44, 44)!important;
+  border: 2px solid green!important;
+  color: yellow!important;
+
+}
+
+
+.offcanvas-title {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2rem;
+}
+.btn {
+  border: 2px solid black;
+  margin: 0.2rem auto;
+  background-color: #fcecbbac;
+}
+.btn:active {
+  background-color: aqua;
+}
+.btn::selection{
+  background-color: #FCECBB;
+}
 .submitButton {
   border-radius: 0 0 28px 28px!important;
+
+  margin-top: 3rem;
+  background-color: #fcecbb7e;
+
   margin-top: 0.4rem;
+  background-color: #fcecbb7e;
 }
 
 .quizzMain {
   background-image: url(../assets/images/background-page/background-body.png);
   background-position: center;
   background-size: cover;
+
 }
-.navSectie
-header {
-  background-color: aqua;
+
+.actorRadio:checked + .actorLabel,
+.movieRadio:checked + .movieLabel {
+  background-color: #FCECBB; 
+  color: #000000; 
+  font-weight: 700;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 @media screen and (max-width: 600px){
    .quizzAnswers {
@@ -113,4 +179,16 @@ header {
     margin: auto;
     padding: auto;
    }
+
+ 
+   .titelZ {
+    font-family: 'MiddleEarth'!important;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+  }
+  .headerLogo {
+    display: none;
+
+
+  }
 }
