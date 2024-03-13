@@ -1,14 +1,29 @@
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: "header"
+        "main"
+        "footer"
+    ;
+}
+
 #footer-style {
     background-color: bisque;
 }
 
 #select {
-    margin-top: 6.4rem;
+    grid-area: main;
 }
 
-#logo {
-    border-radius: 50px;
+header {
+    grid-area: header;
 }
+
+#footer-style {
+    grid-area: footer;
+}
+
+
 
 .nav-item {
     opacity: 0.7;
@@ -20,17 +35,12 @@
     transition: 1s;
 }
 
-#selection-img1,
-#selection-img2 {
-    transition: 2s;
+.bi {
+    color: black;
 }
 
-#selection-img1:hover {
-    box-shadow: -10px 5px 5px grey;
-    transition: 2s;
-}
-
-#selection-img2:hover {
-    box-shadow: 10px 5px 5px grey;
-    transition: 2s;
+@media screen and (max-width: 600px) {
+    .col-sm-10 {
+        width: 80%;
+    }
 }
