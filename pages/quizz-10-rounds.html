@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/lars.css">
 
+
   <script src="/js/bootstrap.bundle.min.js" defer></script>
   <script src="/js/popper.min.js" defer></script>
 </head>
 <body class="quizzBody">
-    <header class="navbar bg-body-tertiary headerTemp headerBackGround noPadding">
+    <header class="navbar headerTemp headerBackGround noPadding">
     <section class="container-fluid navsectie1 headerTemp headerBackGround">
        <a href="#"> 
         <img src="assets\images\Afbeelding van WhatsApp op 2024-02-25 om 18.15.40_556aabbb.jpg" alt="" class="navbar-brand" width="auto" height="100px">
@@ -60,16 +61,24 @@
     </section>
   
     </header>
-    <main class="container-fluid bg-light">
+    <main class="container-fluid bg-light quizzMain">
       <section class="row">
         <section class="col-sm-0 col-lg-2 col-md-1">
         </section>
         <section class="col-sm-12 col-lg-8 col-md-10 ">
           <section class="quizzContainer">
           <section class="quizzNav container-fluid">
-            <section id="timeField" class="col-sm-12 col-lg-4 col-md-4">Time: 00:00</section>
-            <section id="questionField" class="col-sm-12 col-lg-4 col-md-4">Quote 1/10</section>
-            <section id="scoreField" class="col-sm-12 col-lg-4 col-md-4">Score: 0/20</section>
+            <section id="timeField" class="col-sm-12 col-lg-4 col-md-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-stopwatch-fill" viewBox="0 0 16 16">
+              <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07A7.001 7.001 0 0 0 8 16a7 7 0 0 0 5.29-11.584l.013-.012.354-.354.353.354a.5.5 0 1 0 .707-.707l-1.414-1.415a.5.5 0 1 0-.707.707l.354.354-.354.354-.012.012A6.97 6.97 0 0 0 9 2.071V1h.5a.5.5 0 0 0 0-1zm2 5.6V9a.5.5 0 0 1-.5.5H4.5a.5.5 0 0 1 0-1h3V5.6a.5.5 0 1 1 1 0"/>
+            </svg>: 00:00
+          </section>
+            <section id="questionField" class="col-sm-12 col-lg-4 col-md-4">
+              Quote 1/10
+            </section>
+            <section id="scoreField" class="col-sm-12 col-lg-4 col-md-4">
+              Score: 0/20
+            </section>
           </section>
           
             <section class="card biggerCard">

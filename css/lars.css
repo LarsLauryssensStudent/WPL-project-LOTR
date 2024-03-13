@@ -1,4 +1,15 @@
-
+.navsectie1 {
+  background-color: aliceblue;
+}
+.headerTemp {
+  background-color: aqua;
+}
+header section {
+  background-color: blue!important;
+}
+.navbar {
+  background-color: brown;
+}
 
 .quizzContainer * {
   background: none;
@@ -65,7 +76,9 @@
   background-color: rgba(245, 245, 220, 0.562);
 }
 .quizzBody {
-  background-color: rgba(53, 53, 38, 0.469);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
 }
 
 .maxWidth {
@@ -85,6 +98,15 @@
   margin-top: 0.4rem;
 }
 
+.quizzMain {
+  background-image: url(../assets/images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
+}
+.navSectie
+header {
+  background-color: aqua;
+}
 @media screen and (max-width: 600px){
    .quizzAnswers {
     flex-direction: column;
