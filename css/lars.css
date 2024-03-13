@@ -1,9 +1,35 @@
 
+@font-face {
+  font-family: 'Tolkien';
+  src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MiddleEarth';
+  src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
+}
+
+
+
+.headerTemp {
+  background-color:#FCECBB;
+}
+
+.titelZ {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2.6rem;
+  margin-top: 1.4rem;
+}
 
 .quizzContainer * {
   background: none;
-
 }
+
 /*testcommit*/
 .quizzNav {
   display: flex;
@@ -12,18 +38,16 @@
   flex-wrap: wrap;
   padding: 1rem 2rem;
   padding-bottom: 0rem;
-  background-color: rgba(245, 245, 220, 0.616);
+  background-color: #FCECBB;
   align-items: center;
   border-radius: 28px 28px 0px 0px;
-  background-color: beige;
+
 }
 .quizzNav > section {
-  border-bottom: 2px solid grey;
   text-align: center;
   padding: 0.4rem ;
-  
   font-size: 1.2rem;
-  text-decoration: 2px underline;
+  
 }
 .quizzAnswers {
   display: flex;
@@ -33,11 +57,11 @@
 
 }
 .quizzAnswers input:hover, .quizzAnswers label:hover {
-  background-color:green ;
+  background-color:red ;
 }
 
 .actorLabel:hover, .movieLabel:hover {
-  background-color: green!important;
+  background-color: red!important;
 }
 
 
@@ -50,10 +74,10 @@
   margin: 2rem 0;
   padding: 0px;
   margin: 2rem auto;
-  border: 4px ridge white;
-  border-radius: 32px;
-
+  border: 2px solid white;
+  border-radius: 30px;
 }
+
 .biggerCard {
   padding: 2rem 1rem;
   margin: 4rem auto;
@@ -64,8 +88,11 @@
   align-items: center;
   background-color: rgba(245, 245, 220, 0.562);
 }
+
 .quizzBody {
-  background-color: rgba(53, 53, 38, 0.469);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
 }
 
 .maxWidth {
@@ -74,15 +101,34 @@
   margin: auto;
   padding: auto;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.651);
-}
-.backGroundRadio{
-  background-color: rgba(255, 0, 0, 0.644);
 }
 
+
+.offcanvas-title {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2rem;
+}
+.btn {
+  border: 2px solid black;
+  margin: 0.2rem auto;
+  background-color: #fcecbbac;
+}
+.btn:active {
+  background-color: aqua;
+}
+.btn::selection{
+  background-color: #FCECBB;
+}
 .submitButton {
   border-radius: 0 0 28px 28px!important;
   margin-top: 0.4rem;
+  background-color: #fcecbb7e;
+}
+
+.quizzMain {
+  background-image: url(../assets/images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
 }
 
 @media screen and (max-width: 600px){
@@ -91,4 +137,10 @@
     margin: auto;
     padding: auto;
    }
+
+   .titelZ {
+    font-family: 'MiddleEarth'!important;
+    font-size: 1.6rem;
+    margin-top: 1.4rem;
+  }
 }
