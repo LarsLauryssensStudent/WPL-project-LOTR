@@ -58,11 +58,16 @@
 }
 .quizzAnswers input:hover, .quizzAnswers label:hover {
   background-color:red ;
+  border: 2px solid blue;
 }
-
 .actorLabel:hover, .movieLabel:hover {
   background-color: red!important;
+  border: 2px solid green;
 }
+input[type="radio"] {
+  background-color: white!important;
+}
+
 
 
 
@@ -95,6 +100,7 @@
   background-color: transparent;
 }
 
+
 .maxWidth {
   width: 100%;
   display: flex;
@@ -110,18 +116,19 @@
 }
 .btn {
   border: 2px solid black;
-  margin: 0.2rem auto;
   background-color: #fcecbbac;
 }
-.btn:active {
-  background-color: aqua;
+.movieRadio:checked::after .movieLabel {
+  background-color: white!important;
 }
-.btn::selection{
-  background-color: #FCECBB;
+.btn:hover {
+  border: 2px solid green!important;
 }
+
+
 .submitButton {
   border-radius: 0 0 28px 28px!important;
-  margin-top: 0.4rem;
+  margin-top: 0.8rem;
   background-color: #fcecbb7e;
 }
 
@@ -129,6 +136,7 @@
   background-image: url(../assets/images/background-page/background-body.png);
   background-position: center;
   background-size: cover;
+
 }
 
 @media screen and (max-width: 600px){
