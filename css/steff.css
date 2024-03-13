@@ -5,25 +5,49 @@ body {
         "main"
         "footer"
     ;
+    background-image: url("/assets/images/background-page/background-body.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 #footer-style {
-    background-color: bisque;
+    background-color: #fcecbba1;
 }
 
 #select {
     grid-area: main;
+
 }
 
 header {
     grid-area: header;
 }
 
+.text {
+    padding-top: 0.5rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.card-img-overlay {
+    padding: 0;
+    padding-left: inherit;
+    padding-right: inherit;
+}
+
 #footer-style {
     grid-area: footer;
 }
 
-
+.card-title,
+.heading {
+    font-family: 'MiddleEarth';
+}
 
 .nav-item {
     opacity: 0.7;
@@ -39,8 +63,14 @@ header {
     color: black;
 }
 
+
 @media screen and (max-width: 600px) {
     .col-sm-10 {
         width: 80%;
     }
+}
+
+@font-face {
+    font-family: 'MiddleEarth';
+    src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
 }
