@@ -300,7 +300,7 @@ form {
   height: 100px;
   padding: auto;
   font-style: Poppins;
-
+  background-color: transparent ; 
 }
 
 .noPadding {
@@ -309,10 +309,11 @@ form {
 
 .headerBackGroundNone {
   background-color: transparent;
+  background-color: beige;
 }
 
 .headerBackGround {
-  background-color: beige;
+  background-color: rgb(171, 171, 36)!important;
 }
 
 .headerHover:hover {
