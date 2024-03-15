@@ -1,4 +1,7 @@
-
+* {
+  padding: 0;
+  margin: 0;
+}
 @font-face {
   font-family: 'Tolkien';
   src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
@@ -13,7 +16,12 @@
   font-family: 'MiddleEarth';
   src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
 }
-
+.labelQuizz {
+  background-color: #FCECBB!important;
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
 
 .quizzContainer * {
   background: none;
@@ -83,8 +91,19 @@
   margin: 2rem auto;
   border: 2px solid white;
   border-radius: 30px;
+  min-height: 240px;
 }
-
+.quizzContainerSD {
+  background-image: url(/assets/images/sudden-death/lotr-sudden-death-back.gif  );
+  background-size: cover;
+  background-position: center;  
+  margin: auto 0;
+  padding: 0px;
+  margin: 2rem auto;
+  border: 2px solid white;
+  border-radius: 30px;
+  min-height: 240px;
+}
 .biggerCard {
   padding: 2rem 1rem;
   margin: 4rem auto;
@@ -97,10 +116,7 @@
 }
 
 .quizzBody {
-  background-size: cover;
-  background-position: center;
-  background-color: transparent;
-
+  
   display: flex;
   flex-direction: column;
 
@@ -113,6 +129,17 @@
   padding: auto;
   justify-content: space-between;
 
+}
+.navbar-toggler {
+  border: none;
+  outline: none;
+  
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.searchBtn {
+  background-color: black ;
 }
 
 .offcanvas-title {
@@ -137,17 +164,17 @@
   font-family: 'MiddleEarth'!important;
   font-size: 2rem;
 }
-.btn {
-  border: 2px solid black;
-  margin: 0.2rem auto;
+.btnStoile {
+  border: 2px solid rgb(255, 255, 255);
+  margin: auto 0;
   background-color: #fcecbbac;
+  padding: 4px;
 }
-.btn:active {
-  background-color: aqua;
+.btnStoile:hover {
+  background-color: rgb(45, 44, 44)!important;
+  color: yellow;
 }
-.btn::selection{
-  background-color: #FCECBB;
-}
+
 .submitButton {
   border-radius: 0 0 28px 28px!important;
 
@@ -173,6 +200,24 @@
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
 }
+
+#blackListBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background-color: transparent;
+}
+#favoBtn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border: none;
+  background-color: transparent;
+}
+
+
+
 @media screen and (max-width: 600px){
    .quizzAnswers {
     flex-direction: column;
