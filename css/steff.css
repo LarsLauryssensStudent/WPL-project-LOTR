@@ -65,6 +65,38 @@ header {
     color: black;
 }
 
+.biggerCardBlacklist>ul>li {
+    border-bottom: 2px solid black;
+    padding: 0.4rem 2rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.bi-trash {
+    position: absolute;
+    right: 20px;
+}
+
+ul {
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+    overflow: hidden;
+}
+
+.biggerCardBlacklist>ul>li:last-of-type {
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+}
+
+.biggerCardBlacklist {
+    margin: 4rem auto;
+    border: 2px solid black;
+    width: 85%;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(245, 245, 220, 0.562) !important;
+}
 
 @media screen and (max-width: 600px) {
     .col-sm-10 {
