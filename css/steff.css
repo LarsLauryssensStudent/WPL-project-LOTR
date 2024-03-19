@@ -10,7 +10,8 @@ body {
     background-size: cover;
 }
 
-.card {
+#card2,
+#card1 {
     background-color: rgba(0, 0, 0, 0.75);
 }
 
@@ -31,13 +32,13 @@ header {
     padding-top: 0.5rem;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
-
 }
 
 .card-img-overlay {
     padding: 0;
-    padding-left: inherit;
-    padding-right: inherit;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 7px;
 }
 
 #footer-style {
@@ -47,6 +48,9 @@ header {
 .card-title,
 .heading {
     font-family: 'MiddleEarth';
+    color: #161616;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
 }
 
 .nav-item {
@@ -63,6 +67,38 @@ header {
     color: black;
 }
 
+.biggerCardBlacklist>ul>li {
+    border-bottom: 2px solid black;
+    padding: 0.4rem 2rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.bi-trash {
+    position: absolute;
+    right: 20px;
+}
+
+ul {
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+    overflow: hidden;
+}
+
+.biggerCardBlacklist>ul>li:last-of-type {
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+}
+
+.biggerCardBlacklist {
+    margin: 4rem auto;
+    border: 2px solid black;
+    width: 85%;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(245, 245, 220, 0.562) !important;
+}
 
 @media screen and (max-width: 600px) {
     .col-sm-10 {
