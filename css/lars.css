@@ -115,11 +115,20 @@
   background-color: rgba(245, 245, 220, 0.562)!important;
 }
 
+blockquote {
+  font-family: MiddleEarth ;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.215);
+}
 .quizzBody {
   
   display: flex;
   flex-direction: column;
 
+}
+.quizzContainer h1 {
+  font-family: MiddleEarth !important;
 }
 
 .maxWidth {
