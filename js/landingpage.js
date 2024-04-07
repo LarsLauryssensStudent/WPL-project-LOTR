@@ -197,5 +197,5 @@ function handleLogin() {
   // For demonstration purposes, let's assume the login is successful
 
   // Redirect user to the selection.html page
-  window.location.href = "pages/templates/selection.html";
+  window.location.href = "selection";
 }
