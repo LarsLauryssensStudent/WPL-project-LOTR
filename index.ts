@@ -25,7 +25,8 @@ app.get("/selection",(req, res)=>{
   })
 });
 
-app.get("/10-Rounds", (req, res)=>{
+app.get("selection/:option", (req, res)=>{
+  let option: string = typeof req.params.option ==="string" ? req.params.option : "error";
   gameMode = "10-Rounds"
   let backgroundUrlNormal: string = "../images/10rounds/QuestionOne.jpg"
   
