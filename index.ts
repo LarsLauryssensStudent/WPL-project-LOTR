@@ -20,20 +20,25 @@ app.get("/", (req, res)=>{
 
 app.get("/selection",(req, res)=>{
   gameMode = "Selection";
-  res.render("quizz",{
+  res.render("selection",{
     gameMode: gameMode
   })
 });
 
 app.get("selection/:option", (req, res)=>{
   let option: string = typeof req.params.option ==="string" ? req.params.option : "error";
+
   gameMode = "10-Rounds"
   let backgroundUrlNormal: string = "../images/10rounds/QuestionOne.jpg"
-  
+  if (option ==="10Rounds") {
   res.render("quizz", {
     gameMode: gameMode,
     backgroundUrl: backgroundUrlNormal
   });
+}
+  else {
+    res.render("")
+  }
 });
 
 app.get("/Sudden-Death",(req, res)=>{
