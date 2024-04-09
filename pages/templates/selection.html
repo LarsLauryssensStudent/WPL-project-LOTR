@@ -10,72 +10,82 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/lars.css">
     <link rel="stylesheet" href="/css/steff.css">
+
     <title>Quiz selectie </title>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar bg-body-tertiary ">
-            <section class="container-fluid navsectie1">
-                <a href="#">
-                    <img src="assets\images\Afbeelding van WhatsApp op 2024-02-25 om 18.15.40_556aabbb.jpg" alt=""
-                        class="navbar-brand" width="auto" height="100px">
-                </a>
-                <a class="navbar-brand" href="#">Gandalf's Gambit</a>
+  <header class="navbar headerTemp headerBackGround noPadding shadow-sm">
+    <section class="container-fluid navsectie1 headerTemp headerBackGround">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+       <a href="/index.html" class="headerLogo"> 
+        <img src="/assets/images/logo/LOTRLogojpg-removebg-preview.png" alt="" class="navbar-brand" width="auto" height="100px">
+       </a>
+       <a class="navbar-brand" href="/pages/templates/selection.html"><h1 class="titelZ">Gandalf's Gambit</h1></a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="width: 48px;"></span>
+      </button>
 
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Gandalf's Gambit</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About us</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    QuizzModes
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Sudden Death</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">10-Rounds</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex mt-3" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Gandalf's looking..."
-                                aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </nav>
+      <section class="offcanvas offcanvas-end" style="background-color: inherit;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <section class="offcanvas-header" >
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Gandalf's Gambit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </section>
+        <section class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                QuizzModes
+              </a>
+              <ul class="dropdown-menu">
+                <li class="headerHover"><a class="dropdown-item" href="/pages/quizz-sudden-death.html">Sudden Death</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li class="headerHover"><a class="dropdown-item " href="/pages/quizz-10-rounds.html">10-Rounds</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Quotes
+              </a>
+              <ul class="dropdown-menu">
+                <li class="headerHover"><a class="dropdown-item" href="/pages/templates/blacklist.html">Blacklisted</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li class="headerHover"><a class="dropdown-item " href="/pages/templates/favorites.html">Favorited</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Uitloggen</a>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Gandalf kijkt mee..." aria-label="Search">
+            <button class="btn searchBtn" type="submit">Search</button>
+          </form>
+        </section>
+      </section>
+    </section>
+  
     </header>
+
+
     <main class="container-fluid" id="select">
         <h1 class="text-center mt-3 mb-5 heading">Maak een keuze</h1>
         <section class="row mb-3 d-flex justify-content-evenly" id="flexcontainer">
             <section class="col-sm-10 col-lg-4 col-md-5 text-center card mb-5" id="card1">
-                <a href="../quizz-10-rounds.html"><img src="/assets/images/sudden-death/lotr-sudden-death-back.gif"
-                        alt="" id="selection-img" class="img-fluid my-2 card-img">
+                <a href="../quizz-10-rounds.html"><img src="/assets/images/10rounds/lotr-background-journey-02.jpg" 
+                        alt="" id="selection-img-10" class="img-fluid my-2 card-img">
                     <div class="card-img-overlay">
                         <h1 class="card-title text-warning text">Ten Rounds</h1>
                     </div>
@@ -88,7 +98,7 @@
             <section class="col-sm-10 col-lg-4 col-md-5 text-center card mb-5" id="card2">
                 <a href="/pages/quizz-sudden-death.html">
                     <img src="/assets/images/sudden-death/lotr-sudden-death-back.gif" alt="lol" id="selection-img"
-                        width="200px" height="180px" class="img-fluid my-2 card-img">
+                        width="200px" height="180p" class="img-fluid my-2 card-img">
                     <div class=" card-img-overlay">
                         <h1 class=" card-title text-warning text">Sudden Death</h1>
                     </div>
