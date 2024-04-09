@@ -1,35 +1,30 @@
-//hieronder kunde bootstrap defaults veranderen
-// $primary: red;
-
 //importing bootstrap
-@import "../node_modules/bootstrap/scss/bootstrap";
-
-//custom css kan hier
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 
 
 //fonts
 @font-face {
-  font-family: 'Tolkien';
-  src: url('../assets/fonts/Tolkienuncialmf-q3Ad.ttf') format('truetype');
+  font-family: "Tolkien";
+  src: url("/assets/fonts/Tolkienuncialmf-q3Ad.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: 'MiddleEarth';
-  src: url('../assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
+  src: url('/assets/fonts/MiddleEarthPersonalUseRegular-axlP5.otf');
 }
 
 
-//landingpagina
-body {
+//landingspagina
+.landing-body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .game-container {
@@ -38,25 +33,35 @@ body {
   margin: 0;
 }
 
-.card-title {
+.landing-card-title {
   font-size: 1.1rem;
   font-weight: 600;
+  font-family: "Poppins", sans-serif !important;
 }
 
-.card-text {
+.landing-card-text {
   font-size: 0.9rem;
+  font-family: "Poppins", sans-serif !important;
 }
 
-h1 {
+.landing-title {
   color: #161616;
-  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.7);
   font-weight: bold;
   font-size: 2.5rem;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "poppins", sans-serif !important;
 }
 
 .required {
   color: darkred;
+}
+
+.card img {
+  border-radius: 3px !important;
+}
+
+.btn {
+  border-radius: 3px !important;
 }
 
 .game-video {
@@ -65,9 +70,9 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   display: none;
-  border-radius: 5px 5px 0 0 !important;
 }
 
 #togglePassword,
@@ -109,12 +114,12 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* div.progress {
-  background-color: rgb(209, 209, 209);
-} */
+// div.progress {
+//   background-color: rgb(209, 209, 209);
+// }
 
 #passwordMatch {
-  margin-top: -1rem;
+  margin-bottom: -0.45rem;
 }
 
 .input-group {
@@ -142,46 +147,46 @@ h1 {
 }
 
 textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=datetime]:focus,
+input[type=datetime-local]:focus,
+input[type=date]:focus,
+input[type=month]:focus,
+input[type=time]:focus,
+input[type=week]:focus,
+input[type=number]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=color]:focus,
 .uneditable-input:focus {
   border-color: var(--bs-primary);
-  box-shadow: 0px 0px 3px 0.4px #007bff6e;
+  box-shadow: 0px 0px 3px 0.4px rgba(0, 123, 255, 0.431372549);
   outline: none;
 }
 
 textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
+input[type=text],
+input[type=password],
+input[type=datetime],
+input[type=datetime-local],
+input[type=date],
+input[type=month],
+input[type=time],
+input[type=week],
+input[type=number],
+input[type=email],
+input[type=url],
+input[type=search],
+input[type=tel],
+input[type=color],
 .uneditable-input {
   border: 1px solid #ced4da;
 }
 
-.form-check-input[type="checkbox"] {
+.form-check-input[type=checkbox] {
   box-shadow: none;
   border: 1px solid #ced4da;
   cursor: pointer;
@@ -211,7 +216,6 @@ form {
   z-index: 10000;
 }
 
-/*Waves*/
 .waves {
   position: relative;
   width: 100%;
@@ -221,9 +225,8 @@ form {
   max-height: 400px;
 }
 
-/* Animation */
 .parallax>use {
-  animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 
 .parallax>use:nth-child(1) {
@@ -256,7 +259,6 @@ form {
   }
 }
 
-/*Shrinking for mobile*/
 @media (max-width: 768px) {
   .waves {
     height: 40px;
@@ -268,9 +270,10 @@ form {
   }
 }
 
-/*Other*/
+//hier stopt de css voor de landingspagina
+//andere paginas
 .unique-color-dark {
-  background-color: rgba(33, 37, 41) !important;
+  background-color: #212529 !important;
 }
 
 .bg-light {
@@ -278,41 +281,354 @@ form {
 }
 
 .navbar-brand {
-  color: white;
+  color: rgb(139, 39, 39);
 }
 
 .custom-color {
-  background-color: #212529 !important
+  background-color: #212529 !important;
 }
 
-#createAccountForm,
-#loginForm {
-  font-size: 0.9rem;
+/* CSS LARS*/
+.labelQuizz {
+  background-color: #FCECBB!important;
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
 }
 
+.quizzContainer * {
+  background: none;
+}
 
-//header
 .headerTemp {
-  height: 100px;
+  background-color:#FCECBB;
+}
+
+
+.titelZ {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2.6rem;
+  margin-top: 1.4rem;
+}
+
+/*testcommit*/
+.quizzMain {
+  background-image: url(../assets/images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+}
+
+.quizzNav {
+  display: flex;
+  border: 4px solid rgba(0, 0, 0, 0.242);
+  justify-content: space-between;
+
+  flex-wrap: nowrap;
+  padding: 0.6rem 0;
+
+  background-color: #FCECBB;
+  align-items: center;
+  border-radius: 28px 28px 0px 0px;
+}
+
+.quizzNav > section {
+  text-align: center;
+  padding: 0.4rem ;
+  font-size: 1.2rem;
+  
+}
+
+.quizzAnswers {
+  display: flex;
+  flex-wrap: wrap!important;
+  width: 100%!important;
+  justify-content: space-between; 
+  padding: 0 18px;
+  margin-top: 2rem;
+  border: 2px solid red;
+
+}
+
+.quizzContainer {
+  background-size: cover;
+  background-position: center;  
+  margin: auto 0;
+  padding: 0px;
+  margin: 2rem auto;
+  border: 4px solid grey;
+  border-radius: 30px;
+  min-height: 240px;
+  width: auto;
+}
+
+.quizzContainerSD {
+  background-image: url(../images/sudden-death/lotr-sudden-death-back.gif  );
+  background-size: cover;
+  background-position: center;  
+  margin: auto 0;
+  padding: 0px;
+  margin: 2rem auto;
+  border: 4px solid grey;
+  border-radius: 30px;
+  min-height: 240px;
+}
+
+.biggerCard {
+  padding: 2rem 1rem;
+  margin: 4rem auto;
+  border: 2px solid black;
+  width: 80%;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(245, 245, 220, 0.562)!important;
+}
+
+blockquote {
+  font-family: MiddleEarth ;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.215);
+}
+
+.quizzBody {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quizzContainer h1 {
+  font-family: MiddleEarth !important;
+}
+
+.maxWidth {
+  width: 100%;
+  display: flex;
+  margin: auto;
   padding: auto;
-  font-style: Poppins;
-  background-color: transparent ; 
+  justify-content: space-between;
+
 }
 
-.noPadding {
-  padding: 0;
+.navbar-toggler {
+  border: none;
+  outline: none;
+  
 }
 
-.headerBackGroundNone {
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.searchBtn {
+  background-color: rgba(0, 0, 0, 0.167) ;
+}
+
+.searchBtn:hover {
+  border: 2px solid black;
+}
+
+.offcanvas-title {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2rem;
+}
+
+.actorLabel, .movieLabel {
+  border: 2px solid black;
+  background-color: #fcecbbac;
+  
+}
+
+.actorLabel:hover, .movieLabel:hover {
+  background-color: rgb(45, 44, 44)!important;
+  border: 2px solid green!important;
+  color: yellow!important;
+
+}
+
+.offcanvas-title {
+  font-family: 'MiddleEarth'!important;
+  font-size: 2rem;
+}
+
+.btnStoile {
+  border: 1px solid rgb(255, 255, 255);
+  margin: auto 0;
+  background-color: #fcecbbac;
+  padding: 4px;
+}
+
+.btnStoile:hover {
+  background-color: rgb(45, 44, 44)!important;
+  color: yellow;
+}
+
+.submitButton {
+  border-radius: 0 0 28px 28px!important;
+  margin-top: 3rem;
+  background-color: #fcecbb7e;
+  width: 100%!important;
+  border: 2px solid green;
+  margin-top: 0.4rem;
+  background-color: #fcecbb7e;
+}
+
+.quizzMain {
+  background-image: url(../images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
+
+}
+
+.actorRadio:checked + .actorLabel,
+.movieRadio:checked + .movieLabel {
+  background-color: #FCECBB; 
+  color: #000000; 
+  font-weight: 700;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+#blackListBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
   background-color: transparent;
-  background-color: beige;
 }
 
-.headerBackGround {
-  background-color: rgb(171, 171, 36)!important;
+#favoBtn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border: none;
+  background-color: transparent;
 }
 
-.headerHover:hover {
-  background-color: #21252970;
+#blackListBtn:hover, #favoBtn:hover {
+  transform: scale(1.2);
+  color: red;
+}
 
+@media screen and (max-width: 600px){
+   .quizzAnswers {
+    flex-direction: column;
+    margin: auto;
+    padding: auto;
+   }
+ 
+   .titelZ {
+    font-family: 'MiddleEarth'!important;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+  }
+
+  .headerLogo {
+    display: none;
+  }
+}
+
+/* CSS STEFF*/
+#card2,
+#card1 {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#footer-style {
+  background-color: #fcecbba1;
+}
+
+#select {
+  grid-area: main;
+}
+#selection-img-10 {
+  width: 100%;
+  height: 280px!important;
+  background-position: center;
+}
+
+header {
+  grid-area: header;
+}
+
+.text {
+  padding-top: 0.5rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.card-img-overlay {
+  padding: 0;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 7px;
+}
+
+#footer-style {
+  grid-area: footer;
+}
+
+.selection-card-title,
+.selection-heading {
+  font-family: 'MiddleEarth';
+  color: #161616;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+}
+
+.nav-item {
+  opacity: 0.7;
+  transition: 1s;
+}
+
+.nav-item:hover {
+  opacity: 1;
+  transition: 1s;
+}
+
+.bi {
+  color: black;
+}
+
+.biggerCardBlacklist>ul>li {
+  border-bottom: 2px solid black;
+  padding: 0.4rem 2rem;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.bi-trash {
+  position: absolute;
+  right: 20px;
+}
+
+ul {
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+  overflow: hidden;
+}
+
+.biggerCardBlacklist>ul>li:last-of-type {
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+}
+
+.biggerCardBlacklist {
+  margin: 4rem auto;
+  border: 2px solid black;
+  width: 85%;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(245, 245, 220, 0.562) !important;
+}
+
+@media screen and (max-width: 600px) {
+  .col-sm-10 {
+      width: 80%;
+  }
 }
