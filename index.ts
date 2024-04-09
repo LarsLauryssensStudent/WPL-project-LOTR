@@ -1,12 +1,24 @@
 // EJS opbouw 07/04/2024
 import express from "express";
 import selectionRouter from "./routers/selection";
-import blacklistRouter from "./routers/blacklist";
-import favoritesRouter from "./routers/favorites";
+
+
+// qoute arrays
+// let characters: object[] = [];
+// let quotes: object[] = [];
+// let movies: object[] = [];
+// let rawQuotes :object[] =[]
+
+
+// vars
+// let gameMode :string = "selection";
+// let qCounter :number = 0;
+// let userScore :number = 0;
+
 
 const app = express();
 
-app.set("port", 3000);
+app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
@@ -16,8 +28,6 @@ app.use(express.urlencoded({ extended:true}))
 
 //routes
 app.use("/selection", selectionRouter());
-app.use("/blacklist", blacklistRouter());
-app.use("/favorites", favoritesRouter());
 
 
 //index
@@ -26,7 +36,15 @@ app.get("/", (req, res)=>{
 });
 
 
-//start app
-app.listen(app.get("port"), () => {
+// app.get("/blacklist", (req, res)=>{
+//   res.render("blacklist");
+// });
+
+// app.get("/favorites",(req, res)=>{
+//   res.render("favorites")
+// });
+
+
+app.listen(app.get("port"), async () => {
   console.log(`Port running on ${app.get("port")}`);
 });

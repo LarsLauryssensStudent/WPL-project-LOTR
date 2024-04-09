@@ -49,5 +49,4 @@ export const getData = async (endpoint: string) => {
 in de route van bv selection zou ik dan import { getData } from "../utils"; kunnen doen en in de route functie kan ik dan deze data fetchen door const data = await getData("voorbeeld") te doen.
 
 
-
-we zullen ook error handling doen met try catch, bv in de selection route als er selection/penispumper word gedaan, deze url bestaat niet en zal die de error op de pagina tonen, deze zullen we dan ook verandere zodat die een pagina rendert bv 404 pagina.
+update -> ik heb fetchdata functie gemaakt me errorhandling in de utils.ts en deze word of kan dan gebruikt worde in de routes etc.. voor de variabele heb ik locals gebruikt, ik snap hier zelf niet enorm veel van, komt deels uit curses en chatgpt, ge zou ook variabele kunne meegeven in parameters of gwn importeren.. ik weet niet wat de correcte manier is.. het zelfde me de keuze tussen utils.ts of middleware.ts, ik ben niet enorm goe weg me de term "middelware", ik schrijf meestal functies zoals fetchdata of zet andere rommel in aparte utils map die ik kan exporteer.
