@@ -1,12 +1,17 @@
-console.log("hello");
 // EJS opbouw 07/04/2024
 import express from "express";
 import ejs from "ejs";
 
+//qoute arrays
+let characters: object[] = [];
+let quotes: object[] = [];
+let movies: object[] = [];
 
-
+let rawQuotes :object[] =[]
 // vars
 let gameMode :string = "selection";
+let qCounter :number = 0;
+let userScore :number = 0;
 
 const app = express();
 
@@ -25,28 +30,28 @@ app.get("/selection",(req, res)=>{
   })
 });
 
-app.get("selection/:option", (req, res)=>{
+app.get("/selection/:option", (req, res)=>{
   let option: string = typeof req.params.option ==="string" ? req.params.option : "error";
-
+  userScore = 0;
   gameMode = "10-Rounds"
-  let backgroundUrlNormal: string = "../images/10rounds/QuestionOne.jpg"
+  let backgroundUrlNormal: string = "../assets/images/10rounds/QuestionOne.jpg"
   if (option ==="10Rounds") {
-  res.render("quizz", {
+    qCounter = 0;
+    
+  res.render("quizzNormal", {
     gameMode: gameMode,
-    backgroundUrl: backgroundUrlNormal
+    backgroundUrl: backgroundUrlNormal,
+    qCounter: qCounter,
+    score: userScore
   });
 }
   else {
-    res.render("")
+    res.render("quizzSuddenDeath", {
+      qCounter: qCounter
+    })
   }
 });
 
-app.get("/Sudden-Death",(req, res)=>{
-  gameMode = "suddenDeath"
-  res.render("quizz", {
-    gameMode: gameMode
-  })
-});
 
 app.get("/blacklist", (req, res)=>{
   res.render("blacklist");
@@ -56,6 +61,14 @@ app.get("/favorites",(req, res)=>{
   res.render("favorites")
 });
 
-app.listen(app.get("port"), () => {
+app.listen(app.get("port"), async () => {
+  const token = 'mIqYC2hqv_DXksfzJsvn '; // Replace 'YOUR_BEARER_TOKEN' with your actual token
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  };
+  let data: any = await fetch("https://the-one-api.dev/v2/quote", {headers});
+  rawQuotes = await data.json(); 
+  console.log(rawQuotes);
+
   console.log(`Port running on ${app.get("port")}`);
 });

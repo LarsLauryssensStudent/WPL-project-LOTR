@@ -1,14 +1,8 @@
 <%- include("partials/header") %>
 
-<%if (gameMode === "suddenDeath") { %>
-  <%- include("partials/quizzBodySD") %>
 
-<% } else if (gameMode === "10-Rounds") { %>
-  <%- include("partials/quizzBodyNormal") %>
-
-<% } else { %>
   <%- include("partials/quizzSelection") %>
-<% } %>
+
 
 
 <%- include("partials/footer") %>
