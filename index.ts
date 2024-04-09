@@ -62,12 +62,16 @@ app.get("/favorites",(req, res)=>{
 });
 
 app.listen(app.get("port"), async () => {
-  const token = 'mIqYC2hqv_DXksfzJsvn '; // Replace 'YOUR_BEARER_TOKEN' with your actual token
+  const token = 'mIqYC2hqv_DXksfzJsvn '; 
   const headers = {
     'Authorization': `Bearer ${token}`
   };
-  let data: any = await fetch("https://the-one-api.dev/v2/quote", {headers});
-  rawQuotes = await data.json(); 
+  let dataQuotes: any = await fetch("https://the-one-api.dev/v2/quote", {headers});
+  rawQuotes = await dataQuotes.json();
+  let dataChars: any = await fetch("https://the-one-api.dev/v2/character", {headers});
+  characters = await dataChars.json();
+  let dataMovies: any = await fetch("https://the-one-api.dev/v2/movie", {headers}); 
+  movies = await dataMovies.json();
   console.log(rawQuotes);
 
   console.log(`Port running on ${app.get("port")}`);
