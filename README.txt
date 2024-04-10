@@ -50,3 +50,22 @@ in de route van bv selection zou ik dan import { getData } from "../utils"; kunn
 
 
 update -> ik heb fetchdata functie gemaakt me errorhandling in de utils.ts en deze word of kan dan gebruikt worde in de routes etc.. voor de variabele heb ik locals gebruikt, ik snap hier zelf niet enorm veel van, komt deels uit curses en chatgpt, ge zou ook variabele kunne meegeven in parameters of gwn importeren.. ik weet niet wat de correcte manier is.. het zelfde me de keuze tussen utils.ts of middleware.ts, ik ben niet enorm goe weg me de term "middelware", ik schrijf meestal functies zoals fetchdata of zet andere rommel in aparte utils map die ik kan exporteer.
+
+
+edit --Lars
+extra routers aangemaakt. 
+alles van variabelen en verdere quizz werking klaargezet
+Achtergrond Array gemaakt zodat we deze kunnen meegeven met de paginas, fetchData functie aangepast voor betere werking en betere verwerking van data. (headers zaten nog mee in de data arrays)
+trimMovie functie om ons te beperken tot de films die we moeten hebben
+trim characters idem deze functie zorgt ervoor dat enkel characters waarvan we een quote hebben word bijgehouden.
+fullQuotes. zet de quotes van film 1, 2 en 3 in een enkele array voor gemakkelijke werking
+
+interfaces zijn afgemaakt en klaar voor gebruik. 
+10rounds quizz is volledig operationeel
+sudden death moet ik morgen verder doen maar dat gaat vooruit gaan. 
+
+de views en partials verder af gewerkt. morgen gooi ik eruit wat we niet meer nodig hebben.
+
+wat rest ons nu nog? de databank koppelen en blacklists en favorites afmaken.
+
+
