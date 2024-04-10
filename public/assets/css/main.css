@@ -12290,7 +12290,7 @@ form {
   width: 100% !important;
   justify-content: space-between;
   padding: 0 18px;
-  margin-top: 2rem;
+  margin: 1rem auto;
   border: 2px solid red;
 }
 
@@ -12303,6 +12303,7 @@ form {
   border: 4px solid grey;
   border-radius: 30px;
   min-height: 240px;
+  
   width: auto;
 }
 
@@ -12320,7 +12321,7 @@ form {
 
 .biggerCard {
   padding: 2rem 1rem;
-  margin: 4rem auto;
+  margin: 2.4rem auto;
   border: 2px solid black;
   width: 80%;
   border-radius: 32px;
@@ -12340,6 +12341,9 @@ blockquote {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url(../images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .quizzContainer h1, .quizzContainer .h1 {
@@ -12415,7 +12419,6 @@ blockquote {
 }
 
 .quizzMain {
-  background-image: url(../images/background-page/background-body.png);
   background-position: center;
   background-size: cover;
 }

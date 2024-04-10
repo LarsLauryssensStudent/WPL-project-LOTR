@@ -1,14 +1,39 @@
 <%- include("partials/header") %>
 
-<%if (gameMode === "suddenDeath") { %>
-  <%- include("partials/quizzBodySD") %>
+<main class="container-fluid" id="select">
+  <h1 class="text-center mt-3 mb-5 selection-heading">Maak een keuze</h1>
+  <section class="row mb-3 d-flex justify-content-evenly" id="flexcontainer">
+      <section class="col-sm-10 col-lg-4 col-md-5 text-center card mb-5" id="card1">
+          <a href="selection/10-Rounds"><img src="/assets/images/10rounds/lotr-background-journey-02.jpg" 
+                  alt="" id="selection-img-10" class="img-fluid my-2 card-img">
+              <div class="card-img-overlay">
+                  <h1 class="card-title text-warning text">Ten Rounds</h1>
+              </div>
+          </a>
+          <p class="card-text card-body text-warning">
+              Deze uitdaging test je kennis van de meest gedenkwaardige dialogen uit de epische filmtrilogie. Van
+              de zoektocht naar de Ene Ring tot de heldhaftige strijd tegen Sauron's duisternis, herbeleef de
+              iconische momenten en test je kennis! Veel succes!</p>
+      </section>
+      <section class="col-sm-10 col-lg-4 col-md-5 text-center card mb-5" id="card2">
+          <a href="Sudden-Death">
+              <img src="/assets/images/sudden-death/lotr-sudden-death-back.gif" alt="lol" id="selection-img"
+                  width="200px" height="180p" class="img-fluid my-2 card-img">
+              <div class="card-img-overlay">
+                  <h1 class="selection-card-title card-title text-warning text">Sudden Death</h1>
+              </div>
+          </a>
+          <p class="card-text card-body text-warning">Bereid je voor op een uitdagende modus waarbij
+              één fout je
+              lot
+              bezegelt! Test je kennis van de meest gedenkwaardige dialogen uit de epische filmtrilogie.
+              Overleef
+              de strijd tegen Sauron's duisternis en wees voorbereid - één verkeerde stap en het is game over!
+              Succes!</p>
+      </section>
+  </section>
 
-<% } else if (gameMode === "10-Rounds") { %>
-  <%- include("partials/quizzBodyNormal") %>
-
-<% } else { %>
-  <%- include("partials/quizzSelection") %>
-<% } %>
+</main>
 
 
 <%- include("partials/footer") %>
