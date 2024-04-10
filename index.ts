@@ -3,35 +3,38 @@ import express from "express";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
-import { fetchData, fullQuotes, trimCharacters, trimMovies } from "./utils";
+import { fetchData, fullQuotes, trimCharacters, trimMovies, shuffleArray } from "./utils";
 import { Character, Movie, Quote } from "./interFaces";
 
 
 //arrays
 export let characters: Character[] = [];
-export let quotes1: Quote[] = [];
-export let quotes2: Quote[] = [];
-export let quotes3: Quote[] = [];
 export let quotes: Quote[] = [];
+
 
 
 export let movies: Movie[] = [];
 // let rawQuotes :object[] =[]
 export let tenRoundsBackgrounds :string[] = [
+  "../assets/images/10rounds/QuestionOne.jpg",
+  "../assets/images/10rounds/lotr-background-hobbiton.jpg",
   "../assets/images/10rounds/lotr-background-rivendell.jpg",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
+  "../assets/images/10rounds/lotr-background-fangorn-forest-2.jpg",
+  "../assets/images/10rounds/lotr-background-journey-02.jpg",
+  "../assets/images/10rounds/lotr-background-rivendell-2.jpg",
+  "../assets/images/10rounds/lotr-background-mines-of-moria-2.jpg",
+  "../assets/images/10rounds/lotr-background-mines-of-moria.jpg",
+  "../assets/images/10rounds/lotr-background-almost-mordor.jpg",
+  "../assets/images/10rounds/lotr-background-mordor.jpg"
 ]
 
 
 // vars
 // let gameMode :string = "selection";
 let qCounter :number = 0;
+let randomQuote :Quote;
 // let userScore :number = 0;
+//index export functies
 export function setQCounter(value: number) {
   qCounter = value;
 }
@@ -39,6 +42,15 @@ export function setQCounter(value: number) {
 export function getQCounter() {
   return qCounter;
 }
+export function setNewQuote(array:Quote[]) {
+  let randomIndex :number = Math.floor(Math.random() * quotes.length);
+  randomQuote = array[randomIndex];
+}
+export function returnQuote():Quote {
+  return randomQuote;
+}
+
+
 
 const app = express();
 
@@ -74,10 +86,11 @@ app.get("/", (req, res)=>{
 app.listen(app.get("port"), async () => {
   try {
   const data :any = await fetchData();
-  
-  quotes = fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
-  characters = trimCharacters(data.characters, quotes);
-  movies = trimMovies(data.movies, quotes);
+
+  quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
+  characters = await trimCharacters(data.characters, quotes);
+  movies = await trimMovies(data.movies, quotes);
+  setNewQuote(quotes);
   
   console.log(`Port running on ${app.get("port")}`);
   } catch (error) {

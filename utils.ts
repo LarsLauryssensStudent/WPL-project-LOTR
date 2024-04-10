@@ -1,4 +1,3 @@
-import { quotes2 } from ".";
 import { Character, Movie, Quote } from "./interFaces";
 
 export async function fetchData() {
@@ -40,7 +39,7 @@ export async function fetchData() {
       }
       const tempchar = await dataChars.json();
       const characters = tempchar.docs;
-      console.log(characters)
+     
 
       const dataMovies = await fetch("https://the-one-api.dev/v2/movie", { headers });
       if (!dataMovies.ok) {
@@ -70,21 +69,15 @@ export function fullQuotes (array1: Quote[], array2: Quote[], array3: Quote[]): 
 
   for(let i: number = 0; i < array1.length ; i++) {
     quotes.push(array1[i]);
-    if(i === 0 ) {
-      console.log(array1[i])
-    }
+ 
   }
   for(let j: number = 0; j < array2.length ; j++) {
     quotes.push(array2[j]);
-    if(j === 0 ) {
-      console.log(array2[j])
-    }
+    
   }
   for(let k: number = 0; k < array3.length ; k++) {
     quotes.push(array3[k]);
-    if(k === 0 ) {
-      console.log(array3[k])
-    }
+
   }
   console.log(quotes.length)
 

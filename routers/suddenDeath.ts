@@ -1,6 +1,6 @@
 import express from "express";
-import { fetchData } from "../utils";
-import { getQCounter, setQCounter, movies, quotes1, quotes2, quotes3, characters, tenRoundsBackgrounds } from "../index";
+import { shuffleArray, generatePossibleAnswers } from "../utils";
+import { getQCounter, setQCounter, movies, quotes, characters } from "../index";
 import { Quote, Movie, Character } from "../interFaces";
 
 export default function suddenDeathRouter() {
@@ -8,14 +8,27 @@ export default function suddenDeathRouter() {
 
 
     router.get("/", async (req,res) => {
-        let quote :Quote | null = null;
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const randomQuote = quotes[randomIndex];
+        const randomChars = generatePossibleAnswers(randomQuote, characters);
+            // movie randomen
+        const shuffledMovies = shuffleArray(movies);
+        console.log(getQCounter());
         res.render("quizzSD", {
             qCounter: getQCounter(),
-            score: req.app.locals.userScore,
-            quote: quote,
-            characters,
-            movies
+            score: 0,
+            quote: randomQuote,
+            characters: randomChars,
+            movies: shuffledMovies
         });
+        let currentSD :number = getQCounter();
+        currentSD++;
+        setQCounter(currentSD);
+    })
+
+
+    router.get("/check", (req,res) => {
+        res.redirect("/");
     })
 
 
