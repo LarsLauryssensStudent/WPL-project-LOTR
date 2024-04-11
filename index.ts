@@ -3,7 +3,7 @@ import express from "express";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
-import { fetchData, fullQuotes, trimCharacters, trimMovies, shuffleArray } from "./utils";
+import { fetchData, fullQuotes, trimCharacters, trimMovies } from "./utils";
 import { Character, Movie, Quote } from "./interFaces";
 
 
@@ -47,7 +47,12 @@ export function setNewQuote(array:Quote[]) {
 export function returnQuote():Quote {
   return randomQuote;
 }
-
+export function getBlacklist():Quote[] {
+  return blackListed;
+}
+export function addToBlacklist(quote :Quote) {
+  blackListed.push(quote);
+}
 
 
 
