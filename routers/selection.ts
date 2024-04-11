@@ -5,7 +5,7 @@ export default function selectionRouter() {
     const router = express.Router();
 
     router.get("/", async (req, res) => {           
-        
+        setQCounter(1);
         res.render("selection", {
         
         });

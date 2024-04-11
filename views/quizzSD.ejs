@@ -35,13 +35,15 @@
           <section class="card biggerCard">
           
             <article class="card-body">
-              <button id="favoBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <button id="favoBtn"><a href="/Sudden-Death/favorites"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-              </svg></button>
-              <button id="blackListBtn">
+              </svg> </a>
+            </button>
+              <button id="blackListBtn"><a href="/Sudden-Death/blacklist">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16">
                   <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
                 </svg>
+                </a>
               </button>
               <blockquote class="blockquote mb-0 text-center" id="quoteField">
                 <p><%= quote.dialog %></p>
@@ -52,7 +54,7 @@
         </section>
   
         <section class="col-sm-12 col-md-12 col-lg-12 container-fluid">
-          <form action="/Sudden-Death" method="GET" class="quizzAnswers" id="quizzForm"> <!-- Modified here -->
+          <form action="/Sudden-Death/check" method="GET" class="quizzAnswers" id="quizzForm"> <!-- Modified here -->
             <section class="col-lg-5 col-md-6 col-sm-12">
               <section class="btn-group-vertical maxWidth" role="group" aria-label="Vertical radio toggle button group">
                 <label for="nothing" class="labelQuizz">Who said it?</label>
