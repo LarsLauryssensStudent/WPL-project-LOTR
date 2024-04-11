@@ -12265,8 +12265,6 @@ form {
   justify-content: center;
   width: 100%;
   display: flex;
-  min-height: 80vh;
-  height: auto;
 }
 
 .quizzNav {
@@ -12299,9 +12297,9 @@ form {
 .quizzContainer {
   background-size: cover;
   background-position: center;
-  
+  margin: auto 0;
   padding: 0px;
-  
+  margin: 4rem auto;
   border: 4px solid grey;
   border-radius: 30px;
   min-height: 240px;
@@ -12342,10 +12340,6 @@ blockquote {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url(../images/background-page/background-body.png);
-  background-position: center;
-  background-size: cover;
- 
 }
 
 .quizzContainer h1, .quizzContainer .h1 {
@@ -12421,6 +12415,7 @@ blockquote {
 }
 
 .quizzMain {
+  background-image: url(../images/background-page/background-body.png);
   background-position: center;
   background-size: cover;
 }
@@ -12493,12 +12488,13 @@ blockquote {
 header {
   grid-area: header;
 }
+
 footer {
   grid-area: footer;
 }
+
 main {
   grid-area: main;
-
 }
 
 .text {
@@ -12516,7 +12512,6 @@ main {
 
 #footer-style {
   grid-area: footer;
-  
 }
 
 .selection-card-title,
