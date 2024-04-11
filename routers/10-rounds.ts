@@ -1,6 +1,6 @@
 import express from "express";
 import { fetchData, generatePossibleAnswers, shuffleArray } from "../utils";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, addToFavorites } from "../index";
+import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, addToFavorites, getBlacklist } from "../index";
 import { Quote, Movie, Character } from "../interfaces";
 
 export let score :number = 0;
@@ -66,11 +66,13 @@ export default function tenRoundsRouter() {
         let currentQuote :Quote = returnQuote();
         addToBlacklist(currentQuote);
         setNewQuote(quotes);
-        res.redirect("/10-Rounds")        
+        console.log(getBlacklist());
+        res.redirect("/10-Rounds");      
     })
     router.get("/favorites", (req,res) => {
         let currentQuote :Quote = returnQuote();
         addToFavorites(currentQuote);
+        console.log("ben hier");
         res.redirect("/10-Rounds");
 
     });

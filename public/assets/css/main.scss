@@ -486,6 +486,12 @@ blockquote {
   background-size: cover;
 
 }
+.quizzBody {
+  background-image: url(../images/background-page/background-body.png);
+  background-position: center;
+  background-size: cover;
+
+}
 
 .actorRadio:checked+.actorLabel,
 .movieRadio:checked+.movieLabel {
