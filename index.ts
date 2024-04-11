@@ -52,6 +52,7 @@ export function getBlacklist():Quote[] {
 }
 export function addToBlacklist(quote :Quote) {
   blackListed.push(quote);
+  
 }
 
 

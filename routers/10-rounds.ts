@@ -62,5 +62,9 @@ export default function tenRoundsRouter() {
 
     })
 
+    router.get("/blacklist", (req,res) => {
+        
+    })
+
     return router 
 }
