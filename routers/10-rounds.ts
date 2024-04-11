@@ -1,7 +1,7 @@
 import express from "express";
 import { fetchData, generatePossibleAnswers, shuffleArray } from "../utils";
 import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, addToFavorites } from "../index";
-import { Quote, Movie, Character } from "../interFaces";
+import { Quote, Movie, Character } from "../interfaces";
 
 export let score :number = 0;
 

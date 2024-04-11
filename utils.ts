@@ -1,4 +1,4 @@
-import { Character, Movie, Quote } from "./interFaces";
+import { Character, Movie, Quote } from "./interfaces";
 
 export async function fetchData() {
     //token

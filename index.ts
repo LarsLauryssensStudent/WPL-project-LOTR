@@ -4,9 +4,10 @@ import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
 import { fetchData, fullQuotes, trimCharacters, trimMovies } from "./utils";
-import { Character, Movie, Quote } from "./interFaces";
+import { Character, Movie, Quote } from "./interfaces";
 import blacklistRouter from "./routers/blacklist";
 import favoritesRouter from "./routers/favorites";
+import landingpageRouter from "./routers/landingpage";
 
 
 //arrays
@@ -74,6 +75,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 //routes
+app.use("/", landingpageRouter());
 app.use("/selection", selectionRouter());
 app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
@@ -82,9 +84,9 @@ app.use("/Favorites", favoritesRouter());
 
 
 //index
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 
 // app.get("/blacklist", (req, res)=>{

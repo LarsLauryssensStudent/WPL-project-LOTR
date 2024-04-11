@@ -1,7 +1,7 @@
 import express from "express";
 import { shuffleArray, generatePossibleAnswers } from "../utils";
 import { getQCounter, setQCounter, movies, quotes, characters } from "../index";
-import { Quote, Movie, Character } from "../interFaces";
+import { Quote, Movie, Character } from "../interfaces";
 
 export default function suddenDeathRouter() {
     const router = express.Router();
