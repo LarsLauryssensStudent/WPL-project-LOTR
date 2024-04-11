@@ -12488,11 +12488,7 @@ blockquote {
   background-position: center;
 }
 
-body {
-  display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-rows: auto 1fr auto;
-}
+
 
 header {
   grid-area: header;
