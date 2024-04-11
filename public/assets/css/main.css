@@ -12376,12 +12376,14 @@ blockquote {
   font-size: 2rem;
 }
 
-.actorLabel, .movieLabel {
+.actorLabel,
+.movieLabel {
   border: 2px solid black;
   background-color: rgba(252, 236, 187, 0.6745098039);
 }
 
-.actorLabel:hover, .movieLabel:hover {
+.actorLabel:hover,
+.movieLabel:hover {
   background-color: rgb(45, 44, 44) !important;
   border: 2px solid green !important;
   color: yellow !important;
@@ -12445,7 +12447,8 @@ blockquote {
   background-color: transparent;
 }
 
-#blackListBtn:hover, #favoBtn:hover {
+#blackListBtn:hover,
+#favoBtn:hover {
   transform: scale(1.2);
   color: red;
 }
@@ -12484,6 +12487,8 @@ blockquote {
   height: 280px !important;
   background-position: center;
 }
+
+
 
 header {
   grid-area: header;
