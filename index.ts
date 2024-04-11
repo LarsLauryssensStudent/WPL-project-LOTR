@@ -10,9 +10,6 @@ import { Character, Movie, Quote } from "./interFaces";
 //arrays
 export let characters: Character[] = [];
 export let quotes: Quote[] = [];
-
-
-
 export let movies: Movie[] = [];
 // let rawQuotes :object[] =[]
 export let tenRoundsBackgrounds :string[] = [
@@ -27,6 +24,7 @@ export let tenRoundsBackgrounds :string[] = [
   "../assets/images/10rounds/lotr-background-almost-mordor.jpg",
   "../assets/images/10rounds/lotr-background-mordor.jpg"
 ]
+let blackListed :Quote[] = [];
 
 
 // vars
@@ -35,10 +33,10 @@ let qCounter :number = 0;
 let randomQuote :Quote;
 // let userScore :number = 0;
 //index export functies
+
 export function setQCounter(value: number) {
   qCounter = value;
 }
-
 export function getQCounter() {
   return qCounter;
 }
@@ -49,6 +47,7 @@ export function setNewQuote(array:Quote[]) {
 export function returnQuote():Quote {
   return randomQuote;
 }
+
 
 
 
