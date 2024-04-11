@@ -28,7 +28,7 @@ export default function suddenDeathRouter() {
 
 
     router.get("/check", (req,res) => {
-        
+               
         res.redirect("/");
     })
 
