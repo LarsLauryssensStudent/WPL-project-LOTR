@@ -25,7 +25,7 @@ export let tenRoundsBackgrounds :string[] = [
   "../assets/images/10rounds/lotr-background-mordor.jpg"
 ]
 let blackListed :Quote[] = [];
-
+let favorites :Quote[] = [];
 
 // vars
 // let gameMode :string = "selection";
@@ -52,9 +52,13 @@ export function getBlacklist():Quote[] {
 }
 export function addToBlacklist(quote :Quote) {
   blackListed.push(quote);
-  
 }
-
+export function getFavorites() :Quote[] {
+  return favorites;
+}
+export function addToFavorites(quote :Quote) {
+  favorites.push(quote);
+}
 
 
 const app = express();
