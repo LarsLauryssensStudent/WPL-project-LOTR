@@ -364,7 +364,9 @@ form {
   width: auto;
   height: auto;
 }
-
+body {
+  min-height: 100vh;
+}
 .quizzContainerSD {
   background-image: url(../images/sudden-death/lotr-sudden-death-back.gif  );
   background-size: cover;
@@ -545,10 +547,8 @@ blockquote {
 
 #footer-style {
   background-color: #fcecbba1;
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  grid-area: footer;
+
 }
 
 #select {
