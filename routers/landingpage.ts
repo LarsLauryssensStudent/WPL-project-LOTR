@@ -8,7 +8,7 @@ export default function landingpageRouter() {
     const users = db.collection("users");
 
     router.get("/", (req, res) => {
-        res.render("index")
+        res.render("index", { message: "" })
     });
 
     router.post("/login", async (req, res) => {
@@ -22,9 +22,9 @@ export default function landingpageRouter() {
     
             const passwordMatch = await bcrypt.compare(loginPassword, user.password);
             if (passwordMatch) {
-                return res.status(200).send("login successful");
+                return res.status(200).render("index", { message: "login succesful" })
             } else {
-                return res.status(401).send("invalid password");
+                return res.status(401).render("index", { message: "invalid password" })
             }
         } catch (error) {
             console.error("error logging in:", error);

@@ -192,10 +192,44 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //voorbeeld
-function handleLogin() {
-  // Perform login process (e.g., validate credentials, etc.)
-  // For demonstration purposes, let's assume the login is successful
+// function handleLogin() {
+//   // Perform login process (e.g., validate credentials, etc.)
+//   // For demonstration purposes, let's assume the login is successful
 
-  // Redirect user to the selection.html page
-  window.location.href = "selection";
-}
+//   // Redirect user to the selection.html page
+//   window.location.href = "selection";
+// }
+
+// function handleLoginFormSubmit(event) {
+//   event.preventDefault(); // Prevent default form submission behavior
+  
+//   // Get the form data
+//   const formData = new FormData(event.target);
+  
+//   // Make an asynchronous request to the server
+//   fetch('/login', {
+//     method: 'POST',
+//     body: formData
+//   })
+//   .then(response => {
+//     if (response.ok) {
+//       // If login successful, reload the page or perform any other actions
+//       window.location.reload();
+//     } else if (response.status === 401) {
+//       // If wrong password, display the message in the modal without closing it
+//       const errorMessage = document.getElementById('errorMessage');
+//       if (errorMessage) {
+//         errorMessage.textContent = 'Wrong password';
+//         errorMessage.style.display = 'block';
+//       }
+//     } else {
+//       // Handle other error cases
+//       console.error('Error:', response.statusText);
+//     }
+//   })
+//   .catch(error => {
+//     console.error('Error:', error);
+//   });
+// }
+
+// document.getElementById('loginForm').addEventListener('submit', handleLoginFormSubmit);

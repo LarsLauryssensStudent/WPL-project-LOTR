@@ -105,6 +105,7 @@ app.use(express.urlencoded({ extended: true }))
 //routes
 app.use("/", landingpageRouter());
 app.use("/selection", selectionRouter());
+//app.use("/selection", isAuthenticated, selectionRouter());
 app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
 app.use("/Blacklist", blacklistRouter());
