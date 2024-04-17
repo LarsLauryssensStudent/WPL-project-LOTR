@@ -1,5 +1,5 @@
 import { name } from "ejs";
-import { characters } from ".";
+import { characters, getBlacklist } from ".";
 import { Character, Movie, Quote } from "./interfaces";
 
 export async function fetchData() {
@@ -131,15 +131,4 @@ export function generatePossibleAnswers(quote: Quote, array: Character[]): Chara
 
   //en terugduwen
   return shuffleArray(possibleAnswers);
-}
-
-export function linkQuotes(quotes: Quote[], char: Character[]): Character[] {
-  let character: Character[] = [];
-  quotes.forEach(q => {
-    const linked = char.find(c => c._id === q.character);
-    if (linked !== undefined) {
-      character.push(linked);
-    }
-  });
-  return character;
 }
