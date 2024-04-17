@@ -325,10 +325,8 @@ form {
   display: flex;
   border: 4px solid rgba(0, 0, 0, 0.242);
   justify-content: space-between;
-
   flex-wrap: nowrap;
   padding: 0.6rem 0;
-
   background-color: #FCECBB;
   align-items: center;
   border-radius: 28px 28px 0px 0px;
@@ -628,12 +626,6 @@ main {
   right: 20px;
 }
 
-ul {
-  padding-bottom: 0rem;
-  margin-bottom: 0rem;
-  overflow: hidden;
-}
-
 .biggerCardBlacklist>ul>li:last-of-type {
   padding-bottom: 0rem;
   margin-bottom: 0rem;
@@ -659,7 +651,7 @@ ul {
 
 .overFlowerList {
   height: 50vh !important;
-
+  width: 100%;
   overflow-y: scroll;
 }
 

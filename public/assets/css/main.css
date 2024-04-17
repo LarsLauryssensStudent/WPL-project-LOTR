@@ -12553,12 +12553,6 @@ main {
   right: 20px;
 }
 
-ul {
-  padding-bottom: 0rem;
-  margin-bottom: 0rem;
-  overflow: hidden;
-}
-
 .biggerCardBlacklist > ul > li:last-of-type {
   padding-bottom: 0rem;
   margin-bottom: 0rem;
@@ -12581,6 +12575,7 @@ ul {
 }
 .overFlowerList {
   height: 50vh !important;
+  width: 100%;
   overflow-y: scroll;
 }
 
