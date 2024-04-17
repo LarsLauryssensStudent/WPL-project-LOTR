@@ -13,36 +13,30 @@
                     <section class="quizzNav container-fluid">
                         <h1 class="mx-auto" style="font-size: 1.6rem; padding-top: 8px;">Blacklist</h1>
                     </section>
-                    <section class="card biggerCardBlacklist align-items-center">
+                    <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
 
-                        <ul class="list-unstyled">
-                            <li class="my-2">
-                                <blockquote class="my-0">A wizard is never late, Frodo Baggins. Nor is he
-                                    early. He arrives
-                                    precisely when he means to.</blockquote>
-                                <cite>- Gandalf</cite>
-                                <span class="bi bi-trash"></span>
-                            </li>
-                            <li class="my-2">
-                                <blockquote class="my-0">“He that breaks a thing to find out what it is, has left
-                                    the
-                                    path of
-                                    wisdom.”</blockquote>
-                                <cite>Gandalf</cite>
-                                <span class="bi bi-trash"></span>
-                            </li>
-                            <li class="my-2">
-                                <blockquote class="my-0">“When in doubt, follow your nose.”</blockquote>
-                                <cite>Gandalf</cite>
-                                <span class="bi bi-trash"></span>
-                            </li>
-                            <li class="my-2">
-                                <blockquote class="my-0">“Death is just another path, one that we all must take.”
-                                </blockquote>
-                                <cite>Gandalf</cite>
-                                <span class="bi bi-trash"></span>
-                            </li>
+
+                        <ul class="list-unstyled overFlowerList">
+                            <% if (blacklisted.length> 0) { %>
+                                <% blacklisted.forEach(bl=> { %>
+                                    <li class="my-2">
+                                        <blockquote class="my-0">
+                                            <%= bl.dialog %>
+                                        </blockquote>
+                                        <cite>
+                                            <%= characters.find(char=> char._id === bl.character).name %>
+                                        </cite>
+                                        <span class="bi bi-trash"></span>
+                                    </li>
+                                    <% }) %>
+                                        <% } else { %>
+                                            <li>
+                                                <h1 class="my-2 text-center">Niets in Blacklist!</h1>
+                                            </li>
+                                            <% } %>
                         </ul>
+
+
 
                     </section>
 
