@@ -1,5 +1,6 @@
 // EJS opbouw 07/04/2024
 import express from "express";
+import { MongoClient } from "mongodb";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
@@ -64,6 +65,23 @@ export function addToFavorites(quote: Quote) {
 }
 
 
+//monogdb
+const uri = "mongodb+srv://vandevkieboom:vandenkieboom1996@webontwikkeling.vk1mlnn.mongodb.net/?retryWrites=true&w=majority&appName=webontwikkeling";
+export const client = new MongoClient(uri);
+
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
+  }
+}
+
+connectToDatabase().catch(console.error);
+
+
+//express
 const app = express();
 
 app.set("port", process.env.PORT || 3000);
@@ -83,34 +101,19 @@ app.use("/Blacklist", blacklistRouter());
 app.use("/Favorites", favoritesRouter());
 
 
-//index
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
-
-// app.get("/blacklist", (req, res)=>{
-//   res.render("blacklist");
-// });
-
-// app.get("/favorites",(req, res)=>{
-//   res.render("favorites")
-// });
-
-
+//startup
 app.listen(app.get("port"), async () => {
   try {
-    const data: any = await fetchData();
+    // const data: any = await fetchData();
 
-    quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
-    characters = await trimCharacters(data.characters, quotes);
-    movies = await trimMovies(data.movies, quotes);
-    setNewQuote(quotes);
+    // quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
+    // characters = await trimCharacters(data.characters, quotes);
+    // movies = await trimMovies(data.movies, quotes);
+    // setNewQuote(quotes);
 
     console.log(`Port running on ${app.get("port")}`);
   } catch (error) {
     console.error("Error fetching data:", error);
     console.log(`Port running on ${app.get("port")}`);
-
   }
 });
