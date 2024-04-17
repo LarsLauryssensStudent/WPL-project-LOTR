@@ -60,11 +60,19 @@ export function addToBlacklist(quote: Quote) {
 export function getFavorites(): Quote[] {
   return favorites;
 }
-export function addToFavorites(quote: Quote) {
-  favorites.push(quote);
-}
-export function removeQuoteFavs(array:Quote[], quote:Quote) {
-  favorites = array.filter(element => element !== quote);
+export function toggleFavorites(quote: Quote) {
+  let favorites: Quote[] = getFavorites();
+
+  if (favorites.includes(quote)) {
+      favorites = favorites.filter(element => element !== quote);
+      console.log("Quote removed from favorites");
+  } else {
+      favorites.push(quote);
+      console.log("Quote added to favorites");
+  }
+
+  // Optionally, you can redirect to another route here if needed
+  // res.redirect("/10-Rounds");
 }
 
 //monogdb

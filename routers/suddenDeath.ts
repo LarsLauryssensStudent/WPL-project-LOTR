@@ -1,6 +1,6 @@
 import express from "express";
 import { shuffleArray, generatePossibleAnswers } from "../utils";
-import { getQCounter, setQCounter, movies, quotes, characters, returnQuote, setNewQuote, addToFavorites, addToBlacklist, getBlacklist, getFavorites } from "../index";
+import { getQCounter, setQCounter, movies, quotes, characters, returnQuote, setNewQuote, addToBlacklist, getBlacklist, toggleFavorites } from "../index";
 import { Quote, Movie, Character } from "../interfaces";
 
 export default function suddenDeathRouter() {
@@ -54,7 +54,7 @@ export default function suddenDeathRouter() {
     })
     router.get("/favorites", (req,res) => {
         let currentQuote :Quote = returnQuote();
-        addToFavorites(currentQuote);
+        toggleFavorites(currentQuote);
         console.log("ben hier");
         res.redirect("/Sudden-Death");
     });
