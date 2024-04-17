@@ -12304,6 +12304,7 @@ form {
   border-radius: 30px;
   min-height: 240px;
   width: auto;
+  height: auto;
 }
 
 .quizzContainerSD {
@@ -12334,12 +12335,6 @@ blockquote {
   color: rgb(0, 0, 0);
   font-weight: 700;
   text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.215);
-}
-
-.quizzBody {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .quizzContainer h1, .quizzContainer .h1 {
@@ -12482,6 +12477,9 @@ blockquote {
 
 #footer-style {
   background-color: rgba(252, 236, 187, 0.631372549);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 #select {
@@ -12576,6 +12574,12 @@ ul {
   display: flex;
   align-items: center;
   background-color: rgba(245, 245, 220, 0.562) !important;
+}
+
+body {
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: auto 1fr auto;
 }
 
 @media screen and (max-width: 600px) {
