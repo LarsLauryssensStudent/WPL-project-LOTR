@@ -653,3 +653,6 @@ ul {
   }
 }
 
+body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing-card-title) {
+  letter-spacing: 0.1rem!important;
+}
