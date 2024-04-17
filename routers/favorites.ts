@@ -1,5 +1,5 @@
 import express from "express";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, addToFavorites, getBlacklist, getFavorites } from "../index";
+import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites } from "../index";
 import { Quote } from "../interfaces";
 
 export default function favoritesRouter() {
