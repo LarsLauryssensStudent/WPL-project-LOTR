@@ -104,12 +104,12 @@ app.use("/Favorites", favoritesRouter());
 //startup
 app.listen(app.get("port"), async () => {
   try {
-    // const data: any = await fetchData();
+    const data: any = await fetchData();
 
-    // quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
-    // characters = await trimCharacters(data.characters, quotes);
-    // movies = await trimMovies(data.movies, quotes);
-    // setNewQuote(quotes);
+    quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
+    characters = await trimCharacters(data.characters, quotes);
+    movies = await trimMovies(data.movies, quotes);
+    setNewQuote(quotes);
 
     console.log(`Port running on ${app.get("port")}`);
   } catch (error) {
