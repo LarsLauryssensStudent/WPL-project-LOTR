@@ -12579,7 +12579,6 @@ ul {
     width: 80%;
   }
 }
-
 .overFlowerList {
   height: 50vh !important;
   overflow-y: scroll;
@@ -12591,8 +12590,8 @@ ul {
 
 .blacklistmain {
   border-radius: 0px 0px 24px 24px;
+}
 
 body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing-card-title) {
   letter-spacing: 0.1rem !important;
-
 }
