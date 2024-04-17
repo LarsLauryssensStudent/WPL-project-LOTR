@@ -12480,6 +12480,7 @@ blockquote {
   position: fixed;
   bottom: 0;
   width: 100%;
+  grid-area: footer;
 }
 
 #select {
@@ -12515,10 +12516,6 @@ main {
   padding-left: 11px;
   padding-right: 11px;
   padding-top: 7px;
-}
-
-#footer-style {
-  grid-area: footer;
 }
 
 .selection-card-title,
@@ -12574,12 +12571,6 @@ ul {
   display: flex;
   align-items: center;
   background-color: rgba(245, 245, 220, 0.562) !important;
-}
-
-body {
-  display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-rows: auto 1fr auto;
 }
 
 @media screen and (max-width: 600px) {

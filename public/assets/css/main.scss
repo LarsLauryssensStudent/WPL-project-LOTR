@@ -548,6 +548,7 @@ blockquote {
   position: fixed;
   bottom: 0;
   width: 100%;
+  grid-area: footer;
 }
 
 #select {
@@ -586,9 +587,7 @@ main {
   padding-top: 7px;
 }
 
-#footer-style {
-  grid-area: footer;
-}
+
 
 .selection-card-title,
 .selection-heading {
