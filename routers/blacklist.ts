@@ -1,19 +1,38 @@
 import express from "express";
 import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, addToFavorites, getBlacklist } from "../index";
 import { Character, Quote } from "../interfaces";
-import { linkQuotes } from "../utils";
 import { link } from "fs";
 
 export default function blacklistRouter() {
-    const blacklisted:Quote[] = getBlacklist();
-    const characterIds: Character[] = linkQuotes(blacklisted, characters);
     const router = express.Router();
+
+
+    const blacklisted: Quote[] = getBlacklist();
     router.get("/", (req, res) => {
+        let charactersss: Character[] | undefined = toggleIds();
         res.render("blacklist", {
-            blacklisted: blacklisted
+            blacklisted: blacklisted,
+            characters: characters
         });
         console.log(blacklisted[0].character);
-        console.log(characterIds[0]._id);
+        console.log(charactersss[0].birth);
+
     });
     return router
+}
+
+function toggleIds(): Character[] {
+    const blacklisted: Quote[] = getBlacklist();
+    const characterIds: string[] = blacklisted.map(quote => quote.character);
+    let characterss: Character[] = [];
+
+    characterIds.forEach(characterId => {
+        const foundCharacter = characters.find(char => char._id === characterId);
+        if (foundCharacter) {
+            characterss.push(foundCharacter);
+            console.log(foundCharacter);
+        }
+    });
+
+    return characterss;
 }
