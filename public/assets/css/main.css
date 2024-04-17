@@ -12579,3 +12579,15 @@ ul {
     width: 80%;
   }
 }
+.overFlowerList {
+  height: 50vh !important;
+  overflow-y: scroll;
+}
+
+.overFlowerList > li:last-child {
+  border-bottom: none;
+}
+
+.blacklistmain {
+  border-radius: 0px 0px 24px 24px;
+}

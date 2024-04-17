@@ -14,9 +14,6 @@ export default function blacklistRouter() {
             blacklisted: blacklisted,
             characters: characters
         });
-        console.log(blacklisted[0].character);
-        console.log(charactersss[0].birth);
-
     });
     return router
 }

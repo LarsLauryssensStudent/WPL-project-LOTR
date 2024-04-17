@@ -364,9 +364,11 @@ form {
   width: auto;
   height: auto;
 }
+
 body {
   min-height: 100vh;
 }
+
 .quizzContainerSD {
   background-image: url(../images/sudden-death/lotr-sudden-death-back.gif  );
   background-size: cover;
@@ -483,6 +485,7 @@ blockquote {
   background-size: cover;
 
 }
+
 .quizzBody {
   background-image: url(../images/background-page/background-body.png);
   background-position: center;
@@ -573,6 +576,7 @@ footer {
 main {
   grid-area: main;
 }
+
 //ifjeifjie
 
 .text {
@@ -653,3 +657,16 @@ ul {
   }
 }
 
+.overFlowerList {
+  height: 50vh !important;
+
+  overflow-y: scroll;
+}
+
+.overFlowerList>li:last-child {
+  border-bottom: none;
+}
+
+.blacklistmain {
+  border-radius: 0px 0px 24px 24px;
+}
