@@ -645,13 +645,6 @@ ul {
   background-color: rgba(245, 245, 220, 0.562) !important;
 }
 
-body {
-  display: grid;
-  grid-template-areas: "header" 
-                       "main"
-                       "footer";
-  grid-template-rows: auto 1fr auto;
-}
 
 
 @media screen and (max-width: 600px) {
