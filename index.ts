@@ -63,7 +63,9 @@ export function getFavorites(): Quote[] {
 export function addToFavorites(quote: Quote) {
   favorites.push(quote);
 }
-
+export function removeQuoteFavs(array:Quote[], quote:Quote) {
+  favorites = array.filter(element => element !== quote);
+}
 
 //monogdb
 const uri = "mongodb+srv://vandevkieboom:vandenkieboom1996@webontwikkeling.vk1mlnn.mongodb.net/?retryWrites=true&w=majority&appName=webontwikkeling";
