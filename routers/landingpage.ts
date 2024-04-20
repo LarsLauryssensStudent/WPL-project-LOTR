@@ -22,9 +22,9 @@ export default function landingpageRouter() {
     
             const passwordMatch = await bcrypt.compare(loginPassword, user.password);
             if (passwordMatch) {
-                return res.status(200).render("index", { message: "login succesful" })
+                return res.status(200).render("selection")
             } else {
-                return res.status(401).render("index", { message: "invalid password" })
+                return res.status(401).send("<h1>Penis Pump</h1>")
             }
         } catch (error) {
             console.error("error logging in:", error);
