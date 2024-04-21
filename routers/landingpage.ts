@@ -1,6 +1,8 @@
 import express from "express";
 import bcrypt from 'bcrypt';
 import { client } from "../index";
+import nodemailer from 'nodemailer';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function landingpageRouter() {
     const router = express.Router();
@@ -29,6 +31,56 @@ export default function landingpageRouter() {
         } catch (error) {
             console.error("error logging in:", error);
             return res.status(500).send("error logging in");
+        }
+    });
+
+    router.post("/forgot-password", async (req, res) => {
+        const { loginEmail } = req.body;
+        
+        try {
+            const user = await users.findOne({ email: loginEmail });
+            if (!user) {
+                return res.status(404).send("email bestaat niet");
+            }
+            
+            const resetToken = uuidv4();
+            const resetTokenExpiration = new Date(Date.now() + 300000);
+
+            await users.updateOne(
+                { email: loginEmail },
+                { $set: { resetToken, resetTokenExpiration } }
+            );
+
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false,
+                auth: {
+                    user: "vandenkieboom1996@gmail.com",
+                    pass: "kltr ofzv bfvj jrgf"
+                }
+            });
+
+            const mailOptions = {
+                from: '"Fellowship of the Code" <vandenkieboom1996@gmail.com>',
+                to: user.email,
+                subject: "wachtwoord herstellen",
+                text: `niet op klikken! https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+                html: `<p>niet op klikken! <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">mag niet</a></p>`
+            };
+
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error("error sending email:", error);
+                    return res.status(500).send("error sending email");
+                }
+                console.log("email sent:", info.response);
+                res.status(200).send("password reset email sent");
+            });
+        } catch (error) {
+            console.error("error requesting password reset:", error);
+            res.status(500).send("error requesting password reset");
         }
     });
 

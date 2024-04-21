@@ -15,12 +15,15 @@ function pauseVideo(index) {
 function resetForm() {
     const loginForm = document.getElementById('loginForm');
     const createAccountForm = document.getElementById('createAccountForm');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     const strengthLabel = document.getElementById('strengthLabel');
     const strengthBar = document.getElementById('strengthBar');
     const passwordMatch = document.getElementById('passwordMatch');
 
     loginForm.reset();
     createAccountForm.reset();
+    forgotPasswordForm.reset();
+    forgotPasswordForm.style.display = 'none';
     strengthLabel.textContent = '';
     strengthBar.style.width = '0%';
     strengthBar.className = 'progress-bar';
@@ -47,7 +50,7 @@ function resetPasswordVisibility(toggleId, passwordId) {
     toggle.getElementsByTagName('i')[0].classList.add('bi-eye-slash');
 }
 
-//switchen naar login en register
+//switchen tussen login en register formuliers
 function switchForms(showLogin) {
     const loginForm = document.getElementById('loginForm');
     const createAccountForm = document.getElementById('createAccountForm');
@@ -56,11 +59,22 @@ function switchForms(showLogin) {
     if (showLogin) {
         loginForm.style.display = 'block';
         createAccountForm.style.display = 'none';
-        loginModalLabel.textContent = 'Login';
+        if (loginModalLabel.innerText !== "Forgot Password") {
+            loginModalLabel.textContent = 'aanmelden';
+        }
     } else {
         loginForm.style.display = 'none';
         createAccountForm.style.display = 'block';
-        loginModalLabel.textContent = 'Create Account';
+        loginModalLabel.textContent = 'account aanmaken';
+    }
+}
+
+function changeModalTitle(title) {
+    const modalTitle = document.getElementById('loginModalLabel');
+    if (modalTitle) {
+        modalTitle.innerText = title;
+    } else {
+        console.error("Modal title element not found");
     }
 }
 
@@ -68,11 +82,15 @@ function switchForms(showLogin) {
 document.getElementById('showCreateAccountBtn').addEventListener('click', (event) => {
     event.preventDefault();
     switchForms(false);
+
+    changeModalTitle("account aanmaken");
 });
 
 //event listener voor login
-document.getElementById('profileButton').addEventListener('click', () => {
+document.getElementById('lotrButton').addEventListener('click', () => {
     switchForms(true);
+
+    changeModalTitle("aanmelden");
 });
 
 //alert voor disabled logins
@@ -90,6 +108,15 @@ document.getElementById('backToLoginBtn').addEventListener('click', (event) => {
     switchForms(true);
 });
 
+//event listener voor forgot-password
+document.getElementById('forgot-password').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('forgotPasswordForm').style.display = 'block';
+
+    changeModalTitle("wachtwoord opnieuw instellen");
+});
 
 
 //wachtwoord sterkte controleren

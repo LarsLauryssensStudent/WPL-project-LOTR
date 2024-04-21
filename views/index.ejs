@@ -109,7 +109,7 @@
               <p class="landing-card-text card-text">
                 Lord of the Rings is een episch fantasy-verhaal van J.R.R. Tolkien, met avonturen in de fictieve wereld van Midden-aarde.
               </p>
-              <button id="lordOfTheRingsLoginButton" onclick="handleLogin()" id="profileButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <button id="lotrButton" type="button" class="btn bg-body-tertiary border-dark d-block mx-auto" data-bs-toggle="modal" data-bs-target="#loginModal">
                 aanmelden
               </button>
             </section>
@@ -212,7 +212,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <h5 class="modal-title" id="loginModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -240,12 +240,20 @@
               <label class="form-check-label" for="rememberMe">onthoud mij</label> -->
               <button type="submit" class="btn bg-body-tertiary border-dark mb-1">aanmelden</button>
             </div>
-            <a href="#" class="text-decoration-none">wachtwoord vergeten?</a>
+            <a id="forgot-password" href="#" class="text-decoration-none">wachtwoord vergeten?</a>
           </div>
     
-          <div id="loginError" class="mt-2 text-danger" style="display: none;"></div>
             <p style="margin: 0;">nog geen account? 
-              <span id="showCreateAccountBtn" class="btn-link" style="cursor: pointer;">account aanmaken</span></p>
+              <span id="showCreateAccountBtn" class="btn-link" style="cursor: pointer;">account aanmaken</span>
+            </p>
+        </form>
+
+        <form action="/forgot-password" method="post" id="forgotPasswordForm" style="display: none;">
+          <div class="mb-3">
+            <label for="forgotPasswordEmail" class="form-label">Enter your email address:</label>
+            <input type="email" class="form-control" id="forgotPasswordEmail" name="loginEmail" required>
+          </div>
+          <button type="submit" class="btn bg-body-tertiary border-dark SignupBtn">opnieuw instellen</button>
         </form>
         
         <!-- account aanmaken formulier -->
