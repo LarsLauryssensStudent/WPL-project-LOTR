@@ -10,7 +10,7 @@ export default function landingpageRouter() {
     const users = db.collection("users");
 
     router.get("/", (req, res) => {
-        res.render("index", { message: "" })
+        res.render("index")
     });
 
     router.post("/login", async (req, res) => {
