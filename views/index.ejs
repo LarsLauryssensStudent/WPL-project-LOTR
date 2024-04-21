@@ -219,19 +219,21 @@
         
         <!-- login formulier -->
         <form action="/login" method="post" id="loginForm">
+
+          <div id="loginErrorMessage" class="text-danger mb-3"></div>
+
           <div class="mb-3">
-            <label for="loginEmail" class="form-label">e-mailadres<span class="required">*</span></label>
-            <input name="loginEmail" type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" required>
+            <label for="username" class="form-label">gebruikersnaam<span class="required">*</span></label>
+            <input name="username" type="text" class="form-control" id="username" required>
           </div>
           <div class="mb-3 position-relative">
-            <label for="loginPassword" class="form-label">wachtwoord<span class="required">*</span></label>
+            <label for="password" class="form-label">wachtwoord<span class="required">*</span></label>
             <div class="input-group">
-                <input name="loginPassword" type="password" class="form-control rounded" id="loginPassword" required>
+                <input name="password" type="password" class="form-control rounded" id="password" required>
                 <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                     <i class="bi bi-eye-slash"></i>
                 </button>
             </div>
-            <p><%= message %></p>
           </div>
 
           <div class="d-flex justify-content-between">
@@ -251,22 +253,31 @@
         <form action="/forgot-password" method="post" id="forgotPasswordForm" style="display: none;">
           <div class="mb-3">
             <label for="forgotPasswordEmail" class="form-label">Enter your email address:</label>
-            <input type="email" class="form-control" id="forgotPasswordEmail" name="loginEmail" required>
+            <input type="email" class="form-control" id="forgotPasswordEmail" name="userEmail" required>
           </div>
           <button type="submit" class="btn bg-body-tertiary border-dark SignupBtn">opnieuw instellen</button>
         </form>
         
         <!-- account aanmaken formulier -->
         <form action="/register" method="post" id="createAccountForm" style="display: none;">
+
+          <div id="registerErrorMessage" class="text-danger mb-3"></div>
+          <div id="registerSuccessMessage" class="text-success mb-3"></div>
+
+          <section class="mb-3">
+            <label for="signupUsername" class="form-label">gebruikersnaam<span class="required">*</span></label>
+            <input name="signupUsername" type="text" class="form-control" id="signupUsername">
+          </section>
+
           <section class="mb-3">
             <label for="signupEmail" class="form-label">e-mailadres<span class="required">*</span></label>
-            <input name="signupEmail" type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" required>
+            <input name="signupEmail" type="email" class="form-control" id="signupEmail">
           </section>
 
           <section class="mb-3">
             <label for="signupPassword" class="form-label">wachtwoord<span class="required">*</span></label>
             <section class="input-group">
-              <input name="signupPassword" type="password" class="form-control rounded" id="signupPassword" required>
+              <input name="signupPassword" type="password" class="form-control rounded" id="signupPassword">
               <button class="btn btn-outline-secondary" type="button" id="toggleSignupPassword">
                 <i class="bi bi-eye-slash"></i>
               </button>
@@ -283,7 +294,7 @@
 
               <label for="repeatPassword" class="form-label">herhaal wachtwoord<span class="required">*</span></label>
               <section class="input-group">
-                <input name="repeatPassword" type="password" class="form-control rounded" id="repeatPassword" required>
+                <input name="repeatPassword" type="password" class="form-control rounded" id="repeatPassword">
 
                 <button class="btn btn-outline-secondary" type="button" id="toggleRepeatPassword">
                   <i class="bi bi-eye-slash"></i>
@@ -306,6 +317,7 @@
     </div>
   </div>
 </div>
+
 
 </body>
 </html>

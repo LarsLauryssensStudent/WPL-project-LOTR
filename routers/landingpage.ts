@@ -14,31 +14,32 @@ export default function landingpageRouter() {
     });
 
     router.post("/login", async (req, res) => {
-        const { loginEmail, loginPassword } = req.body;
+        const { username, password } = req.body;
+        console.log(username, password)
     
         try {
-            const user = await users.findOne({ email: loginEmail });
+            const user = await users.findOne({ username });
             if (!user) {
-                return res.status(404).send("user not found");
+                return res.status(404).json({ success: false, message: "Gebruiker niet gevonden" });
             }
     
-            const passwordMatch = await bcrypt.compare(loginPassword, user.password);
+            const passwordMatch = await bcrypt.compare(password, user.password);
             if (passwordMatch) {
-                return res.status(200).render("selection")
+                return res.status(200).render("selection");
             } else {
-                return res.status(401).send("<h1>Penis Pump</h1>")
+                return res.status(401).json({ success: false, message: "Onjuist wachtwoord" });
             }
         } catch (error) {
-            console.error("error logging in:", error);
-            return res.status(500).send("error logging in");
+            console.error("Fout bij inloggen:", error);
+            return res.status(500).json({ success: false, message: "Fout bij inloggen" });
         }
     });
 
     router.post("/forgot-password", async (req, res) => {
-        const { loginEmail } = req.body;
+        const { userEmail } = req.body;
         
         try {
-            const user = await users.findOne({ email: loginEmail });
+            const user = await users.findOne({ email: userEmail });
             if (!user) {
                 return res.status(404).send("email bestaat niet");
             }
@@ -47,7 +48,7 @@ export default function landingpageRouter() {
             const resetTokenExpiration = new Date(Date.now() + 300000);
 
             await users.updateOne(
-                { email: loginEmail },
+                { email: userEmail },
                 { $set: { resetToken, resetTokenExpiration } }
             );
 
@@ -66,8 +67,8 @@ export default function landingpageRouter() {
                 from: '"Fellowship of the Code" <vandenkieboom1996@gmail.com>',
                 to: user.email,
                 subject: "wachtwoord herstellen",
-                text: `niet op klikken! https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
-                html: `<p>niet op klikken! <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">mag niet</a></p>`
+                text: `niet op klikken! http://localhost:3000/?token=${resetToken}`,
+                html: `<p>niet op klikken! <a href="http://localhost:3000/?token=${resetToken}">mag niet</a></p>`
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
@@ -85,25 +86,39 @@ export default function landingpageRouter() {
     });
 
     router.post("/register", async (req, res) => {
-        const { signupEmail, signupPassword } = req.body;
-
-        const existingUser = await users.findOne({ email: signupEmail });
-        if (existingUser) {
-            return res.status(400).send("user already exists");
-        }
+        const { signupUsername, signupEmail, signupPassword, repeatPassword } = req.body;
+        console.log(signupUsername, signupEmail, signupPassword, repeatPassword);
         
         try {
+            if (!signupUsername || !signupEmail || !signupPassword) {
+                return res.status(400).json({ success: false, message: "Alle velden zijn verplicht" });
+            }
+    
+            const existingEmailUser = await users.findOne({ email: signupEmail });
+            if (existingEmailUser) {
+                return res.status(400).json({ success: false, message: "E-mail is al in gebruik" });
+            }
+    
+            const existingUsernameUser = await users.findOne({ username: signupUsername });
+            if (existingUsernameUser) {
+                return res.status(400).json({ success: false, message: "Gebruikersnaam is al in gebruik" });
+            }
+            
             const hashedPassword = await bcrypt.hash(signupPassword, 10);
+            
             const result = await users.insertOne({
+                username: signupUsername,
                 email: signupEmail,
-                password: hashedPassword
+                password: hashedPassword,
+                registered: new Date()
             });
     
-            res.status(201).send("user registered successfully");
+            res.status(201).json({ success: true, message: "Gebruiker succesvol geregistreerd" });
         } catch (error) {
-            console.error("error registering user:", error);
-            res.status(500).send("error registering user");
+            console.error("Error registering user:", error);
+            res.status(500).json({ success: false, message: "Fout bij registreren van gebruiker" });
         }
     });
-    return router
+    
+    return router;
 }

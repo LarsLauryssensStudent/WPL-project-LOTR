@@ -41,14 +41,14 @@ document.getElementById('loginModal').addEventListener('hidden.bs.modal', () => 
 });
 
 //werkt ffe niet (nog toevoegen)
-function resetPasswordVisibility(toggleId, passwordId) {
-    const toggle = document.getElementById(toggleId);
-    const passwordField = document.getElementById(passwordId);
+// function resetPasswordVisibility(toggleId, passwordId) {
+//     const toggle = document.getElementById(toggleId);
+//     const passwordField = document.getElementById(passwordId);
 
-    passwordField.type = 'password';
-    toggle.getElementsByTagName('i')[0].classList.remove('bi-eye');
-    toggle.getElementsByTagName('i')[0].classList.add('bi-eye-slash');
-}
+//     passwordField.type = 'password';
+//     toggle.getElementsByTagName('i')[0].classList.remove('bi-eye');
+//     toggle.getElementsByTagName('i')[0].classList.add('bi-eye-slash');
+// }
 
 //switchen tussen login en register formuliers
 function switchForms(showLogin) {
@@ -56,10 +56,13 @@ function switchForms(showLogin) {
     const createAccountForm = document.getElementById('createAccountForm');
     const loginModalLabel = document.getElementById('loginModalLabel');
 
+    registerErrorMessage.style.display = "none";
+    registerSuccessMessage.style.display = "none";
+
     if (showLogin) {
         loginForm.style.display = 'block';
         createAccountForm.style.display = 'none';
-        if (loginModalLabel.innerText !== "Forgot Password") {
+        if (loginModalLabel.innerText === "account aanmaken") {
             loginModalLabel.textContent = 'aanmelden';
         }
     } else {
@@ -82,6 +85,7 @@ function changeModalTitle(title) {
 document.getElementById('showCreateAccountBtn').addEventListener('click', (event) => {
     event.preventDefault();
     switchForms(false);
+
 
     changeModalTitle("account aanmaken");
 });
@@ -118,69 +122,177 @@ document.getElementById('forgot-password').addEventListener('click', function(ev
     changeModalTitle("wachtwoord opnieuw instellen");
 });
 
-
 //wachtwoord sterkte controleren
-// document.getElementById('signupPassword').addEventListener('input', () => {
-//   const password = document.getElementById('signupPassword').value;
-//   const strengthLabel = document.getElementById('strengthLabel');
-//   const strengthBar = document.getElementById('strengthBar');
+document.getElementById('signupPassword').addEventListener('input', () => {
+  const password = document.getElementById('signupPassword').value;
+  const strengthLabel = document.getElementById('strengthLabel');
+  const strengthBar = document.getElementById('strengthBar');
   
-//   const regexLowercase = /[a-z]/;
-//   const regexUppercase = /[A-Z]/;
-//   const regexNumber = /[0-9]/;
-//   const regexSpecial = /[^A-Za-z0-9]/;
+  const regexLowercase = /[a-z]/;
+  const regexUppercase = /[A-Z]/;
+  const regexNumber = /[0-9]/;
+  const regexSpecial = /[^A-Za-z0-9]/;
 
-//   let strength = 0;
-//   if (regexLowercase.test(password)) strength++;
-//   if (regexUppercase.test(password)) strength++;
-//   if (regexNumber.test(password)) strength++;
-//   if (regexSpecial.test(password)) strength++;
+  let strength = 0;
+  if (regexLowercase.test(password)) strength++;
+  if (regexUppercase.test(password)) strength++;
+  if (regexNumber.test(password)) strength++;
+  if (regexSpecial.test(password)) strength++;
   
-//   switch(strength) {
-//     case 0:
-//       strengthLabel.textContent = 'zeer zwak';
-//       strengthBar.style.width = '20%';
-//       strengthBar.className = 'progress-bar bg-danger';
-//       break;
-//     case 1:
-//       strengthLabel.textContent = 'zwak';
-//       strengthBar.style.width = '40%';
-//       strengthBar.className = 'progress-bar bg-warning';
-//       break;
-//     case 2:
-//       strengthLabel.textContent = 'matig';
-//       strengthBar.style.width = '60%';
-//       strengthBar.className = 'progress-bar bg-info';
-//       break;
-//     case 3:
-//       strengthLabel.textContent = 'sterk';
-//       strengthBar.style.width = '80%';
-//       strengthBar.className = 'progress-bar bg-success';
-//       break;
-//     case 4:
-//       strengthLabel.textContent = 'zeer sterk';
-//       strengthBar.style.width = '100%';
-//       strengthBar.className = 'progress-bar bg-success';
-//       break;
-//     default:
-//       strengthLabel.textContent = '';
-//       strengthBar.style.width = '0%';
-//       strengthBar.className = 'progress-bar';
-//   }
+  switch(strength) {
+    case 0:
+      strengthLabel.textContent = 'zeer zwak';
+      strengthBar.style.width = '20%';
+      strengthBar.className = 'progress-bar bg-danger';
+      break;
+    case 1:
+      strengthLabel.textContent = 'zwak';
+      strengthBar.style.width = '40%';
+      strengthBar.className = 'progress-bar bg-warning';
+      break;
+    case 2:
+      strengthLabel.textContent = 'matig';
+      strengthBar.style.width = '60%';
+      strengthBar.className = 'progress-bar bg-info';
+      break;
+    case 3:
+      strengthLabel.textContent = 'sterk';
+      strengthBar.style.width = '80%';
+      strengthBar.className = 'progress-bar bg-success';
+      break;
+    case 4:
+      strengthLabel.textContent = 'zeer sterk';
+      strengthBar.style.width = '100%';
+      strengthBar.className = 'progress-bar bg-success';
+      break;
+    default:
+      strengthLabel.textContent = '';
+      strengthBar.style.width = '0%';
+      strengthBar.className = 'progress-bar';
+  }
+});
+
+//error messages voor de login
+// document.getElementById('loginForm').addEventListener('submit', async (event) => {
+//     const username = document.getElementById('username').value;
+//     const password = document.getElementById('password').value;
+
+//     try {
+//         const response = await fetch("/login", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                 username: username,
+//                 password: password
+//             })
+//         });
+
+//         const data = await response.json();
+
+//         if (response.ok) {
+//             loginErrorMessage.style.display = 'none';
+
+//             setTimeout(() => {
+//                 window.location.replace("/selection");
+//             }, 2000);
+
+//             loginErrorMessage.textContent = '';
+//         } else {
+//             loginErrorMessage.textContent = data.message;
+//             loginErrorMessage.style.display = 'block';
+//             event.preventDefault();
+//         }
+//     } catch (error) {
+//         console.error('Fout bij inloggen:', error);
+//         loginErrorMessage.textContent = data.message;
+//         loginErrorMessage.style.display = 'block';
+//         event.preventDefault();
+//     }
 // });
 
-//zien of wachtwoorden overeen komen
-// document.getElementById('createAccountForm').addEventListener('submit', (event) => {
-//   const password = document.getElementById('signupPassword').value;
-//   const repeatPassword = document.getElementById('repeatPassword').value;
-//   const passwordMatch = document.getElementById('passwordMatch');
+//error messages voor de register
+document.getElementById('createAccountForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-//   if (password !== repeatPassword) {
-//     passwordMatch.style.display = 'block';
-//     event.preventDefault();
-//   } else {
-//     passwordMatch.style.display = 'none';
-//   }
+    const username = document.getElementById('signupUsername').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const repeatPassword = document.getElementById('repeatPassword').value;
+
+    try {
+        const response = await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                signupUsername: username,
+                signupEmail: email,
+                signupPassword: password,
+                repeatPassword: repeatPassword
+            })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            registerErrorMessage.style.display = 'none';
+            registerSuccessMessage.textContent = data.message;
+            registerSuccessMessage.style.display = 'block'; 
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+
+            registerErrorMessage.textContent = '';
+        } else {
+            registerErrorMessage.textContent = data.message;
+            registerErrorMessage.style.display = 'block';
+            registerSuccessMessage.style.display = 'none'; 
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        registerErrorMessage.textContent = data.message;
+        registerErrorMessage.style.display = 'block';
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.getElementById('createAccountForm').addEventListener('submit', (event) => {
+//     const username = document.getElementById('signupUsername').value;
+//     const email = document.getElementById('signupEmail').value;
+//     const password = document.getElementById('signupPassword').value;
+//     const repeatPassword = document.getElementById('repeatPassword').value;
+    
+//     const registerErrorMessage = document.getElementById('registerErrorMessage');
+
+//     if (!username || !email || !password || !repeatPassword) {
+//         registerErrorMessage.textContent = "All fields are required";
+//         registerErrorMessage.style.display = 'block';
+//         event.preventDefault();
+//     } else if (password !== repeatPassword) {
+//         registerErrorMessage.textContent = "Passwords do not match";
+//         registerErrorMessage.style.display = 'block';
+//         event.preventDefault();
+//     } else {
+//         registerErrorMessage.style.display = 'none';
+//     }
 // });
 
 //wachtwoord visibility
@@ -213,46 +325,3 @@ document.getElementById('forgot-password').addEventListener('click', function(ev
 //     this.getElementsByTagName('i')[0].classList.toggle('bi-eye-slash');
 //   });
 // });
-
-// voorbeeld
-// function handleLogin() {
-//   // Perform login process (e.g., validate credentials, etc.)
-//   // For demonstration purposes, let's assume the login is successful
-
-//   // Redirect user to the selection.html page
-//   window.location.href = "selection";
-// }
-
-// function handleLoginFormSubmit(event) {
-//   event.preventDefault(); // Prevent default form submission behavior
-  
-//   // Get the form data
-//   const formData = new FormData(event.target);
-  
-//   // Make an asynchronous request to the server
-//   fetch('/login', {
-//     method: 'POST',
-//     body: formData
-//   })
-//   .then(response => {
-//     if (response.ok) {
-//       // If login successful, reload the page or perform any other actions
-//       window.location.reload();
-//     } else if (response.status === 401) {
-//       // If wrong password, display the message in the modal without closing it
-//       const errorMessage = document.getElementById('errorMessage');
-//       if (errorMessage) {
-//         errorMessage.textContent = 'Wrong password';
-//         errorMessage.style.display = 'block';
-//       }
-//     } else {
-//       // Handle other error cases
-//       console.error('Error:', response.statusText);
-//     }
-//   })
-//   .catch(error => {
-//     console.error('Error:', error);
-//   });
-// }
-
-// document.getElementById('loginForm').addEventListener('submit', handleLoginFormSubmit);
