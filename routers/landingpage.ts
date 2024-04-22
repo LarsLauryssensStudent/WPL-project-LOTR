@@ -13,6 +13,10 @@ export default function landingpageRouter() {
         res.render("index")
     });
 
+    router.get("/login", (req, res) => {
+        res.render("login")
+    });
+
     router.post("/login", async (req, res) => {
         const { username, password } = req.body;
         console.log(username, password)

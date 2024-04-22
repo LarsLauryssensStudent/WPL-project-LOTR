@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script defer src="assets/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/js/popper.min.js"></script>
+  <script defer src="assets/js/landingpage.js"></script>
+  <title>Landingspagina</title>
+</head>
+<body class="login-body">
+
+    <header class="container-fluid d-flex justify-content-center align-items-center">
+        <nav>
+          <h1 class="landing-title pt-4 my-3">Fellowship of the Code</h1>
+        </nav>
+      </header>
+
+    <main class="container login-main">
+        <form action="/login" method="post" id="loginForm">
+
+            <div id="loginErrorMessage" class="text-danger mb-3"></div>
+  
+            <div class="mb-3">
+              <label for="username" class="form-label">gebruikersnaam<span class="required">*</span></label>
+              <input name="username" type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3 position-relative">
+              <label for="password" class="form-label">wachtwoord<span class="required">*</span></label>
+              <div class="input-group">
+                  <input name="password" type="password" class="form-control rounded" id="password" required>
+                  <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                      <i class="bi bi-eye-slash"></i>
+                  </button>
+              </div>
+            </div>
+  
+            <div class="d-flex justify-content-between">
+              <div class="mb-3">
+                <!-- <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">onthoud mij</label> -->
+                <button type="submit" class="btn bg-body-tertiary border-dark mb-1">aanmelden</button>
+              </div>
+              <a id="forgot-password" href="#" class="text-decoration-none">wachtwoord vergeten?</a>
+            </div>
+      
+              <p style="margin: 0;">nog geen account? 
+                <span id="showCreateAccountBtn" class="btn-link" style="cursor: pointer;">account aanmaken</span>
+              </p>
+          </form>
+    </main>
+
+<!---footer--->
+<div>
+    <svg class="waves pt-4" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(248,249,250,0.7)" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248,249,250,0.5)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(33, 37, 41, 0.1)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(33, 37, 41)" />
+        </g>
+    </svg>
+  </div>
+  
+  <footer class="page-footer pt-4 font-small unique-color-dark text-center">
+    <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+      <i class="fab fa-twitter"></i>
+    </a>
+  
+    <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+  
+    <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+      <i class="fab fa-github"></i>
+    </a>
+  
+    <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-light" href="#!">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  
+    <article class="text-center py-1 text-light">
+      <p>© 2024 Fellowship of the Code</p>
+    </article>
+  </footer>
+</body>
+</html>
