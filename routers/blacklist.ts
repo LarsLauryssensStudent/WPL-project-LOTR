@@ -15,9 +15,5 @@ export default function blacklistRouter() {
         });
     });
 
-    router.get("checkBl", (req, res) => {
-        const name = 
-    });
-
     return router
 }
