@@ -9,27 +9,15 @@ export default function blacklistRouter() {
 
     const blacklisted: Quote[] = getBlacklist();
     router.get("/", (req, res) => {
-        let charactersss: Character[] | undefined = toggleIds();
         res.render("blacklist", {
             blacklisted: blacklisted,
             characters: characters
         });
     });
-    return router
-}
 
-function toggleIds(): Character[] {
-    const blacklisted: Quote[] = getBlacklist();
-    const characterIds: string[] = blacklisted.map(quote => quote.character);
-    let characterss: Character[] = [];
-
-    characterIds.forEach(characterId => {
-        const foundCharacter = characters.find(char => char._id === characterId);
-        if (foundCharacter) {
-            characterss.push(foundCharacter);
-            console.log(foundCharacter);
-        }
+    router.get("checkBl", (req, res) => {
+        const name = 
     });
 
-    return characterss;
+    return router
 }

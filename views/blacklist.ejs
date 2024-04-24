@@ -4,44 +4,49 @@
 <%- include("partials/header") %>
 
     <main class="container-fluid quizzMain">
-        
-
-            <section class="col-sm-12 col-lg-8 col-md-10 ">
-                <section class="quizzContainer">
-                    <section class="quizzNav container-fluid">
-                        <h1 class="mx-auto" style="font-size: 1.6rem; padding-top: 8px;">Blacklist</h1>
-                    </section>
-                    <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
 
 
-                        <ul class="list-unstyled overFlowerList">
-                            <% if (blacklisted.length> 0) { %>
-                                <% blacklisted.forEach(bl=> { %>
-                                    <li class="my-2">
-                                        <blockquote class="my-0">
-                                            <%= bl.dialog %>
-                                        </blockquote>
-                                        <cite>
+        <section class="col-sm-12 col-lg-8 col-md-10 ">
+            <section class="quizzContainer">
+                <section class="quizzNav container-fluid">
+                    <h1 class="mx-auto" style="font-size: 1.6rem; padding-top: 8px;">Blacklist</h1>
+                </section>
+                <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
+
+
+                    <ul class="list-unstyled overFlowerList">
+                        <% if (blacklisted.length> 0) { %>
+                            <% blacklisted.forEach(bl=> { %>
+                                <li class="my-2">
+                                    <blockquote class="my-0">
+                                        <%= bl.dialog %>
+                                    </blockquote>
+                                    <cite>
+                                        <a href="<%= characters.find(char=> char._id === bl.character).wikiUrl %>"
+                                            class="quote-link">
                                             <%= characters.find(char=> char._id === bl.character).name %>
-                                        </cite>
-                                        <span class="bi bi-trash"></span>
-                                    </li>
-                                    <% }) %>
-                                        <% } else { %>
-                                            <li>
-                                                <h1 class="my-2 text-center">Niets in Blacklist!</h1>
-                                            </li>
-                                            <% } %>
-                        </ul>
-
-
-                    </section>
+                                        </a>
+                                    </cite>
+                                    <form action="/checkBl" method="get">
+                                        <button><a href="/checkBl/<%= bl.character %>"></a></button>
+                                    </form>
+                                </li>
+                                <% }) %>
+                                    <% } else { %>
+                                        <li>
+                                            <h1 class="my-2 text-center">Niets in Blacklist!</h1>
+                                        </li>
+                                        <% } %>
+                    </ul>
 
 
                 </section>
 
-              
+
             </section>
+
+
+        </section>
 
     </main>
     </body>

@@ -11983,7 +11983,8 @@ textarea.form-control-lg {
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -12193,12 +12194,17 @@ input[type=color],
 }
 
 .login {
-  max-width: 400px; /* Limit width of form container */
-  margin: auto; /* Center align */
+  max-width: 400px;
+  /* Limit width of form container */
+  margin: auto;
+  /* Center align */
   padding: 20px;
-  background-color: #fff; /* White background */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  background-color: #fff;
+  /* White background */
+  border-radius: 8px;
+  /* Rounded corners */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  /* Shadow effect */
 }
 
 .waves {
@@ -12533,6 +12539,13 @@ footer {
 
 main {
   grid-area: main;
+}
+
+.quote-link {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none;
+  color: black;
 }
 
 .text {

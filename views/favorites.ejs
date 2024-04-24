@@ -4,42 +4,45 @@
 <%- include("partials/header") %>
 
     <main class="container-fluid quizzMain">
-        
 
-            <section class="col-sm-12 col-lg-8 col-md-10 ">
-                <section class="quizzContainer w-100">
-                    <section class="quizzNav container-fluid">
-                        <h1 class="mx-auto" style="font-size: 1.6rem; letter-spacing: 0.2rem; padding-top: 8px;">
-                            Favorites</h1>
-                    </section>
-                    <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
 
-                        <ul class="list-unstyled overFlowerList">
-                            <% if (favorites.length> 0) { %>
-                                <% favorites.forEach(fav=> { %>
-                                    <li class="my-2">
-                                        <blockquote class="my-0">
-                                            <%= fav.dialog %>
-                                        </blockquote>
-                                        <cite>
+        <section class="col-sm-12 col-lg-8 col-md-10 ">
+            <section class="quizzContainer w-100">
+                <section class="quizzNav container-fluid">
+                    <h1 class="mx-auto" style="font-size: 1.6rem; letter-spacing: 0.2rem; padding-top: 8px;">
+                        Favorites</h1>
+                </section>
+                <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
+
+                    <ul class="list-unstyled overFlowerList">
+                        <% if (favorites.length> 0) { %>
+                            <% favorites.forEach(fav=> { %>
+                                <li class="my-2">
+                                    <blockquote class="my-0">
+                                        <%= fav.dialog %>
+                                    </blockquote>
+                                    <cite>
+                                        <a href="<%= characters.find(char=> char._id === fav.character).wikiUrl %>"
+                                            class="quote-link">
                                             <%= characters.find(char=> char._id === fav.character).name %>
-                                        </cite>
-                                        <span class="bi bi-trash"></span>
-                                    </li>
-                                    <% }) %>
-                                        <% } else { %>
-                                            <li>
-                                                <h1 class="my-2 text-center">Niets in favorieten!</h1>
-                                            </li>
-                                            <% } %>
-                        </ul>
+                                        </a>
+                                    </cite>
+                                    <span class="bi bi-trash trash"></span>
+                                </li>
+                                <% }) %>
+                                    <% } else { %>
+                                        <li>
+                                            <h1 class="my-2 text-center">Niets in favorieten!</h1>
+                                        </li>
+                                        <% } %>
+                    </ul>
 
-                    </section>
+                </section>
 
 
-                
+
             </section>
-            </section>
+        </section>
 
     </main>
     <%- include("partials/footer") %>
