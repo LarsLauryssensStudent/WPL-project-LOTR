@@ -17,6 +17,10 @@ export default function landingpageRouter() {
         res.render("login")
     });
 
+    router.get("/register", (req, res) => {
+        res.render("register")
+    });
+
     router.post("/login", async (req, res) => {
         const { username, password } = req.body;
         console.log(username, password)
