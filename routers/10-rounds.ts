@@ -13,7 +13,7 @@ export default function tenRoundsRouter() {
         if (getQCounter() > 10) {
             setQCounter(1);
             score = 0;
-            res.redirect("selection");
+            res.redirect("results");
         }
         else {
             if (getQCounter() === 1) {

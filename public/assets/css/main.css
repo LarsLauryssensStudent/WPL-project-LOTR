@@ -12329,18 +12329,10 @@ input[type=color],
 .quizzContainer {
   background-size: cover;
   background-position: center;
-  margin: auto 0;
-  padding: 0px;
-  margin: 4rem auto;
   border: 4px solid grey;
   border-radius: 30px;
   min-height: 240px;
   width: auto;
-  height: auto;
-}
-
-body {
-  min-height: 100vh;
 }
 
 .quizzContainerSD {
@@ -12451,12 +12443,16 @@ blockquote {
   background-image: url(../images/background-page/background-body.png);
   background-position: center;
   background-size: cover;
+  margin: auto;
 }
 
 .quizzBody {
   background-image: url(../images/background-page/background-body.png);
   background-position: center;
   background-size: cover;
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: auto 1fr auto;
 }
 
 .actorRadio:checked + .actorLabel,
@@ -12532,6 +12528,7 @@ header {
 
 footer {
   grid-area: footer;
+  margin-bottom: 0;
 }
 
 main {
