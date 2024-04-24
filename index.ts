@@ -9,6 +9,7 @@ import { Character, Movie, Quote } from "./interfaces";
 import blacklistRouter from "./routers/blacklist";
 import favoritesRouter from "./routers/favorites";
 import landingpageRouter from "./routers/landingpage";
+import resultRouter from "./routers/results";
 
 
 //arrays
@@ -28,14 +29,17 @@ export let tenRoundsBackgrounds: string[] = [
   "../assets/images/10rounds/lotr-background-almost-mordor.jpg",
   "../assets/images/10rounds/lotr-background-mordor.jpg"
 ]
-let blackListed: Quote[] = [];
-let favorites: Quote[] = [];
+
 
 // vars
 // let gameMode :string = "selection";
 let qCounter: number = 0;
 let randomQuote: Quote;
-// let userScore :number = 0;
+let score :number = 0;
+let blackListed: Quote[] = [];
+let favorites: Quote[] = [];
+let userScore :number = 0;
+
 //index export functies
 
 export function setQCounter(value: number) {
@@ -74,6 +78,12 @@ export function toggleFavorites(quote: Quote) {
   // Optionally, you can redirect to another route here if needed
   // res.redirect("/10-Rounds");
 }
+export function setScore(score :number) {
+  userScore = score;
+}
+export function getScore() :number {
+  return userScore
+}
 
 //monogdb
 const uri = "mongodb+srv://vandevkieboom:vandenkieboom1996@webontwikkeling.vk1mlnn.mongodb.net/?retryWrites=true&w=majority&appName=webontwikkeling";
@@ -111,7 +121,7 @@ app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
 app.use("/Blacklist", blacklistRouter());
 app.use("/Favorites", favoritesRouter());
-
+app.use("/Result", resultRouter())
 
 //startup
 app.listen(app.get("port"), async () => {

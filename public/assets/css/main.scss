@@ -320,9 +320,17 @@ input[type=color],
 .labelQuizz {
   background-color: #FCECBB !important;
   width: 100%;
-  margin-top: 1rem;
+  display: flex;
+  height: 40px!important;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px 24px 0 0;
+  border: 2px solid grey;
+  border-bottom: none;
+  margin-top: 1rem;
 }
+
 
 .quizzContainer * {
   background: none;
@@ -370,14 +378,20 @@ input[type=color],
 .quizzAnswers {
   display: flex;
   flex-wrap: wrap !important;
-  width: 100% !important;
+  margin: auto;
+  padding: auto;
   justify-content: space-between;
-  padding: 0 18px;
-  margin: 1rem auto;
   border: 2px solid red;
-
+  padding-bottom: 1rem;
 }
-
+.answerRow {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 180px;
+}
 .quizzContainer {
   background-size: cover;
   background-position: center;
@@ -489,15 +503,27 @@ blockquote {
   background-color: rgb(45, 44, 44) !important;
   color: yellow;
 }
-
+.submitQuizz {
+  display: flex;
+  justify-content: center ;
+  
+}
+.customAnswer {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
 .submitButton {
   border-radius: 0 0 28px 28px !important;
-  margin-top: 3rem;
   background-color: #fcecbb7e;
-  width: 100% !important;
+  width: 96px;
   border: 2px solid green;
-  margin-top: 0.4rem;
+  border-radius: 50%!important;
   background-color: #fcecbb7e;
+  margin: -2rem;
+}
+.submitButton img {
+  width: 100%;
 }
 
 .quizzMain {
@@ -672,8 +698,6 @@ main {
   align-items: center;
   background-color: rgba(245, 245, 220, 0.562) !important;
 }
-
-
 
 @media screen and (max-width: 600px) {
   .col-sm-10 {

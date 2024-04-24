@@ -1,6 +1,6 @@
 import express from "express";
 import { fetchData, generatePossibleAnswers, shuffleArray } from "../utils";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites, toggleFavorites } from "../index";
+import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites, toggleFavorites, setScore, getScore } from "../index";
 import { Quote, Movie, Character } from "../interfaces";
 
 export let score: number = 0;
@@ -13,7 +13,7 @@ export default function tenRoundsRouter() {
         if (getQCounter() > 10) {
             setQCounter(1);
             score = 0;
-            res.redirect("results");
+            res.redirect("Results");
         }
         else {
             if (getQCounter() === 1) {
@@ -31,9 +31,8 @@ export default function tenRoundsRouter() {
                 quote: randomQuote,
                 characters: randomChars,
                 movies: shuffledMovies,
-                score: score
+                score: getScore()
             });
-
         }
     })
 
@@ -50,16 +49,12 @@ export default function tenRoundsRouter() {
         if (movieChoice === correctMovie) {
             score += 1;
         }
-
-
+        setScore(score)
         setNewQuote(quotes);
         let current: number = getQCounter();
         current++;
         setQCounter(current);
-
         res.redirect("/10-Rounds");
-
-
     })
 
     router.get("/blacklist", (req, res) => {
@@ -69,6 +64,7 @@ export default function tenRoundsRouter() {
         console.log(getBlacklist());
         res.redirect("/10-Rounds");
     })
+ 
     router.get("/favorites", (req, res) => {
         let currentQuote: Quote = returnQuote();
         let favorites: Quote[] = getFavorites();
@@ -76,6 +72,8 @@ export default function tenRoundsRouter() {
         res.redirect("/10-Rounds");
 
     });
+
+
 
     return router
 }
