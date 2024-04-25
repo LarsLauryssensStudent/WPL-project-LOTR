@@ -11994,40 +11994,34 @@ html, body {
   font-family: "Poppins", sans-serif !important;
 }
 
+.register-body,
 .login-body {
   margin: 0;
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 100vh;
-}
-
-.register-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
   min-height: 100vh;
-}
-
-.login-body::before,
-.register-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
-  z-index: -1;
-}
-
-.login-body,
-.register-body {
   background-image: url("/assets/images/landingpage/lord.jpg");
   background-size: cover;
   background-position: center;
-  font-family: "Poppins", sans-serif !important;
+  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.6);
+}
+
+#loginForm {
+  min-width: 400px;
+  margin: auto;
+  border: 1px black solid;
+  padding: 1rem;
+}
+
+.login-main {
+  display: flex;
+  border: 1px solid black;
+  height: 100%;
+}
+
+header {
+  border: 1px solid rgb(166, 3, 3);
 }
 
 .game-container {
@@ -12056,9 +12050,17 @@ html, body {
 }
 
 .login-footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-footer .bi {
+  margin: 0;
+  padding: 0;
+  margin-right: 1rem;
+  padding: 0.2rem;
 }
 
 .required {
@@ -12112,19 +12114,6 @@ html, body {
 
 #togglePassword:hover {
   background-color: red;
-}
-
-.progress {
-  height: 0.3rem;
-}
-
-#passwordStrength {
-  font-size: 0.9rem;
-  margin-top: 0.3rem;
-}
-
-#passwordMatch {
-  margin-bottom: -0.45rem;
 }
 
 .input-group {
@@ -12216,13 +12205,6 @@ input[type=color],
 .card {
   background-color: #ffffff;
   border: none;
-}
-
-#loginForm {
-  max-width: 400px;
-  margin: auto;
-  border: 1px black solid;
-  padding: 1rem;
 }
 
 .waves {
