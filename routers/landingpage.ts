@@ -17,10 +17,6 @@ export default function landingpageRouter() {
         res.render("login")
     });
 
-    router.get("/register", (req, res) => {
-        res.render("register")
-    });
-
     router.post("/login", async (req, res) => {
         const { username, password } = req.body;
         console.log(username, password)
@@ -93,27 +89,58 @@ export default function landingpageRouter() {
         }
     });
 
+    router.get("/register", (req, res) => {
+        res.render("register", { 
+            usernameError: "", 
+            emailError: "",
+            requiredError: "",
+            passwordError: ""
+        })
+    });
+
     router.post("/register", async (req, res) => {
         const { signupUsername, signupEmail, signupPassword, repeatPassword } = req.body;
-        console.log(signupUsername, signupEmail, signupPassword, repeatPassword);
-        
+    
+        // Initialize error messages
+        let errors = {
+            usernameError: "",
+            emailError: "",
+            requiredError: "",
+            passwordError: ""
+        };
+    
+        // Input validation
+        if (!signupUsername || !signupEmail || !signupPassword) {
+            errors.requiredError = "Alle velden verplicht";
+            return res.status(400).render("register", errors);
+        }
+
+        // Check if passwords match
+        if (signupPassword !== repeatPassword) {
+            errors.passwordError = "Wachtwoorden komen niet overeen";
+            return res.status(400).render("register", errors);
+        }
+    
         try {
-            if (!signupUsername || !signupEmail || !signupPassword) {
-                return res.status(400).json({ success: false, message: "Alle velden zijn verplicht" });
-            }
-    
-            const existingEmailUser = await users.findOne({ email: signupEmail });
-            if (existingEmailUser) {
-                return res.status(400).json({ success: false, message: "E-mail is al in gebruik" });
-            }
-    
+            
+            // Check if username exists
             const existingUsernameUser = await users.findOne({ username: signupUsername });
             if (existingUsernameUser) {
-                return res.status(400).json({ success: false, message: "Gebruikersnaam is al in gebruik" });
+                errors.usernameError = "Gebruikersnaam bestaat al";
+                return res.status(400).render("register", errors);
+            }
+    
+            // Check if email exists
+            const existingEmailUser = await users.findOne({ email: signupEmail });
+            if (existingEmailUser) {
+                errors.emailError = "E-mail is al in gebruik";
+                return res.status(400).render("register", errors);
             }
             
+            // Hash password
             const hashedPassword = await bcrypt.hash(signupPassword, 10);
             
+            // Insert user into database
             const result = await users.insertOne({
                 username: signupUsername,
                 email: signupEmail,
@@ -121,8 +148,10 @@ export default function landingpageRouter() {
                 registered: new Date()
             });
     
+            // Successful registration
             res.status(201).json({ success: true, message: "Gebruiker succesvol geregistreerd" });
         } catch (error) {
+            // Error handling
             console.error("Error registering user:", error);
             res.status(500).json({ success: false, message: "Fout bij registreren van gebruiker" });
         }

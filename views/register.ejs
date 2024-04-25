@@ -22,7 +22,29 @@
       <form action="/register" method="post" id="loginForm">
 
         <!-- <a href="/" style="text-decoration: none;"><h1 class="landing-title mb-5">Fellowship of the Code</h1></a> -->
-        <div id="loginErrorMessage" class="text-danger mb-2"></div>
+        <% if (usernameError) { %>
+          <div class="alert alert-danger">
+              <%= usernameError %>
+          </div>
+        <% } %>
+      
+        <% if (emailError) { %>
+            <div class="alert alert-danger">
+                <%= emailError %>
+            </div>
+        <% } %>
+      
+        <% if (requiredError) { %>
+          <div class="alert alert-danger">
+              <%= requiredError %>
+          </div>
+        <% } %>
+
+        <% if (passwordError) { %>
+          <div class="alert alert-danger">
+              <%= passwordError %>
+          </div>
+        <% } %>
 
         <section class="mb-2">
           <label for="signupUsername" class="form-label">gebruikersnaam

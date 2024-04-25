@@ -51,35 +51,35 @@ document.getElementById('loginModal').addEventListener('hidden.bs.modal', () => 
 // }
 
 //switchen tussen login en register formuliers
-function switchForms(showLogin) {
-    const loginForm = document.getElementById('loginForm');
-    const createAccountForm = document.getElementById('createAccountForm');
-    const loginModalLabel = document.getElementById('loginModalLabel');
+// function switchForms(showLogin) {
+//     const loginForm = document.getElementById('loginForm');
+//     const createAccountForm = document.getElementById('createAccountForm');
+//     const loginModalLabel = document.getElementById('loginModalLabel');
 
-    registerErrorMessage.style.display = "none";
-    registerSuccessMessage.style.display = "none";
+//     registerErrorMessage.style.display = "none";
+//     registerSuccessMessage.style.display = "none";
 
-    if (showLogin) {
-        loginForm.style.display = 'block';
-        createAccountForm.style.display = 'none';
-        if (loginModalLabel.innerText === "account aanmaken") {
-            loginModalLabel.textContent = 'aanmelden';
-        }
-    } else {
-        loginForm.style.display = 'none';
-        createAccountForm.style.display = 'block';
-        loginModalLabel.textContent = 'account aanmaken';
-    }
-}
+//     if (showLogin) {
+//         loginForm.style.display = 'block';
+//         createAccountForm.style.display = 'none';
+//         if (loginModalLabel.innerText === "account aanmaken") {
+//             loginModalLabel.textContent = 'aanmelden';
+//         }
+//     } else {
+//         loginForm.style.display = 'none';
+//         createAccountForm.style.display = 'block';
+//         loginModalLabel.textContent = 'account aanmaken';
+//     }
+// }
 
-function changeModalTitle(title) {
-    const modalTitle = document.getElementById('loginModalLabel');
-    if (modalTitle) {
-        modalTitle.innerText = title;
-    } else {
-        console.error("Modal title element not found");
-    }
-}
+// function changeModalTitle(title) {
+//     const modalTitle = document.getElementById('loginModalLabel');
+//     if (modalTitle) {
+//         modalTitle.innerText = title;
+//     } else {
+//         console.error("Modal title element not found");
+//     }
+// }
 
 //event listener voor create account
 document.getElementById('showCreateAccountBtn').addEventListener('click', (event) => {
@@ -123,54 +123,54 @@ document.getElementById('forgot-password').addEventListener('click', function(ev
 });
 
 //wachtwoord sterkte controleren
-document.getElementById('signupPassword').addEventListener('input', () => {
-  const password = document.getElementById('signupPassword').value;
-  const strengthLabel = document.getElementById('strengthLabel');
-  const strengthBar = document.getElementById('strengthBar');
+// document.getElementById('signupPassword').addEventListener('input', () => {
+//   const password = document.getElementById('signupPassword').value;
+//   const strengthLabel = document.getElementById('strengthLabel');
+//   const strengthBar = document.getElementById('strengthBar');
   
-  const regexLowercase = /[a-z]/;
-  const regexUppercase = /[A-Z]/;
-  const regexNumber = /[0-9]/;
-  const regexSpecial = /[^A-Za-z0-9]/;
+//   const regexLowercase = /[a-z]/;
+//   const regexUppercase = /[A-Z]/;
+//   const regexNumber = /[0-9]/;
+//   const regexSpecial = /[^A-Za-z0-9]/;
 
-  let strength = 0;
-  if (regexLowercase.test(password)) strength++;
-  if (regexUppercase.test(password)) strength++;
-  if (regexNumber.test(password)) strength++;
-  if (regexSpecial.test(password)) strength++;
+//   let strength = 0;
+//   if (regexLowercase.test(password)) strength++;
+//   if (regexUppercase.test(password)) strength++;
+//   if (regexNumber.test(password)) strength++;
+//   if (regexSpecial.test(password)) strength++;
   
-  switch(strength) {
-    case 0:
-      strengthLabel.textContent = 'zeer zwak';
-      strengthBar.style.width = '20%';
-      strengthBar.className = 'progress-bar bg-danger';
-      break;
-    case 1:
-      strengthLabel.textContent = 'zwak';
-      strengthBar.style.width = '40%';
-      strengthBar.className = 'progress-bar bg-warning';
-      break;
-    case 2:
-      strengthLabel.textContent = 'matig';
-      strengthBar.style.width = '60%';
-      strengthBar.className = 'progress-bar bg-info';
-      break;
-    case 3:
-      strengthLabel.textContent = 'sterk';
-      strengthBar.style.width = '80%';
-      strengthBar.className = 'progress-bar bg-success';
-      break;
-    case 4:
-      strengthLabel.textContent = 'zeer sterk';
-      strengthBar.style.width = '100%';
-      strengthBar.className = 'progress-bar bg-success';
-      break;
-    default:
-      strengthLabel.textContent = '';
-      strengthBar.style.width = '0%';
-      strengthBar.className = 'progress-bar';
-  }
-});
+//   switch(strength) {
+//     case 0:
+//       strengthLabel.textContent = 'zeer zwak';
+//       strengthBar.style.width = '20%';
+//       strengthBar.className = 'progress-bar bg-danger';
+//       break;
+//     case 1:
+//       strengthLabel.textContent = 'zwak';
+//       strengthBar.style.width = '40%';
+//       strengthBar.className = 'progress-bar bg-warning';
+//       break;
+//     case 2:
+//       strengthLabel.textContent = 'matig';
+//       strengthBar.style.width = '60%';
+//       strengthBar.className = 'progress-bar bg-info';
+//       break;
+//     case 3:
+//       strengthLabel.textContent = 'sterk';
+//       strengthBar.style.width = '80%';
+//       strengthBar.className = 'progress-bar bg-success';
+//       break;
+//     case 4:
+//       strengthLabel.textContent = 'zeer sterk';
+//       strengthBar.style.width = '100%';
+//       strengthBar.className = 'progress-bar bg-success';
+//       break;
+//     default:
+//       strengthLabel.textContent = '';
+//       strengthBar.style.width = '0%';
+//       strengthBar.className = 'progress-bar';
+//   }
+// });
 
 //error messages voor de login
 // document.getElementById('loginForm').addEventListener('submit', async (event) => {
@@ -213,51 +213,51 @@ document.getElementById('signupPassword').addEventListener('input', () => {
 // });
 
 //error messages voor de register
-document.getElementById('createAccountForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
+// document.getElementById('createAccountForm').addEventListener('submit', async (event) => {
+//     event.preventDefault();
 
-    const username = document.getElementById('signupUsername').value;
-    const email = document.getElementById('signupEmail').value;
-    const password = document.getElementById('signupPassword').value;
-    const repeatPassword = document.getElementById('repeatPassword').value;
+//     const username = document.getElementById('signupUsername').value;
+//     const email = document.getElementById('signupEmail').value;
+//     const password = document.getElementById('signupPassword').value;
+//     const repeatPassword = document.getElementById('repeatPassword').value;
 
-    try {
-        const response = await fetch("/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                signupUsername: username,
-                signupEmail: email,
-                signupPassword: password,
-                repeatPassword: repeatPassword
-            })
-        });
+//     try {
+//         const response = await fetch("/register", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                 signupUsername: username,
+//                 signupEmail: email,
+//                 signupPassword: password,
+//                 repeatPassword: repeatPassword
+//             })
+//         });
 
-        const data = await response.json();
+//         const data = await response.json();
         
-        if (response.ok) {
-            registerErrorMessage.style.display = 'none';
-            registerSuccessMessage.textContent = data.message;
-            registerSuccessMessage.style.display = 'block'; 
+//         if (response.ok) {
+//             registerErrorMessage.style.display = 'none';
+//             registerSuccessMessage.textContent = data.message;
+//             registerSuccessMessage.style.display = 'block'; 
 
-            setTimeout(() => {
-                window.location.reload();
-            }, 2000);
+//             setTimeout(() => {
+//                 window.location.reload();
+//             }, 2000);
 
-            registerErrorMessage.textContent = '';
-        } else {
-            registerErrorMessage.textContent = data.message;
-            registerErrorMessage.style.display = 'block';
-            registerSuccessMessage.style.display = 'none'; 
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        registerErrorMessage.textContent = data.message;
-        registerErrorMessage.style.display = 'block';
-    }
-});
+//             registerErrorMessage.textContent = '';
+//         } else {
+//             registerErrorMessage.textContent = data.message;
+//             registerErrorMessage.style.display = 'block';
+//             registerSuccessMessage.style.display = 'none'; 
+//         }
+//     } catch (error) {
+//         console.error('Error:', error);
+//         registerErrorMessage.textContent = data.message;
+//         registerErrorMessage.style.display = 'block';
+//     }
+// });
 
 
 
