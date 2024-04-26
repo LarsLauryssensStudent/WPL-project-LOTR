@@ -12000,27 +12000,42 @@ html, body {
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  background-image: url("/assets/images/landingpage/lord.jpg");
+}
+
+.login-body::before,
+.register-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(239, 239, 239, 0.8);
+  z-index: -1;
+}
+
+.login-body,
+.register-body {
+  background-image: url("/assets/images/landingpage/battle-of-the-black-3840x2160-11942.png");
   background-size: cover;
   background-position: center;
-  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.6);
+  font-family: "Poppins", sans-serif !important;
 }
 
 #loginForm {
   width: 400px;
   margin: auto;
-  border: 3px black solid;
   padding: 1rem;
+}
+
+#loginForm label {
+  margin: 0;
+  padding: 0;
 }
 
 .login-main {
   display: flex;
-  border: 1px solid black;
-  height: 100%;
-}
-
-header {
-  border: 1px solid rgb(166, 3, 3);
+  margin: auto;
 }
 
 .game-container {
@@ -12049,10 +12064,10 @@ header {
 }
 
 .login-footer {
-  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: red 2px solid;
 }
 
 .login-footer .bi {
@@ -12652,6 +12667,6 @@ main {
   border-radius: 0px 0px 24px 24px;
 }
 
-body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing-card-title) {
+body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing-card-title):not(.register-body):not(.login-body) {
   letter-spacing: 0.1rem !important;
 }
