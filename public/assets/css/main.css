@@ -11996,7 +11996,6 @@ html, body {
 
 .register-body,
 .login-body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -12008,9 +12007,9 @@ html, body {
 }
 
 #loginForm {
-  min-width: 400px;
+  width: 400px;
   margin: auto;
-  border: 1px black solid;
+  border: 3px black solid;
   padding: 1rem;
 }
 
