@@ -1,11 +1,11 @@
 // EJS opbouw 07/04/2024
-import express from "express";
-import { MongoClient } from "mongodb";
+import express, { Express } from "express";
+import { connect, port } from "./database";
+import { fetchData, fullQuotes, trimCharacters, trimMovies } from "./utils";
+import { Character, Movie, Quote } from "./interfaces";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
-import { fetchData, fullQuotes, trimCharacters, trimMovies } from "./utils";
-import { Character, Movie, Quote } from "./interfaces";
 import blacklistRouter from "./routers/blacklist";
 import favoritesRouter from "./routers/favorites";
 import landingpageRouter from "./routers/landingpage";
@@ -85,57 +85,39 @@ export function getScore() :number {
   return userScore
 }
 
-//monogdb
-const uri = "mongodb+srv://vandevkieboom:vandenkieboom1996@webontwikkeling.vk1mlnn.mongodb.net/?retryWrites=true&w=majority&appName=webontwikkeling";
-export const client = new MongoClient(uri);
-
-async function connectToDatabase() {
-  try {
-    await client.connect();
-
-    console.log("connected to mongodb");
-  } catch (err) {
-    console.error("error connecting to mongodb:", err);
-  }
-}
-
-connectToDatabase().catch(console.error);
-
 
 //express
-const app = express();
+const app: Express = express();
 
-app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
-
 app.use(express.static("public"));
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true }))
 
 
-//routes
+//routers
 app.use("/", landingpageRouter());
 app.use("/selection", selectionRouter());
-//app.use("/selection", isAuthenticated, selectionRouter());
 app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
 app.use("/Blacklist", blacklistRouter());
 app.use("/Favorites", favoritesRouter());
 app.use("/Result", resultRouter())
 
+
 //startup
-app.listen(app.get("port"), async () => {
+app.listen(port, async () => {
+  await connect();
+  console.log(`Server started on http://localhost:${port}`);
+
   try {
     const data: any = await fetchData();
-
     quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
     characters = await trimCharacters(data.characters, quotes);
     movies = await trimMovies(data.movies, quotes);
     setNewQuote(quotes);
 
-    console.log(`Port running on ${app.get("port")}`);
   } catch (error) {
     console.error("Error fetching data:", error);
-    console.log(`Port running on ${app.get("port")}`);
   }
 });
