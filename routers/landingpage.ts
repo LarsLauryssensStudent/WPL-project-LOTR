@@ -54,11 +54,11 @@ export default function landingpageRouter() {
             if (passwordMatch) {
                 return res.status(200).render("selection");
             } else {
-                errors.passwordError = "Wachtwoorden is fout";
+                errors.passwordError = "Wachtwoord is fout";
                 return res.status(401).render("login", errors);
             }
         } catch (error) {
-            console.error("Fout bij inloggen:", error);
+            console.error("Fout bij het inloggen:", error);
             return res.status(500).json({ success: false, message: "Fout bij inloggen" });
         }
     });
