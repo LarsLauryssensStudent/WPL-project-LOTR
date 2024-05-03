@@ -1,7 +1,6 @@
 // EJS opbouw 07/04/2024
 import express, { Express } from "express";
-import { connect, port } from "./database";
-import { fetchData, fullQuotes, trimCharacters, trimMovies } from "./utils";
+import { checkData, connect, getQuotes, port } from "./database";
 import { Character, Movie, Quote } from "./interfaces";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
@@ -49,7 +48,7 @@ export function getQCounter() {
   return qCounter;
 }
 export function setNewQuote(array: Quote[]) {
-  let randomIndex: number = Math.floor(Math.random() * quotes.length);
+  let randomIndex: number = Math.floor(Math.random() * array.length);
   randomQuote = array[randomIndex];
 }
 export function returnQuote(): Quote {
@@ -102,7 +101,7 @@ app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
 app.use("/Blacklist", blacklistRouter());
 app.use("/Favorites", favoritesRouter());
-app.use("/Result", resultRouter())
+app.use("/results", resultRouter())
 
 
 //startup
@@ -111,10 +110,8 @@ app.listen(port, async () => {
   console.log(`Server started on http://localhost:${port}`);
 
   try {
-    const data: any = await fetchData();
-    quotes = await fullQuotes(data.quotesTT, data.quotesFS, data.quotesRK);
-    characters = await trimCharacters(data.characters, quotes);
-    movies = await trimMovies(data.movies, quotes);
+    await checkData();
+    let quotes: Quote[] = await getQuotes();
     setNewQuote(quotes);
 
   } catch (error) {

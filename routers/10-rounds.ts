@@ -1,7 +1,8 @@
 import express from "express";
-import { fetchData, generatePossibleAnswers, shuffleArray } from "../utils";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites, toggleFavorites, setScore, getScore } from "../index";
+import { generatePossibleAnswers, shuffleArray } from "../utils";
+import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites, toggleFavorites, setScore, getScore } from "../index";
 import { Quote, Movie, Character } from "../interfaces";
+import { getCharacters, getMovies, getQuotes } from "../database";
 
 export let score: number = 0;
 
@@ -13,11 +14,19 @@ export default function tenRoundsRouter() {
         if (getQCounter() > 10) {
             setQCounter(1);
             score = 0;
-            res.redirect("Results");
+            res.redirect("/results");
         }
         else {
             if (getQCounter() === 1) {
                 score = 0;
+            }
+            let characters : Character[] = [];
+            let movies : Movie[] = [];
+            try {
+            characters = await getCharacters();
+            movies = await getMovies();    
+            }catch (error) {
+                console.log("Er ging iets fout bij selection: " + error )
             }
             //quote randomen
             const randomQuote: Quote = returnQuote();
@@ -49,6 +58,7 @@ export default function tenRoundsRouter() {
         if (movieChoice === correctMovie) {
             score += 1;
         }
+        let quotes : Quote [] = await getQuotes();
         setScore(score)
         setNewQuote(quotes);
         let current: number = getQCounter();
@@ -57,9 +67,10 @@ export default function tenRoundsRouter() {
         res.redirect("/10-Rounds");
     })
 
-    router.get("/blacklist", (req, res) => {
+    router.get("/blacklist", async (req, res) => {
         let currentQuote: Quote = returnQuote();
         addToBlacklist(currentQuote);
+        let quotes : Quote[] = await getQuotes();
         setNewQuote(quotes);
         console.log(getBlacklist());
         res.redirect("/10-Rounds");

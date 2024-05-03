@@ -1,5 +1,4 @@
 import express from "express";
-import { fetchData } from "../utils";
 import { setQCounter } from "../index";
 export default function selectionRouter() {
     const router = express.Router();

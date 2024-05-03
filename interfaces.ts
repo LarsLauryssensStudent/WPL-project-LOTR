@@ -1,5 +1,8 @@
+import { ObjectId } from "mongodb";
+
 export interface Character {
-    _id:     string;
+    _id?: ObjectId;
+    id:     string;
     height:  string;
     race:    string;
     gender:  string;
@@ -13,7 +16,8 @@ export interface Character {
 }
 
 export interface Movie {
-    _id:                        string;
+    _id?: ObjectId;
+    id:                        string;
     name:                       string;
     runtimeInMinutes:           number;
     budgetInMillions:           number;
@@ -24,9 +28,10 @@ export interface Movie {
 }
 
 export interface Quote {
-    _id:       string;
+    _id?: ObjectId;
+    id:       string;
     dialog:    string;
     movie:     string;
     character: string;
-    id:        string;
+    id2:        string;
 }

@@ -24,7 +24,7 @@ function toggleIds(): Character[] {
     let characterss: Character[] = [];
 
     characterIds.forEach(characterId => {
-        const foundCharacter = characters.find(char => char._id === characterId);
+        const foundCharacter = characters.find(char => char.id === characterId);
         if (foundCharacter) {
             characterss.push(foundCharacter);
             console.log(foundCharacter);
