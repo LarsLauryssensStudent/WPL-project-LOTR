@@ -1,5 +1,5 @@
 import { name } from "ejs";
-import { characters, getBlacklist } from ".";
+import { characters } from ".";
 import { Character, Movie, Quote } from "./interfaces";
 
 

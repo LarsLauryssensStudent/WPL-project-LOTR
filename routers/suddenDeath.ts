@@ -1,30 +1,39 @@
 import express from "express";
 import { shuffleArray, generatePossibleAnswers } from "../utils";
-import { getQCounter, setQCounter, movies, quotes, characters, returnQuote, setNewQuote, addToBlacklist, getBlacklist, toggleFavorites } from "../index";
-import { Quote, Movie, Character } from "../interfaces";
+import { getQCounter, setQCounter, returnQuote, setNewQuote } from "../index";
+import { Quote, Movie, Character, User } from "../interfaces";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites } from "../database";
+
 
 export default function suddenDeathRouter() {
     const router = express.Router();
 
 
     router.get("/", async (req,res) => {
-        let randomQuote : Quote = returnQuote();
-        let randomChars :Character[] = generatePossibleAnswers(randomQuote, characters);
+        const randomQuote : Quote = returnQuote();
+        let characters : Character[] = [];
+        let movies : Movie[] = [];
+        try {
+        characters = await getCharacters();
+        movies = await getMovies();    
+        }catch (error) {
+            console.log("Er ging iets fout bij 10-Rounds: " + error )
+        }
+        const randomChars :Character[] = generatePossibleAnswers(randomQuote, characters);
             // movie randomen
-        const shuffledMovies = shuffleArray(movies);
         console.log(getQCounter());
         res.render("quizzSD", {
             qCounter: getQCounter(),
             score: 0,
             quote: randomQuote,
             characters: randomChars,
-            movies: shuffledMovies
+            movies: movies
         });
     
     })
 
 
-    router.get("/check", (req,res) => {
+    router.get("/check", async (req,res) => {
         let characterChoice :string = typeof req.query.actorRadio === "string" ? req.query.actorRadio : "";
         let movieChoice :string = typeof req.query.movieRadio === "string" ? req.query.movieRadio : "";
         console.log(characterChoice, movieChoice);
@@ -35,6 +44,7 @@ export default function suddenDeathRouter() {
             let currentSD :number = getQCounter();
             currentSD++;
             setQCounter(currentSD);
+            let quotes: Quote[] = await getQuotes();
             setNewQuote(quotes);
 
             res.redirect("/Sudden-Death");
@@ -45,16 +55,30 @@ export default function suddenDeathRouter() {
         }
         
     })
-    router.get("/blacklist", (req,res) => {
+    router.get("/blacklist", async (req,res) => {
         let currentQuote :Quote = returnQuote();
-        addToBlacklist(currentQuote);
+        let userId = "test";
+        try {
+        await addToBlacklist(currentQuote, userId);
+        let quotes :Quote[] = await getQuotes();
         setNewQuote(quotes);
-        console.log(getBlacklist());
+        console.log(await getBlacklist(userId));
+        }
+        catch (error) {
+            console.log(error);
+        }
         res.redirect("/Sudden-Death");      
     })
-    router.get("/favorites", (req,res) => {
+    router.get("/favorites", async (req,res) => {
         let currentQuote :Quote = returnQuote();
-        toggleFavorites(currentQuote);
+        let userId = "test"; 
+        try {
+            await toggleFavorites(currentQuote, userId);
+            console.log("Succes Fav")
+        }
+        catch (error) {
+            console.log(error);
+        }
         console.log("ben hier");
         res.redirect("/Sudden-Death");
     });

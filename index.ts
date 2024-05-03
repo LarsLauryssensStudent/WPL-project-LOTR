@@ -1,7 +1,7 @@
 // EJS opbouw 07/04/2024
 import express, { Express } from "express";
 import { checkData, connect, getQuotes, port } from "./database";
-import { Character, Movie, Quote } from "./interfaces";
+import { Character, GameResult, Movie, Quote } from "./interfaces";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
@@ -34,9 +34,7 @@ export let tenRoundsBackgrounds: string[] = [
 // let gameMode :string = "selection";
 let qCounter: number = 0;
 let randomQuote: Quote;
-let score :number = 0;
-let blackListed: Quote[] = [];
-let favorites: Quote[] = [];
+let currentGame: GameResult;
 let userScore :number = 0;
 
 //index export functies
@@ -54,29 +52,7 @@ export function setNewQuote(array: Quote[]) {
 export function returnQuote(): Quote {
   return randomQuote;
 }
-export function getBlacklist(): Quote[] {
-  return blackListed;
-}
-export function addToBlacklist(quote: Quote) {
-  blackListed.push(quote);
-}
-export function getFavorites(): Quote[] {
-  return favorites;
-}
-export function toggleFavorites(quote: Quote) {
-  let favorites: Quote[] = getFavorites();
-
-  if (favorites.includes(quote)) {
-      favorites = favorites.filter(element => element !== quote);
-      console.log("Quote removed from favorites");
-  } else {
-      favorites.push(quote);
-      console.log("Quote added to favorites");
-  }
-
-  // Optionally, you can redirect to another route here if needed
-  // res.redirect("/10-Rounds");
-}
+  
 export function setScore(score :number) {
   userScore = score;
 }

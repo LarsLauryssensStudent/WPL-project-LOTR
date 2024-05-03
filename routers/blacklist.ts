@@ -1,15 +1,19 @@
 import express from "express";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist } from "../index";
+import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote } from "../index";
 import { Character, Quote } from "../interfaces";
 import { link } from "fs";
+import { getBlacklist } from "../database";
+import { userInfo } from "os";
 
 export default function blacklistRouter() {
     const router = express.Router();
 
+    router.get("/", async (req, res) => {
+        let userId = "test";
+        const blacklisted: Quote[] = await getBlacklist(userId);
 
-    const blacklisted: Quote[] = getBlacklist();
-    router.get("/", (req, res) => {
-        let charactersss: Character[] | undefined = toggleIds();
+        let charactersss: Character[] | undefined = []
+        charactersss = await toggleIds();
         res.render("blacklist", {
             blacklisted: blacklisted,
             characters: characters
@@ -18,8 +22,9 @@ export default function blacklistRouter() {
     return router
 }
 
-function toggleIds(): Character[] {
-    const blacklisted: Quote[] = getBlacklist();
+async function toggleIds(): Promise<Character[]> {
+    let userId = "test";
+    const blacklisted: Quote[] = await getBlacklist(userId);
     const characterIds: string[] = blacklisted.map(quote => quote.character);
     let characterss: Character[] = [];
 

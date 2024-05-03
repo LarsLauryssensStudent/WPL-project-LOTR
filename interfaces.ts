@@ -35,3 +35,23 @@ export interface Quote {
     character: string;
     id2:        string;
 }
+
+export interface User {
+    _id?: ObjectId,
+    username: string,
+    email: string,
+    password: string,
+    registered: Date,
+    favorites: Quote[],
+    blacklisted: Quote[],
+    highScore?: number,
+    lastGames?: GameResult[]
+}
+
+export interface GameResult {
+    _id?: ObjectId,
+    lastQuotes: Quote[],
+    lastCharacters: string[],
+    lastMovies: string[],
+    score?: number
+}

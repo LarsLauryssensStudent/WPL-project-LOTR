@@ -3,11 +3,12 @@ import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
 import { client } from "../database";
 import { v4 as uuidv4 } from 'uuid';
+import { Quote, User } from "../interfaces";
 
 export default function landingpageRouter() {
     const router = express.Router();
     const db = client.db(process.env.DB_NAME);
-    const users = db.collection("users");
+    const users = db.collection<User>("users");
 
     router.get("/", (req, res) => {
         res.render("index")
@@ -196,7 +197,10 @@ export default function landingpageRouter() {
                 username: signupUsername,
                 email: signupEmail,
                 password: hashedPassword,
-                registered: new Date()
+                registered: new Date(),
+                favorites: [],
+                blacklisted: [],
+                highScore: 0
             });
     
             //succes regristratie

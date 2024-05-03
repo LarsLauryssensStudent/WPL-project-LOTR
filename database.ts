@@ -1,6 +1,7 @@
-import { DeleteResult, InsertManyResult, MongoClient } from "mongodb";
+import { DeleteResult, InsertManyResult, MongoClient, UpdateResult } from "mongodb";
 import dotenv from "dotenv";
-import { Character, Movie, Quote } from "./interfaces";
+import { Character, Movie, Quote, User } from "./interfaces";
+import { error } from "console";
 dotenv.config();
 
 export const port = process.env.PORT || 3000
@@ -10,6 +11,8 @@ const db = client.db(process.env.DB_NAME);
 const quoteCollection = db.collection<Quote>("quoteCollection");
 const characterCollection = db.collection<Character>("characterCollection");
 const movieCollection = db.collection<Movie>("movieCollection")
+const users = db.collection<User>("users");
+
 
 async function exit() {
     try {
@@ -270,9 +273,8 @@ export async function fetchData() {
     return movies;
 }
 
-export async function updateScore() {
 
-}
+
 export async function getScore() {
 
 }
@@ -281,3 +283,69 @@ export async function getQuestion() {
 
 }
 
+export async function getBlacklist(userName: string) {
+  try {
+    const user: User | null = await users.findOne<User>({username: userName});
+    if (user) {
+      return user.blacklisted
+    }
+    else {
+      throw new Error("Geen user gevonden");
+    }
+  }
+  catch (error) {
+    throw new Error("Kan blacklist niet krijgen: " + error);
+  }
+}
+
+export async function getFavorites(userName: string) {
+  try {
+    const user: User | null = await users.findOne({username: userName});
+    if (user) {
+      return user.favorites
+    }
+    else {
+      throw new Error("Geen user gevonden");
+    }
+  }
+  catch (error) {
+    throw new Error("Kan favorites niet krijgen: " + error);
+  }
+}
+
+export async function addToBlacklist(currentQuote: Quote, userId: string) {
+  try {
+    let result = await users.findOneAndUpdate({username: userId}, {$push: {blacklisted: currentQuote}});
+    console.log("Succesvol geblacklist: " + result);
+  }
+  catch (error) {
+    throw new Error("De quote kon niet geblacklist worden: " + error)
+  }
+}
+
+export async function removeFromBlacklist(currentQuote: Quote, userId: string) {
+
+}
+//deze is nog niet af, ik moet nog zien of deze in de array zit en dan eventueel verwijderen indien ja
+export async function toggleFavorites(currentQuote: Quote, userId: string) {
+  try {
+    const favorites: Quote[] = await getFavorites(userId);
+    const isQuoteInFavorites: boolean = favorites.some(quote => quote.id === currentQuote.id);
+
+    if (isQuoteInFavorites) {
+        // als de quote er al inzit gooien we deze eruit
+        await users.updateOne(
+            { username: userId },
+            { $pull: { favorites: { id: currentQuote.id } } }
+        );
+        console.log("Quote removed from favorites");
+    } else {
+    
+      let result = await users.findOneAndUpdate({username: userId}, {$push: {favorites: currentQuote}});
+      console.log("Succesvol gefavorite: " + result);
+    }
+  }
+  catch (error) {
+    throw new Error("De quote kon niet gefavorite worden: " + error)
+  }
+}

@@ -1,8 +1,8 @@
 import express from "express";
 import { generatePossibleAnswers, shuffleArray } from "../utils";
-import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites, toggleFavorites, setScore, getScore } from "../index";
+import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, setScore, getScore } from "../index";
 import { Quote, Movie, Character } from "../interfaces";
-import { getCharacters, getMovies, getQuotes } from "../database";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites } from "../database";
 
 export let score: number = 0;
 
@@ -26,7 +26,7 @@ export default function tenRoundsRouter() {
             characters = await getCharacters();
             movies = await getMovies();    
             }catch (error) {
-                console.log("Er ging iets fout bij selection: " + error )
+                console.log("Er ging iets fout bij 10-Rounds: " + error )
             }
             //quote randomen
             const randomQuote: Quote = returnQuote();
@@ -69,17 +69,28 @@ export default function tenRoundsRouter() {
 
     router.get("/blacklist", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        addToBlacklist(currentQuote);
+        let userId = "test"
+        try {
+        await addToBlacklist(currentQuote, userId);
         let quotes : Quote[] = await getQuotes();
         setNewQuote(quotes);
-        console.log(getBlacklist());
+        console.log(await getBlacklist(userId));
+        }
+        catch (error) {
+            console.log(error);
+        }
         res.redirect("/10-Rounds");
     })
  
-    router.get("/favorites", (req, res) => {
+    router.get("/favorites", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let favorites: Quote[] = getFavorites();
-        toggleFavorites(currentQuote);
+        let userId = "test";
+        try {
+            await toggleFavorites(currentQuote, userId);
+        }
+        catch (error) {
+            console.log("error" + error)
+        }
         res.redirect("/10-Rounds");
 
     });

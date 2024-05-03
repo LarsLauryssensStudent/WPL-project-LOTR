@@ -1,12 +1,14 @@
 import express from "express";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote, addToBlacklist, getBlacklist, getFavorites } from "../index";
+import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote } from "../index";
 import { Quote } from "../interfaces";
+import { getFavorites } from "../database";
 
 export default function favoritesRouter() {
     const router = express.Router();
 
-    router.get("/", (req, res) => {
-        const favorites: Quote[] = getFavorites();
+    router.get("/", async (req, res) => {
+        let userId = "test";
+        const favorites: Quote[] = await getFavorites(userId);
         res.render("favorites",
             {
                 characters: characters,
