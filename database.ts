@@ -324,7 +324,14 @@ export async function addToBlacklist(currentQuote: Quote, userId: string) {
 }
 
 export async function removeFromBlacklist(currentQuote: Quote, userId: string) {
-
+  try {
+    await users.updateOne(
+      { username: userId },
+      { $pull: { blacklisted: { id: currentQuote.id } } }
+  );
+  } catch (error) {
+    throw new Error("Something went from with removal from blacklist: " + error);
+  }
 }
 //deze is nog niet af, ik moet nog zien of deze in de array zit en dan eventueel verwijderen indien ja
 export async function toggleFavorites(currentQuote: Quote, userId: string) {
@@ -338,7 +345,7 @@ export async function toggleFavorites(currentQuote: Quote, userId: string) {
             { username: userId },
             { $pull: { favorites: { id: currentQuote.id } } }
         );
-        console.log("Quote removed from favorites");
+        console.log("Quote removved from favorites");
     } else {
     
       let result = await users.findOneAndUpdate({username: userId}, {$push: {favorites: currentQuote}});
