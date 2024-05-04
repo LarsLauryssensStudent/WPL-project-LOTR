@@ -356,3 +356,14 @@ export async function toggleFavorites(currentQuote: Quote, userId: string) {
     throw new Error("De quote kon niet gefavorite worden: " + error)
   }
 }
+
+export async function removeFromFavorites(currentQuote: Quote, userId: string) {
+  try {
+    await users.updateOne(
+      { username: userId },
+      { $pull: { favorites: { id: currentQuote.id } } }
+  );
+  } catch (error) {
+    throw new Error("Something went from with removal from blacklist: " + error);
+  }
+}

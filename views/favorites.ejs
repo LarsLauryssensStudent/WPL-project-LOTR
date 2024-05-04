@@ -22,9 +22,9 @@
                                             <%= fav.dialog %>
                                         </blockquote>
                                         <cite>
-                                            <%= characters.find(char=> char._id === fav.character).name %>
+                                            <%= characters.find(char=> char.id === fav.character).name %>
                                         </cite>
-                                        <span class="bi bi-trash"></span>
+                                        <a href="/Favorites/<%= fav.id %>/Remove"><span class="bi bi-trash"></span></a>
                                     </li>
                                     <% }) %>
                                         <% } else { %>
