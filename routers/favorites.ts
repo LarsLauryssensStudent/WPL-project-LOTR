@@ -1,7 +1,7 @@
 import express from "express";
 import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote } from "../index";
-import { Quote } from "../interfaces";
-import { getFavorites } from "../database";
+import { Character, Quote } from "../interfaces";
+import { getCharacters, getFavorites, removeFromFavorites } from "../database";
 
 export default function favoritesRouter() {
     const router = express.Router();
@@ -9,11 +9,28 @@ export default function favoritesRouter() {
     router.get("/", async (req, res) => {
         let userId = "test";
         const favorites: Quote[] = await getFavorites(userId);
+        const characters = await getCharacters();
         res.render("favorites",
             {
                 characters: characters,
                 favorites: favorites
             })
+    });
+
+    router.get("/:id/Remove", async (req, res) => {
+        const quoteId: string = req.params.id;
+        const quoteToRemove: Quote = {
+            id: quoteId,
+            dialog: "",
+            movie: "",
+            character: "",
+            id2: "",
+        }
+        const userId: string = "test";
+
+        await removeFromFavorites(quoteToRemove, userId);
+
+        res.redirect("/Favorites");
     });
     return router
 }

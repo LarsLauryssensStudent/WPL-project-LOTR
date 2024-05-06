@@ -22,9 +22,9 @@
                                             <%= bl.dialog %>
                                         </blockquote>
                                         <cite>
-                                            <%= characters.find(char=> char._id === bl.character).name %>
+                                            <%= characters.find(char => char.id === bl.character).name %>
                                         </cite>
-                                        <span class="bi bi-trash"></span>
+                                        <a href="/Blacklist/<%= bl.id %>/Remove"><span class="bi bi-trash"></span></a>
                                     </li>
                                     <% }) %>
                                         <% } else { %>
