@@ -7,7 +7,7 @@ export default function loginRouter() {
 
     router.get("/login", async (req, res) => {
         if (!req.session.user) {
-            res.render("login");
+            res.render("login/login");
         } else {
             res.redirect("/selection")
         }
@@ -21,7 +21,7 @@ export default function loginRouter() {
             req.session.user = user;
 
             req.session.message = { type: "success", message: "Login successful" };
-            res.redirect("/");
+            res.redirect("/selection");
         } catch (error: any) {
             req.session.message = { type: "error", message: error.message };
             res.redirect("/login");
@@ -36,16 +36,16 @@ export default function loginRouter() {
 
     router.get("/register", (req, res) => {
         if (!req.session.user) {
-            res.render("register");
+            res.render("login/register");
         } else {
             res.redirect("/selection")
         }
     });
 
     router.post("/register", async (req, res) => {
-        const { signupUsername, signupEmail, signupPassword } = req.body;
+        const { signupUsername, signupEmail, signupPassword, repeatNewPassword } = req.body;
         try {
-            await register(signupUsername, signupEmail, signupPassword);
+            await register(signupUsername, signupEmail, signupPassword, repeatNewPassword);
             req.session.message = { type: "success", message: "Register successful" };
             res.redirect("/login");
         } catch (error: any) {

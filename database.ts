@@ -1,18 +1,14 @@
 import { DeleteResult, InsertManyResult, MongoClient, UpdateResult } from "mongodb";
 import { Character, Movie, Quote, User } from "./interfaces";
 import bcrypt from 'bcrypt';
-
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// export const port = process.env.PORT || 3000
-// export const client = new MongoClient(process.env.MONGO_URI!);
-
 export const uri = process.env.MONGO_URI ?? "mongodb://localhost:27017";
-export const client = new MongoClient(uri);
+const client = new MongoClient(uri);
 
-const db = client.db(process.env.DB_NAME);
+const db = client.db("wpl-login");
 const quoteCollection = db.collection<Quote>("quoteCollection");
 const characterCollection = db.collection<Character>("characterCollection");
 const movieCollection = db.collection<Movie>("movieCollection")
@@ -71,9 +67,14 @@ export async function login(username: string, password: string) {
   }
 };
 
-export async function register(username: string, email: string, password: string) {
+export async function register(username: string, email: string, password: string, repeatPassword: string) {
   if (username === "" || email === "" || password === "") {
       throw new Error("All fields required");
+  }
+
+  let existingUsername: User | null = await users.findOne({ username: username });
+  if (existingUsername) {
+      throw new Error("Username is already taken");
   }
 
   let existingEmail: User | null = await users.findOne({ email: email });
@@ -81,9 +82,8 @@ export async function register(username: string, email: string, password: string
       throw new Error("Email is already registered")
   }
 
-  let existingUsername: User | null = await users.findOne({ username: username });
-  if (existingUsername) {
-      throw new Error("Username is already taken");
+  if (password !== repeatPassword) {
+    throw new Error("Passwords do not match");
   }
 
   const saltRounds: number = 10;

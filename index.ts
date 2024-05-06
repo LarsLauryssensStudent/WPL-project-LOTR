@@ -84,17 +84,21 @@ app.set("port", process.env.PORT ?? 3000);
 
 //routers
 app.use(loginRouter());
-app.use("/selection", selectionRouter());
+app.use("/selection", secureMiddleware, selectionRouter());
 app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
-app.use("/Blacklist", blacklistRouter());
-app.use("/Favorites", favoritesRouter());
+app.use("/Blacklist", secureMiddleware, blacklistRouter());
+app.use("/Favorites", secureMiddleware, favoritesRouter());
 app.use("/results", resultRouter())
 
 //startup
 
 app.get("/", (req, res) => {
-  res.render("index");
+  if (req.session.user) {
+    res.redirect("/selection");
+  } else {
+    res.render("index");
+  }
 })
 
 app.listen(app.get("port"), async () => {

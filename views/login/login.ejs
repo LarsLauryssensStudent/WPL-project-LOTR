@@ -23,6 +23,14 @@
     <main class="container login-main">
       <form action="/login" method="post" id="loginForm">
 
+        <% if (message) { %>
+          <% if (message.type === "success") { %>
+            <p class="alert alert-success"><%= message.message %></p>
+          <% } else if (message.type ==="error") { %>
+            <p class="alert alert-danger"><%= message.message %></p>
+          <% } %>
+        <% } %>
+
         <section class="mb-2">
           <label for="username" class="form-label">
             gebruikersnaam<span class="required">*</span>
