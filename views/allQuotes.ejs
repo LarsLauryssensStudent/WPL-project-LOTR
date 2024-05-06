@@ -1,0 +1,39 @@
+<%- include("partials/header") %>
+
+    <main class="container-fluid quizzMain">
+
+
+        <section class="col-sm-12 col-lg-8 col-md-10 ">
+            <section class="quizzContainer">
+                <section class="quizzNav container-fluid">
+                    <h1 class="mx-auto" style="font-size: 1.6rem; padding-top: 8px;">
+                        <%= character.name %>
+                    </h1>
+                </section>
+                <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
+
+
+                    <ul class="list-unstyled overFlowerList">
+                        <% quotes.forEach(q => { %>
+                            <li class="my-2">
+                                <blockquote class="my-0">
+                                    <%= q.dialog %>
+                                </blockquote>
+                            </li>
+                            <% }) %>
+                    </ul>
+
+
+                </section>
+
+
+            </section>
+
+
+        </section>
+
+    </main>
+    </body>
+
+
+    <%- include("partials/footer") %>

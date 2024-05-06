@@ -4,42 +4,43 @@
 <%- include("partials/header") %>
 
     <main class="container-fluid quizzMain">
-        
-
-            <section class="col-sm-12 col-lg-8 col-md-10 ">
-                <section class="quizzContainer w-100">
-                    <section class="quizzNav container-fluid">
-                        <h1 class="mx-auto" style="font-size: 1.6rem; letter-spacing: 0.2rem; padding-top: 8px;">
-                            Favorites</h1>
-                    </section>
-                    <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
-
-                        <ul class="list-unstyled overFlowerList">
-                            <% if (favorites.length> 0) { %>
-                                <% favorites.forEach(fav=> { %>
-                                    <li class="my-2">
-                                        <blockquote class="my-0">
-                                            <%= fav.dialog %>
-                                        </blockquote>
-                                        <cite>
-                                            <%= characters.find(char=> char.id === fav.character).name %>
-                                        </cite>
-                                        <a href="/Favorites/<%= fav.id %>/Remove"><span class="bi bi-trash"></span></a>
-                                    </li>
-                                    <% }) %>
-                                        <% } else { %>
-                                            <li>
-                                                <h1 class="my-2 text-center">Niets in favorieten!</h1>
-                                            </li>
-                                            <% } %>
-                        </ul>
-
-                    </section>
 
 
-                
+        <section class="col-sm-12 col-lg-8 col-md-10 ">
+            <section class="quizzContainer w-100">
+                <section class="quizzNav container-fluid">
+                    <h1 class="mx-auto" style="font-size: 1.6rem; letter-spacing: 0.2rem; padding-top: 8px;">
+                        Favorites</h1>
+                </section>
+                <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
+
+                    <ul class="list-unstyled overFlowerList">
+                        <% if (favorites.length> 0) { %>
+                            <% favorites.forEach(fav=> { %>
+                                <li class="my-2">
+                                    <blockquote class="my-0">
+                                        <%= fav.dialog %>
+                                    </blockquote>
+                                    <cite>
+                                        <%= characters.find(char=> char.id === fav.character).name %>
+                                    </cite>
+                                    <a href="/Favorites/<%= fav.id %>/Remove"><span class="bi bi-trash"></span></a>
+                                    <a href="/quotes/favorites/<%= fav.character %>" class="nav-link">All quotes</a>
+                                </li>
+                                <% }) %>
+                                    <% } else { %>
+                                        <li>
+                                            <h1 class="my-2 text-center">Niets in favorieten!</h1>
+                                        </li>
+                                        <% } %>
+                    </ul>
+
+                </section>
+
+
+
             </section>
-            </section>
+        </section>
 
     </main>
     <%- include("partials/footer") %>
