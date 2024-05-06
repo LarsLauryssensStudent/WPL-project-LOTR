@@ -23,24 +23,6 @@
     <main class="container login-main">
       <form action="/login" method="post" id="loginForm">
 
-        <% if (requiredError) { %>
-          <div class="alert alert-danger">
-              <%= requiredError %>
-          </div>
-        <% } %>
-
-        <% if (usernameError) { %>
-          <div class="alert alert-danger">
-              <%= usernameError %>
-          </div>
-        <% } %>
-
-        <% if (passwordError) { %>
-          <div class="alert alert-danger">
-              <%= passwordError %>
-          </div>
-        <% } %>
-
         <section class="mb-2">
           <label for="username" class="form-label">
             gebruikersnaam<span class="required">*</span>

@@ -23,36 +23,6 @@
     <main class="container login-main">
       <form action="/register" method="post" id="loginForm">
 
-        <% if (requiredError) { %>
-          <div class="alert alert-danger">
-              <%= requiredError %>
-          </div>
-        <% } %>
-
-        <% if (usernameError) { %>
-          <div class="alert alert-danger">
-              <%= usernameError %>
-          </div>
-        <% } %>
-      
-        <% if (emailError) { %>
-            <div class="alert alert-danger">
-                <%= emailError %>
-            </div>
-        <% } %>
-
-        <% if (passwordError) { %>
-          <div class="alert alert-danger">
-              <%= passwordError %>
-          </div>
-        <% } %>
-
-        <% if (succesMessage) { %>
-          <div class="alert alert-success">
-              <%= succesMessage %>
-          </div>
-        <% } %>
-
         <section class="mb-2">
           <label for="signupUsername" class="form-label">
             gebruikersnaam<span class="required">*</span>
