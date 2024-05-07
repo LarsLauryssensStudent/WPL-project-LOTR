@@ -43,9 +43,9 @@ export default function loginRouter() {
     });
 
     router.post("/register", async (req, res) => {
-        const { signupUsername, signupEmail, signupPassword, repeatNewPassword } = req.body;
+        const { signupUsername, signupEmail, signupPassword, repeatPassword } = req.body;
         try {
-            await register(signupUsername, signupEmail, signupPassword, repeatNewPassword);
+            await register(signupUsername, signupEmail, signupPassword, repeatPassword);
             req.session.message = { type: "success", message: "Register successful" };
             res.redirect("/login");
         } catch (error: any) {
