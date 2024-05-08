@@ -104,6 +104,7 @@ app.get("/", (req, res) => {
 app.listen(app.get("port"), async () => {
   try {
       await connect();
+      await checkData();
       let quotes : Quote[] = await getQuotes();
       setNewQuote(quotes);
       console.log("Server started on http://localhost:" + app.get("port"));
