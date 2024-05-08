@@ -2,7 +2,7 @@ import express from "express";
 import { generatePossibleAnswers, shuffleArray } from "../utils";
 import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, setScore, getScore } from "../index";
 import { Quote, Movie, Character } from "../interfaces";
-import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites } from "../database";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, searchQuoteById } from "../database";
 
 export let score: number = 0;
 
@@ -20,13 +20,13 @@ export default function tenRoundsRouter() {
             if (getQCounter() === 1) {
                 score = 0;
             }
-            let characters : Character[] = [];
-            let movies : Movie[] = [];
+            let characters: Character[] = [];
+            let movies: Movie[] = [];
             try {
-            characters = await getCharacters();
-            movies = await getMovies();    
-            }catch (error) {
-                console.log("Er ging iets fout bij 10-Rounds: " + error )
+                characters = await getCharacters();
+                movies = await getMovies();
+            } catch (error) {
+                console.log("Er ging iets fout bij 10-Rounds: " + error)
             }
             //quote randomen
             const randomQuote: Quote = returnQuote();
@@ -58,7 +58,7 @@ export default function tenRoundsRouter() {
         if (movieChoice === correctMovie) {
             score += 1;
         }
-        let quotes : Quote [] = await getQuotes();
+        let quotes: Quote[] = await getQuotes();
         setScore(score)
         setNewQuote(quotes);
         let current: number = getQCounter();
@@ -71,18 +71,37 @@ export default function tenRoundsRouter() {
         let currentQuote: Quote = returnQuote();
         let userId = req.session.user?.username ?? "test";
         try {
-        console.log(userId);
-        await addToBlacklist(currentQuote, userId);
-        let quotes : Quote[] = await getQuotes();
-        setNewQuote(quotes);
-        console.log(await getBlacklist(userId));
+            console.log(userId);
+            await addToBlacklist(currentQuote, userId);
+            let quotes: Quote[] = await getQuotes();
+            setNewQuote(quotes);
+            console.log(await getBlacklist(userId));
         }
         catch (error) {
             console.log(error);
         }
         res.redirect("/10-Rounds");
-    })
- 
+    });
+
+    router.post("/blacklist", async (req, res) => {
+        const reason: string = typeof req.body.reason === "string" ? req.body.reason : "test";
+        const userId: string = req.session.user?.username ?? "test";
+        const currentQuote = returnQuote();
+        try {
+            console.log(userId);
+            currentQuote.reason = reason;
+            await addToBlacklist(currentQuote, userId);
+            let quotes: Quote[] = await getQuotes();
+            setNewQuote(quotes);
+            console.log(await getBlacklist(userId));
+        }
+        catch (error) {
+            console.log(error);
+        }
+
+        res.redirect("/10-rounds");
+    });
+
     router.get("/favorites", async (req, res) => {
         let currentQuote: Quote = returnQuote();
         let userId = req.session.user?.username ?? "test";
