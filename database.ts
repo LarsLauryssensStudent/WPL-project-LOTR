@@ -1,13 +1,14 @@
 import { DeleteResult, InsertManyResult, MongoClient, UpdateResult } from "mongodb";
-import dotenv from "dotenv";
 import { Character, Movie, Quote, User } from "./interfaces";
-import { error } from "console";
+import bcrypt from 'bcrypt';
+import dotenv from "dotenv";
+
 dotenv.config();
 
-export const port = process.env.PORT || 3000
-export const client = new MongoClient(process.env.MONGO_URI!);
+export const uri = process.env.MONGO_URI ?? "mongodb://localhost:27017";
+const client = new MongoClient(uri);
 
-const db = client.db(process.env.DB_NAME);
+const db = client.db("wpl-login");
 const quoteCollection = db.collection<Quote>("quoteCollection");
 const characterCollection = db.collection<Character>("characterCollection");
 const movieCollection = db.collection<Movie>("movieCollection")
@@ -15,25 +16,94 @@ const users = db.collection<User>("users");
 
 
 async function exit() {
-    try {
-        await client.close();
-        console.log("Disconnected from database")
-    } catch (error) {
-        console.error(error)
-    }
+  try {
+      await client.close();
+      console.log("disconnected from database");
+  } catch (error) {
+      console.error(error);
+  }
 
-    process.exit(0);
-}
+  process.exit(0);
+};
+
+export async function createInitialUser() {
+  if (await users.countDocuments() > 0) {
+      return;
+  }
+
+  let email: string | undefined = process.env.ADMIN_EMAIL;
+  let password : string | undefined = process.env.ADMIN_PASSWORD;
+
+  if (email === undefined || password === undefined ) {
+      throw new Error ("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
+  }
+
+  const saltRounds : number = 10;
+  await users.insertOne({
+      username: "admin",
+      email: email,
+      password: await bcrypt.hash(password, saltRounds),
+      role: "ADMIN",
+      registered: new Date(),
+      blacklisted: [],
+      favorites: []
+  });
+};
+
+export async function login(username: string, password: string) {
+  if (username === "" || password === "") {
+      throw new Error("Username and password are required")
+  }
+
+  let existingUser: User | null = await users.findOne({ username: username });
+  if (existingUser) {
+      if (await bcrypt.compare(password, existingUser.password!)) {
+          return existingUser;
+      } else {
+          throw new Error("Invalid username or password")
+      }
+  } else {
+      throw new Error("Invalid username or password")
+  }
+};
+
+export async function register(username: string, email: string, password: string, repeatPassword: string) {
+  if (username === "" || email === "" || password === "") {
+      throw new Error("All fields required");
+  }
+
+  let existingUsername: User | null = await users.findOne({ username: username });
+  if (existingUsername) {
+      throw new Error("Username is already taken");
+  }
+
+  let existingEmail: User | null = await users.findOne({ email: email });
+  if (existingEmail) {
+      throw new Error("Email is already registered")
+  }
+
+  if (password !== repeatPassword) {
+    throw new Error("Passwords do not match");
+  }
+
+  const saltRounds: number = 10;
+  await users.insertOne({
+      username: username,
+      email: email,
+      password: await bcrypt.hash(password, saltRounds),
+      role: "USER",
+      registered: new Date(),
+      blacklisted: [],
+      favorites: []
+  });
+};
 
 export async function connect() {
-    try {
-        await client.connect();
-        console.log("Connected to database")
-        process.on("SIGINT", exit);
-    } catch (error) {
-        console.error(error)
-    }
-}
+  await client.connect();
+  await createInitialUser();
+  console.log("connected to database");
+  process.on("SIGINT", exit);
+};
 
 
 //totaalquotes 2375
