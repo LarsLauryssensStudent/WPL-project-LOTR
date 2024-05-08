@@ -40,13 +40,19 @@ export interface User {
     _id?: ObjectId,
     username: string,
     email: string,
-    password: string,
+    password?: string,
+    role: "ADMIN" | "USER",
     registered: Date,
     favorites: Quote[],
     blacklisted: Quote[],
     highScore?: number,
     lastGames?: GameResult[]
 }
+
+export interface FlashMessage {
+    type: "error" | "success";
+    message: string;
+  };
 
 export interface GameResult {
     _id?: ObjectId,
