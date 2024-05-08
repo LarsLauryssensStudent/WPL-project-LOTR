@@ -12025,7 +12025,6 @@ html, body {
 #loginForm {
   width: 400px;
   margin: auto;
-  border: 3px black solid;
   padding: 1rem;
 }
 
@@ -12037,7 +12036,6 @@ html, body {
 .login-main {
   display: flex;
   margin: auto;
-  border: 1px solid black;
   padding: 1rem;
 }
 

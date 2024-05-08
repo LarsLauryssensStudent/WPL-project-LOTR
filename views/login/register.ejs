@@ -23,34 +23,12 @@
     <main class="container login-main">
       <form action="/register" method="post" id="loginForm">
 
-        <% if (requiredError) { %>
-          <div class="alert alert-danger">
-              <%= requiredError %>
-          </div>
-        <% } %>
-
-        <% if (usernameError) { %>
-          <div class="alert alert-danger">
-              <%= usernameError %>
-          </div>
-        <% } %>
-      
-        <% if (emailError) { %>
-            <div class="alert alert-danger">
-                <%= emailError %>
-            </div>
-        <% } %>
-
-        <% if (passwordError) { %>
-          <div class="alert alert-danger">
-              <%= passwordError %>
-          </div>
-        <% } %>
-
-        <% if (succesMessage) { %>
-          <div class="alert alert-success">
-              <%= succesMessage %>
-          </div>
+        <% if (message) { %>
+          <% if (message.type === "success") { %>
+            <p class="alert alert-success"><%= message.message %></p>
+          <% } else if (message.type ==="error") { %>
+            <p class="alert alert-danger"><%= message.message %></p>
+          <% } %>
         <% } %>
 
         <section class="mb-2">

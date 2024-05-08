@@ -1,15 +1,23 @@
 // EJS opbouw 07/04/2024
 import express, { Express } from "express";
-import { checkData, connect, getQuotes, port } from "./database";
+import { checkData, connect, getQuotes } from "./database";
 import { Character, GameResult, Movie, Quote } from "./interfaces";
+import { flashMiddleware } from "./middleware/flashMiddleware";
+import { secureMiddleware } from "./middleware/secureMiddleware";
+import dotenv from "dotenv";
+import path from "path";
+import session from "./middleware/session";
 import selectionRouter from "./routers/selection";
 import tenRoundsRouter from "./routers/10-rounds";
 import suddenDeathRouter from "./routers/suddenDeath";
 import blacklistRouter from "./routers/blacklist";
 import favoritesRouter from "./routers/favorites";
-import landingpageRouter from "./routers/landingpage";
 import resultRouter from "./routers/results";
 import quotesRouter from "./routers/quotes";
+import loginRouter from "./routers/loginRouter";
+
+dotenv.config();
+
 
 
 //arrays
@@ -66,33 +74,45 @@ export function getScore(): number {
 const app: Express = express();
 
 app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(express.json({ limit: "1mb" }));
-app.use(express.urlencoded({ extended: true }))
+app.use(session);
+app.use(flashMiddleware);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+app.set("views", path.join(__dirname, "views"));
+
+app.set("port", process.env.PORT ?? 3000);
 
 
 //routers
-app.use("/", landingpageRouter());
-app.use("/selection", selectionRouter());
+app.use(loginRouter());
+app.use("/selection", secureMiddleware, selectionRouter());
 app.use("/10-Rounds", tenRoundsRouter());
 app.use("/Sudden-Death", suddenDeathRouter());
-app.use("/Blacklist", blacklistRouter());
-app.use("/Favorites", favoritesRouter());
+app.use("/Blacklist", secureMiddleware, blacklistRouter());
+app.use("/Favorites", secureMiddleware, favoritesRouter());
 app.use("/results", resultRouter())
 app.use("/quotes", quotesRouter());
 
-
 //startup
-app.listen(port, async () => {
-  await connect();
-  console.log(`Server started on http://localhost:${port}`);
 
+app.get("/", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/selection");
+  } else {
+    res.render("index");
+  }
+})
+
+app.listen(app.get("port"), async () => {
   try {
-    await checkData();
-    let quotes: Quote[] = await getQuotes();
-    setNewQuote(quotes);
-
+      await connect();
+      await checkData();
+      let quotes : Quote[] = await getQuotes();
+      setNewQuote(quotes);
+      console.log("Server started on http://localhost:" + app.get("port"));
   } catch (error) {
-    console.error("Error fetching data:", error);
+      console.error(error);
+      process.exit(1);
   }
 });
