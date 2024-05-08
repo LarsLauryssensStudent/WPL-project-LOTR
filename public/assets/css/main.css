@@ -12671,3 +12671,35 @@ main {
 body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing-card-title):not(.register-body):not(.login-body) {
   letter-spacing: 0.1rem !important;
 }
+
+/* Stijling van result */
+.resultNav {
+  text-align: center!important;
+  margin: 0;
+  
+}
+.resultNav h1 {
+  margin: auto;
+  margin-bottom: 0!important;
+  padding-top: 0.4rem!important;
+}
+.scoreFieldResult {
+  border: 2px solid red;
+  
+}
+.scoreFieldResult > p:first-of-type {
+  border: 2px solid blue;
+  text-align: center;
+  font-size: 1.8rem;
+}
+.scoreFieldResult > p:last-of-type {
+  text-align: center;
+  font-size: 2.0rem;
+  letter-spacing: 0.12rem;
+}
+.backToSelect {
+  text-align: center;
+  width: auto;
+  margin: auto;
+  margin-bottom: 0!important;
+}

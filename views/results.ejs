@@ -6,24 +6,25 @@
 
     <section class="col-sm-12 col-lg-8 col-md-10 my-5">
       <section class="quizzContainer">
-        <section class="quizzNav container-fluid">
+        <section class="quizzNav container-fluid resultNav" >
+          <h1>Je resultaat van de Quiz!</h1>
 
         </section>
 
         <section class="card biggerCard">
 
-          <article class="card-body">
+          <article class="card-body col-12">
 
             <section>
-              <h1>Je resultaat van de Quiz!</h1>
             </section>
-            <section>
-              <p>Je score is: <%= score %>/20!</p>
+            <section class="scoreFieldResult ">
+              <p>Uw score</p>
+              <p><%= score %>/20</p>
             </section>
 
-            <section> <a href="/selection">Terug naar de selectionPage</a></section>
           </article>
 
+          <section class="backToSelect"> <a href="/selection">Terug naar de selectionPage</a></section>
         </section>
 
 
