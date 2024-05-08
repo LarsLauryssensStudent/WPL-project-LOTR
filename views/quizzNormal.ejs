@@ -1,90 +1,128 @@
 <%- include ("partials/header") %>
 
-<main class="quizzMain">
-  
- 
-   
-    <section class="col-sm-12 col-lg-8 col-md-10 my-5" >
+  <main class="quizzMain">
+
+
+
+    <section class="col-sm-12 col-lg-8 col-md-10 my-5">
       <section class="quizzContainer" style="background-image: url(<%=backgroundUrl%>);">
-        
-      <section class="quizzNav container-fluid">
 
-        <section id="questionField" class="col-sm-6 col-lg-6 col-md-6">
+        <section class="quizzNav container-fluid">
 
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-question-diamond-fill" viewBox="0 0 16 16">
-            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM5.495 6.033a.237.237 0 0 1-.24-.247C5.35 4.091 6.737 3.5 8.005 3.5c1.396 0 2.672.73 2.672 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.105a.25.25 0 0 1-.25.25h-.81a.25.25 0 0 1-.25-.246l-.004-.217c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.803 0-1.253.478-1.342 1.134-.018.137-.128.25-.266.25zm2.325 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927"/>
-          </svg>  <%= qCounter %>/10
+          <section id="questionField" class="col-sm-6 col-lg-6 col-md-6">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+              class="bi bi-question-diamond-fill" viewBox="0 0 16 16">
+              <path
+                d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM5.495 6.033a.237.237 0 0 1-.24-.247C5.35 4.091 6.737 3.5 8.005 3.5c1.396 0 2.672.73 2.672 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.105a.25.25 0 0 1-.25.25h-.81a.25.25 0 0 1-.25-.246l-.004-.217c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.803 0-1.253.478-1.342 1.134-.018.137-.128.25-.266.25zm2.325 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927" />
+            </svg>
+            <%= qCounter %>/10
+          </section>
+
+          <section id="scoreField" class="col-sm-6 col-lg-6 col-md-6">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-ui-checks"
+              viewBox="0 0 16 16">
+              <path
+                d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+            </svg>
+            <%=score%>/20
+          </section>
+
         </section>
 
-        <section id="scoreField" class="col-sm-6 col-lg-6 col-md-6">
-
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-ui-checks" viewBox="0 0 16 16">
-            <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-          </svg>  <%=score%>/20
-        </section>
-
-      </section>
-      
         <section class="card biggerCard">
-        
+
           <article class="card-body">
-            <button id="favoBtn"><a href="/10-rounds/favorites"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-            </svg></a></button>
-            <button id="blackListBtn"><a href="/10-Rounds/blacklist">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16">
-                <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+            <button id="favoBtn"><a href="/10-rounds/favorites"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                  height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                </svg></a></button>
+            <button id="blackListBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-ban"
+                viewBox="0 0 16 16">
+                <path
+                  d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0" />
               </svg>
-              </a>
             </button>
-            <blockquote class="blockquote mb-0 text-center" id="quoteField">
-              <p> <%= quote.dialog %></p>
-              <footer class="blockquote-footer">Who said it? <cite title="Source Title">Where did he say it?</cite></footer>
+            <blockquote class=" blockquote mb-0 text-center" id="quoteField">
+              <p>
+                <%= quote.dialog %>
+              </p>
+              <footer class="blockquote-footer">Who said it? <cite title="Source Title">Where did he say it?</cite>
+              </footer>
             </blockquote>
           </article>
+          <form action="/10-Rounds/blacklist" style="visibility: hidden;" id="reasonDropdown">
+            <label for="text">Reason:</label>
+            <input type="text" name="text" id="reason">
+            <input type="submit" value="submit">
+          </form>
+        </section>
 
-      </section>
-      
-      <section class="col-sm-12 col-md-12 col-lg-12 container-fluid">
-        <form action="/10-Rounds/check" method="GET" class="quizzAnswers" id="quizzForm"> <!-- Modified here -->
-          <section class="row col-12 answerRow" >
-          <section class="col-lg-5 col-md-6 col-sm-12">
-            <section class="btn-group-vertical maxWidth" role="group" aria-label="Vertical radio toggle button group">
-              <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/personSpeech.png" width="48px" alt="Who Said it"></label>
-              <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio1" autocomplete="off" value="<%= characters[0].id%>">
-              <label class="btn actorLabel" for="vbtn-radio1"><%= characters[0].name%></label>
-              <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio2" autocomplete="off" value="<%= characters[1].id%>">
-              <label class="btn actorLabel" for="vbtn-radio2"><%= characters[1].name%></label>
-              <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio3" autocomplete="off" value="<%= characters[2].id%>">
-              <label class="btn actorLabel" for="vbtn-radio3"><%= characters[2].name%></label>
+        <section class="col-sm-12 col-md-12 col-lg-12 container-fluid">
+          <form action="/10-Rounds/check" method="GET" class="quizzAnswers" id="quizzForm"> <!-- Modified here -->
+            <section class="row col-12 answerRow">
+              <section class="col-lg-5 col-md-6 col-sm-12">
+                <section class="btn-group-vertical maxWidth" role="group"
+                  aria-label="Vertical radio toggle button group">
+                  <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/personSpeech.png" width="48px"
+                      alt="Who Said it"></label>
+                  <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio1" autocomplete="off"
+                    value="<%= characters[0].id%>">
+                  <label class="btn actorLabel" for="vbtn-radio1">
+                    <%= characters[0].name%>
+                  </label>
+                  <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio2" autocomplete="off"
+                    value="<%= characters[1].id%>">
+                  <label class="btn actorLabel" for="vbtn-radio2">
+                    <%= characters[1].name%>
+                  </label>
+                  <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio3" autocomplete="off"
+                    value="<%= characters[2].id%>">
+                  <label class="btn actorLabel" for="vbtn-radio3">
+                    <%= characters[2].name%>
+                  </label>
+                </section>
+              </section>
+              <section class="col-lg-5 col-md-6 col-sm-12">
+                <section class="btn-group-vertical maxWidth" role="group"
+                  aria-label="Vertical radio toggle button group">
+                  <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/movie2.png" width="48px"
+                      alt="In wich movie?"></label>
+                  <input type="radio" class="btn-check movieRadio" name="movieRadio" id="vbtn-radio4" autocomplete="off"
+                    value="<%=movies[0].id%>">
+                  <label class="btn movieLabel" for="vbtn-radio4">
+                    <%= movies[0].name %>
+                  </label>
+                  <input type="radio" class="btn-check movieRadio" name="movieRadio" id="vbtn-radio5" autocomplete="off"
+                    value="<%=movies[1].id%>">
+                  <label class="btn movieLabel" for="vbtn-radio5">
+                    <%= movies[1].name %>
+                  </label>
+                  <input type="radio" class="btn-check movieRadio" name="movieRadio" id="vbtn-radio6" autocomplete="off"
+                    value="<%=movies[2].id%>">
+                  <label class="btn movieLabel" for="vbtn-radio6">
+                    <%= movies[2].name %>
+                  </label>
+                </section>
+              </section>
             </section>
-          </section>
-          <section class="col-lg-5 col-md-6 col-sm-12">
-            <section class="btn-group-vertical maxWidth" role="group" aria-label="Vertical radio toggle button group">
-              <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/movie2.png" width="48px" alt="In wich movie?"></label>
-              <input type="radio" class="btn-check movieRadio" name="movieRadio" id="vbtn-radio4" autocomplete="off" value="<%=movies[0].id%>">
-              <label class="btn movieLabel" for="vbtn-radio4"> <%= movies[0].name %></label>
-              <input type="radio" class="btn-check movieRadio" name="movieRadio" id="vbtn-radio5" autocomplete="off" value="<%=movies[1].id%>">
-              <label class="btn movieLabel" for="vbtn-radio5"> <%= movies[1].name %></label>
-              <input type="radio" class="btn-check movieRadio" name="movieRadio" id="vbtn-radio6" autocomplete="off" value="<%=movies[2].id%>">
-              <label class="btn movieLabel" for="vbtn-radio6"> <%= movies[2].name %></label>
+            <section class="submitQuizz col-12">
+              <span class="col-sm-12 col-md-12 col-lg-12 customAnswer">
+                <button class="btnStoile btn-primary submitButton" type="submit"><img
+                    src="./assets/images/icons/submit.png" alt="submit the quizz"></button>
+              </span>
             </section>
-          </section>
-          </section>  
-          <section class="submitQuizz col-12">
-            <span class="col-sm-12 col-md-12 col-lg-12 customAnswer">
-              <button class="btnStoile btn-primary submitButton" type="submit"><img src="./assets/images/icons/submit.png" alt="submit the quizz"></button>
-            </span>
-          </section>
-        </form>
-      </section>
-      
+          </form>
+        </section>
+
       </section>
     </section>
 
-    
-  
-    
-</main>
 
-<%- include("partials/footer") %>
+
+
+  </main>
+  <%- include("partials/footer") %>
