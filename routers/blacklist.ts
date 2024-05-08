@@ -2,14 +2,15 @@ import express from "express";
 import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote } from "../index";
 import { Character, Quote } from "../interfaces";
 import { link } from "fs";
-import { getBlacklist, getCharacters, removeFromBlacklist } from "../database";
+import { getBlacklist, getCharacters, removeFromBlacklist, searchQuoteById } from "../database";
 import { userInfo } from "os";
 
 export default function blacklistRouter() {
     const router = express.Router();
 
     router.get("/", async (req, res) => {
-        let userId = "test";
+        let userId :string = req.session.user?.username ?? "test";
+        
         const blacklisted: Quote[] = await getBlacklist(userId);
         let charactersss: Character[] | undefined = []
         const characters = await getCharacters();
@@ -22,17 +23,17 @@ export default function blacklistRouter() {
 
     router.get("/:id/Remove", async (req, res) => {
         const quoteId: string = req.params.id;
-        const quoteToRemove: Quote = {
-            id: quoteId,
-            dialog: "",
-            movie: "",
-            character: "",
-            id2: "",
+
+        let userId :string = req.session.user?.username ?? "test";
+        let quoteToRemove : Quote | null = null; 
+        try {
+         quoteToRemove = await searchQuoteById(quoteId);
+        } catch (error) {
+            console.log(error);
         }
-        const userId: string = "test";
-
+        if (quoteToRemove) {
         await removeFromBlacklist(quoteToRemove, userId);
-
+        }
         res.redirect("/Blacklist");
     });
 

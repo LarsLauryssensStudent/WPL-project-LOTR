@@ -437,3 +437,12 @@ export async function removeFromFavorites(currentQuote: Quote, userId: string) {
     throw new Error("Something went from with removal from blacklist: " + error);
   }
 }
+
+
+export async function searchQuoteById( id: string) :Promise<Quote|null> {
+  try {
+    return await quoteCollection.findOne<Quote>({id: id});
+  } catch (error) {
+    throw new Error("Kon quote niet vinden: " + error);
+  }
+}
