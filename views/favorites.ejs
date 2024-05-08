@@ -22,7 +22,10 @@
                                         <%= fav.dialog %>
                                     </blockquote>
                                     <cite>
-                                        <%= characters.find(char=> char.id === fav.character).name %>
+                                        <a href="<%= characters.find(char=> char.id === fav.character).wikiUrl %>"
+                                            class="nav-link">
+                                            <%= characters.find(char=> char.id === fav.character).name %>
+                                        </a>
                                     </cite>
                                     <a href="/Favorites/<%= fav.id %>/Remove"><span class="bi bi-trash"></span></a>
                                     <a href="/quotes/favorites/<%= fav.character %>" class="nav-link">All quotes</a>

@@ -1,42 +1,39 @@
 <%- include ("partials/header") %>
 
-<main class="quizzMain">
-  
- 
-   
-    <section class="col-sm-12 col-lg-8 col-md-10 my-5" >
-      <section class="quizzContainer" >
-      <section class="quizzNav container-fluid">
+  <main class="quizzMain">
 
-      </section>
-      
+
+
+    <section class="col-sm-12 col-lg-8 col-md-10 my-5">
+      <section class="quizzContainer">
+        <section class="quizzNav container-fluid">
+
+        </section>
+
         <section class="card biggerCard">
-        
+
           <article class="card-body">
-            
+
             <section>
               <h1>Je resultaat van de Quiz!</h1>
             </section>
-              <section>
-                score: 
-              </section>
+            <section>
+              score: <%= score %>
+            </section>
 
-              <section> <a href="/selection">Terug naar de selectionPage</a></section>
+            <section> <a href="/selection">Terug naar de selectionPage</a></section>
           </article>
 
-      </section>
-      
-     
-      
+        </section>
+
+
+
       </section>
     </section>
 
-    
-  
-    
-</main>
-
-<%- include("partials/footer") %>
 
 
 
+  </main>
+
+  <%- include("partials/footer") %>

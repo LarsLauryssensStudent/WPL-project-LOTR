@@ -22,7 +22,9 @@
                                         <%= bl.dialog %>
                                     </blockquote>
                                     <cite>
-                                        <%= characters.find(char=> char.id === bl.character).name %>
+                                        <a href="<%= characters.find(char=> char.id === bl.character).wikiUrl %>"
+                                            class="nav-link">
+                                            <%= characters.find(char=> char.id === bl.character).name %>
                                     </cite>
                                     <a href="/Blacklist/<%= bl.id %>/Remove"><span class="bi bi-trash"></span></a>
                                     <a href="/quotes/blacklist/<%= bl.character %>" class="nav-link">All quotes</a>
