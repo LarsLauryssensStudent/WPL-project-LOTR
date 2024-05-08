@@ -69,8 +69,9 @@ export default function tenRoundsRouter() {
 
     router.get("/blacklist", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let userId = "test"
+        let userId = req.session.user?.username ?? "test";
         try {
+        console.log(userId);
         await addToBlacklist(currentQuote, userId);
         let quotes : Quote[] = await getQuotes();
         setNewQuote(quotes);
@@ -84,7 +85,7 @@ export default function tenRoundsRouter() {
  
     router.get("/favorites", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let userId = "test";
+        let userId = req.session.user?.username ?? "test";
         try {
             await toggleFavorites(currentQuote, userId);
         }

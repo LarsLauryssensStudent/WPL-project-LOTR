@@ -7,7 +7,7 @@ export default function favoritesRouter() {
     const router = express.Router();
 
     router.get("/", async (req, res) => {
-        let userId = "test";
+        let userId :string = req.session.user?.username ?? "test";
         const favorites: Quote[] = await getFavorites(userId);
         const characters = await getCharacters();
         res.render("favorites",
@@ -26,7 +26,8 @@ export default function favoritesRouter() {
             character: "",
             id2: "",
         }
-        const userId: string = "test";
+        let userId :string = req.session.user?.username ?? "test";
+        
 
         await removeFromFavorites(quoteToRemove, userId);
 

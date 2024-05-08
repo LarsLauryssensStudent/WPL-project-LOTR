@@ -12,6 +12,7 @@ export default function blacklistRouter() {
         let userId :string = req.session.user?.username ?? "test";
         
         const blacklisted: Quote[] = await getBlacklist(userId);
+        
         let charactersss: Character[] | undefined = []
         const characters = await getCharacters();
         charactersss = await toggleIds();
