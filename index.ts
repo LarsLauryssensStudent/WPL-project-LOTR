@@ -13,9 +13,11 @@ import suddenDeathRouter from "./routers/suddenDeath";
 import blacklistRouter from "./routers/blacklist";
 import favoritesRouter from "./routers/favorites";
 import resultRouter from "./routers/results";
+import quotesRouter from "./routers/quotes";
 import loginRouter from "./routers/loginRouter";
 
 dotenv.config();
+
 
 
 //arrays
@@ -42,7 +44,7 @@ export let tenRoundsBackgrounds: string[] = [
 let qCounter: number = 0;
 let randomQuote: Quote;
 let currentGame: GameResult;
-let userScore :number = 0;
+let userScore: number = 0;
 
 //index export functies
 
@@ -59,11 +61,11 @@ export function setNewQuote(array: Quote[]) {
 export function returnQuote(): Quote {
   return randomQuote;
 }
-  
-export function setScore(score :number) {
+
+export function setScore(score: number) {
   userScore = score;
 }
-export function getScore() :number {
+export function getScore(): number {
   return userScore
 }
 
@@ -90,6 +92,7 @@ app.use("/Sudden-Death", suddenDeathRouter());
 app.use("/Blacklist", secureMiddleware, blacklistRouter());
 app.use("/Favorites", secureMiddleware, favoritesRouter());
 app.use("/results", resultRouter())
+app.use("/quotes", quotesRouter());
 
 //startup
 
