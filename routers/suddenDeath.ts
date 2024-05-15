@@ -1,8 +1,9 @@
 import express from "express";
 import { shuffleArray, generatePossibleAnswers } from "../utils";
-import { getQCounter, setQCounter, returnQuote, setNewQuote } from "../index";
-import { Quote, Movie, Character, User } from "../interfaces";
-import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites } from "../database";
+import { getQCounter, setQCounter, returnQuote, setNewQuote, setScore, updateCurrentGameAnswers, updateCurrentGameQuote, updateCurrentGameScore, resetCurrentGame, getCurrentGame } from "../index";
+import { Quote, Movie, Character, User, GameResult } from "../interfaces";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, updateHighscore, getHighScore, addToGames } from "../database";
+import { userInfo } from "os";
 
 
 export default function suddenDeathRouter() {
@@ -13,18 +14,21 @@ export default function suddenDeathRouter() {
         const randomQuote: Quote = returnQuote();
         let characters: Character[] = [];
         let movies: Movie[] = [];
+        let score: number = 0;
+        let userName: string = req.session.user?.username ?? "test";
         try {
             characters = await getCharacters();
             movies = await getMovies();
+            score = await getHighScore(userName);
         } catch (error) {
-            console.log("Er ging iets fout bij 10-Rounds: " + error)
+            console.log("Er ging iets fout bij Sudden Death: " + error)
         }
         const randomChars: Character[] = generatePossibleAnswers(randomQuote, characters);
         // movie randomen
         console.log(getQCounter());
         res.render("quizzSD", {
             qCounter: getQCounter(),
-            score: 0,
+            score: score,
             quote: randomQuote,
             characters: randomChars,
             movies: movies
@@ -61,16 +65,41 @@ export default function suddenDeathRouter() {
         let correctMovie: string = prevQuote.movie;
         if (correctChar === characterChoice && correctMovie === movieChoice) {
             let currentSD: number = getQCounter();
+            try {
+                let userId: string = req.session.user?.username ?? "test";
+                await updateHighscore(userId, currentSD);
+            } catch(error) {
+                console.log(error);
+            }
             currentSD++;
             setQCounter(currentSD);
             let quotes: Quote[] = await getQuotes();
             setNewQuote(quotes);
+            updateCurrentGameAnswers(movieChoice, characterChoice);
+            updateCurrentGameQuote(prevQuote);
+            updateCurrentGameScore(getQCounter());
+            
 
             res.redirect("/Sudden-Death");
         }
         else {
             setQCounter(1);
-            res.redirect("/selection");
+            let userName: string = req.session.user?.username ?? "test";
+            let currentScore: number = await getHighScore(userName);
+            let highScore: number = req.session.user?.highScore ?? 0;
+            let gameResult: GameResult = getCurrentGame();
+            try {
+                await addToGames(userName, gameResult);
+            } catch(error) {
+                console.log(error);
+            }
+            resetCurrentGame();
+            if (currentScore > highScore) {
+                await updateHighscore(userName, currentScore);
+                setScore(currentScore);
+            }
+            res.redirect("/results/Sudden-Death");
+
         }
 
     })

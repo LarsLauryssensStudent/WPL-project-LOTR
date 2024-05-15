@@ -1,5 +1,5 @@
 import express from "express";
-import { setQCounter } from "../index";
+import { resetCurrentGame, setQCounter, setScore } from "../index";
 export default function selectionRouter() {
     const router = express.Router();
 
@@ -16,9 +16,12 @@ export default function selectionRouter() {
         console.log(option);
         setQCounter(1);
         if (option === "10-Rounds") {
-                
+                setScore(0);
+                resetCurrentGame();
                 res.redirect("/10-Rounds");
             } else {
+                setScore(0);
+                resetCurrentGame();
                 res.redirect("/Sudden-Death");
             }
       

@@ -1,0 +1,42 @@
+<%- include ("partials/header") %>
+
+  <main class="quizzMain">
+
+
+
+    <section class="col-sm-12 col-lg-8 col-md-10 my-5">
+      <section class="quizzContainer">
+        <section class="quizzNav container-fluid resultNav" >
+          <h1>Je resultaat van de Quiz!</h1>
+
+        </section>
+
+        <section class="card biggerCard">
+
+          <article class="card-body col-12">
+
+            <section>
+            </section>
+            <section class="scoreFieldResult ">
+              <p>Uw score</p>
+              <p><%= score %></p>
+              <p>Uw highscore </p>
+              <p><%= highScore %></p>
+            </section>
+
+          </article>
+
+          <section class="backToSelect"> <a href="/selection">Terug naar de selectionPage</a></section>
+        </section>
+
+
+
+      </section>
+    </section>
+
+
+
+
+  </main>
+
+  <%- include("partials/footer") %>

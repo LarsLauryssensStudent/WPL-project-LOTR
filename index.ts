@@ -43,7 +43,11 @@ export let tenRoundsBackgrounds: string[] = [
 // let gameMode :string = "selection";
 let qCounter: number = 0;
 let randomQuote: Quote;
-let currentGame: GameResult;
+let currentGame: GameResult = {
+  lastQuotes: [],
+  lastCharacters: [],
+  lastMovies: [],
+};
 let userScore: number = 0;
 
 //index export functies
@@ -61,7 +65,25 @@ export function setNewQuote(array: Quote[]) {
 export function returnQuote(): Quote {
   return randomQuote;
 }
-
+export function updateCurrentGameQuote(value : Quote) {
+  currentGame.lastQuotes?.push(value);
+}
+export function updateCurrentGameAnswers(valueOfMovie: string, valueOfChar: string){
+  currentGame.lastMovies?.push(valueOfMovie);
+  currentGame.lastCharacters?.push(valueOfChar);
+}
+export function updateCurrentGameScore(score: number) {
+  currentGame.score = score;
+}
+export function resetCurrentGame() {
+  currentGame.lastCharacters = [],
+  currentGame.lastMovies = [],
+  currentGame.lastQuotes = [],
+  currentGame.score = 0
+}
+export function getCurrentGame(): GameResult {
+  return currentGame;
+}
 export function setScore(score: number) {
   userScore = score;
 }

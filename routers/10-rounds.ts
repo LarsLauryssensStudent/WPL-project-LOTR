@@ -1,8 +1,8 @@
 import express from "express";
 import { generatePossibleAnswers, shuffleArray } from "../utils";
-import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, setScore, getScore } from "../index";
-import { Quote, Movie, Character } from "../interfaces";
-import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, searchQuoteById } from "../database";
+import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, setScore, getScore, updateCurrentGameAnswers, updateCurrentGameQuote, updateCurrentGameScore, resetCurrentGame, getCurrentGame } from "../index";
+import { Quote, Movie, Character, GameResult } from "../interfaces";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, searchQuoteById, addToGames } from "../database";
 
 export let score: number = 0;
 
@@ -14,7 +14,15 @@ export default function tenRoundsRouter() {
         if (getQCounter() > 10) {
             setQCounter(1);
             score = 0;
-            res.redirect("/results");
+            let gameResult: GameResult = getCurrentGame();
+            let userId: string = req.session.user?.username ?? "test";
+            try {
+                await addToGames(userId, gameResult);
+            } catch(error) {
+                console.log(error);
+            }
+            resetCurrentGame();
+            res.redirect("/results/10-Rounds");
         }
         else {
             if (getQCounter() === 1) {
@@ -58,6 +66,9 @@ export default function tenRoundsRouter() {
         if (movieChoice === correctMovie) {
             score += 1;
         }
+        updateCurrentGameAnswers(movieChoice, characterChoice);
+        updateCurrentGameQuote(prevQuote);
+        updateCurrentGameScore(score);
         let quotes: Quote[] = await getQuotes();
         setScore(score)
         setNewQuote(quotes);

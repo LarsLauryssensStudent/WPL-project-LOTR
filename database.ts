@@ -1,5 +1,5 @@
 import { DeleteResult, InsertManyResult, MongoClient, UpdateResult } from "mongodb";
-import { Character, Movie, Quote, User } from "./interfaces";
+import { Character, GameResult, Movie, Quote, User } from "./interfaces";
 import bcrypt from 'bcrypt';
 import dotenv from "dotenv";
 
@@ -345,12 +345,27 @@ export async function fetchData() {
 
 
 
-export async function getScore() {
-
+export async function getHighScore(id: string): Promise<number> {
+  try {
+    let user: User | null = await users.findOne<User>({username: id});
+    if (user) {
+      return user.highScore ?? 0;
+    }
+    else {
+      throw new Error("Score kon niet gevonden worden.");
+    }
+  }
+  catch(error) {
+    throw new Error("Er ging iets fout in getScore(): " + error);
+  }
 }
 
-export async function getQuestion() {
-
+export async function addToGames(id:string, game : GameResult) {
+  try {
+    await users.updateOne({username: id}, {$push: {lastGames: game}})
+  } catch (error) {
+    throw new Error("Er ging iets fout bij het updaten van de games: " + error);
+  }
 }
 
 export async function getBlacklist(userName: string) {
@@ -444,5 +459,14 @@ export async function searchQuoteById( id: string) :Promise<Quote|null> {
     return await quoteCollection.findOne<Quote>({id: id});
   } catch (error) {
     throw new Error("Kon quote niet vinden: " + error);
+  }
+}
+
+export async function updateHighscore(id: string, score: number) {
+  try {
+    await users.updateOne({username: id}, {$set: {highScore: score}})
+  }
+  catch (error) {
+    throw new Error("Kon score niet updaten: " + error);
   }
 }

@@ -8,17 +8,7 @@
 
         <section class="quizzNav container-fluid">
 
-          <section id="timeField" class="col-sm-4 col-lg-4 col-md-4">
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black" class="bi bi-stopwatch"
-              viewBox="0 0 16 16">
-              <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z" />
-              <path
-                d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3" />
-            </svg> 00:00
-          </section>
-
-          <section id="questionField" class="col-sm-4 col-lg-4 col-md-4">
+          <section id="questionField" class="col-sm-6 col-lg-6 col-md-6">
 
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
               class="bi bi-question-diamond-fill" viewBox="0 0 16 16">
@@ -29,7 +19,7 @@
 
           </section>
 
-          <section id="highScore" class="col-sm-4 col-lg-4 col-md-4">
+          <section id="highScore" class="col-sm-6 col-lg-6 col-md-6">
 
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-ui-checks"
               viewBox="0 0 16 16">
@@ -75,7 +65,7 @@
         <section class="col-sm-12 col-md-12 col-lg-12 container-fluid">
           <form action="/Sudden-Death/check" method="GET" class="quizzAnswers" id="quizzForm"> <!-- Modified here -->
             <section class="row col-12 answerRow">
-              <section class="col-lg-5 col-md-6 col-sm-12">
+              <section class="col-lg-5 col-md-5 col-sm-12">
                 <section class="btn-group-vertical maxWidth" role="group"
                   aria-label="Vertical radio toggle button group">
                   <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/personSpeech.png" width="48px"
@@ -97,7 +87,10 @@
                   </label>
                 </section>
               </section>
-              <section class="col-lg-5 col-md-6 col-sm-12">
+              <section class="col-2 m-auto d-none d-md-block"> 
+                <button class="btnStoile btn-primary submitButton col-12" type="submit"><img src="./assets/images/icons/submit.png" alt=""></button>
+              </section>
+              <section class="col-lg-5 col-md-5 col-sm-12">
                 <section class="btn-group-vertical maxWidth" role="group"
                   aria-label="Vertical radio toggle button group">
                   <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/movie2.png" width="48px"
@@ -120,10 +113,9 @@
                 </section>
               </section>
             </section>
-            <section class="submitQuizz col-12">
-              <span class="col-sm-12 col-md-12 col-lg-12 customAnswer">
-                <button class="btnStoile btn-primary submitButton" type="submit"><img
-                    src="./assets/images/icons/submit.png" alt="submit the quizz"></button>
+            <section class="submitQuizz col-12 mt-2">
+              <span class="col-12 customAnswer d-md-none d-md-block d-lg-none d-xl-block	d-xl-none d-xxl-block d-xxl-none">
+                <button class="btnStoile btn-primary submitButton2 col-11 " type="submit">Click here to check!</button>
               </span>
             </section>
           </form>
