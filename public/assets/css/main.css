@@ -12480,15 +12480,25 @@ blockquote {
 .submitButton {
   border-radius: 0 0 28px 28px !important;
   background-color: rgba(252, 236, 187, 0.4941176471);
-  width: 96px;
+  
   border: 2px solid green;
   border-radius: 50% !important;
   background-color: rgba(252, 236, 187, 0.4941176471);
-  margin: -2rem;
+  margin: 1;
 }
 
 .submitButton img {
   width: 100%;
+}
+
+.submitButton2 {
+  border-radius: 0 0 28px 28px !important;
+  background-color: rgba(252, 236, 187, 0.4941176471);
+  
+  border: 2px solid green;
+  border-radius: 24px !important;
+  background-color: rgba(252, 236, 187, 0.4941176471);
+  margin: 1;
 }
 
 .quizzMain {

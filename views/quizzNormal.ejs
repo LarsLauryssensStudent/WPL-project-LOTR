@@ -64,7 +64,7 @@
         <section class="col-sm-12 col-md-12 col-lg-12 container-fluid">
           <form action="/10-Rounds/check" method="GET" class="quizzAnswers" id="quizzForm"> <!-- Modified here -->
             <section class="row col-12 answerRow">
-              <section class="col-lg-5 col-md-6 col-sm-12">
+              <section class="col-lg-5 col-md-5 col-sm-12">
                 <section class="btn-group-vertical maxWidth" role="group"
                   aria-label="Vertical radio toggle button group">
                   <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/personSpeech.png" width="48px"
@@ -86,7 +86,10 @@
                   </label>
                 </section>
               </section>
-              <section class="col-lg-5 col-md-6 col-sm-12">
+              <section class="col-2 m-auto d-none d-md-block"> 
+                <button class="btnStoile btn-primary submitButton col-12" type="submit"><img src="./assets/images/icons/submit.png" alt=""></button>
+              </section>
+              <section class="col-lg-5 col-md-5 col-sm-12">
                 <section class="btn-group-vertical maxWidth" role="group"
                   aria-label="Vertical radio toggle button group">
                   <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/movie2.png" width="48px"
@@ -109,10 +112,9 @@
                 </section>
               </section>
             </section>
-            <section class="submitQuizz col-12">
-              <span class="col-sm-12 col-md-12 col-lg-12 customAnswer">
-                <button class="btnStoile btn-primary submitButton" type="submit"><img
-                    src="./assets/images/icons/submit.png" alt="submit the quizz"></button>
+            <section class="submitQuizz col-12 mt-2">
+              <span class="col-12 customAnswer d-md-none d-md-block d-lg-none d-xl-block	d-xl-none d-xxl-block d-xxl-none">
+                <button class="btnStoile btn-primary submitButton2 col-11 " type="submit">Click here to check!</button>
               </span>
             </section>
           </form>
