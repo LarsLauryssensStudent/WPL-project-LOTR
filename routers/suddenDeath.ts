@@ -63,6 +63,9 @@ export default function suddenDeathRouter() {
         let prevQuote: Quote = returnQuote();
         let correctChar: string = prevQuote.character;
         let correctMovie: string = prevQuote.movie;
+        updateCurrentGameAnswers(movieChoice, characterChoice);
+            updateCurrentGameQuote(prevQuote);
+            updateCurrentGameScore(getQCounter());
         if (correctChar === characterChoice && correctMovie === movieChoice) {
             let currentSD: number = getQCounter();
             try {
@@ -75,9 +78,7 @@ export default function suddenDeathRouter() {
             setQCounter(currentSD);
             let quotes: Quote[] = await getQuotes();
             setNewQuote(quotes);
-            updateCurrentGameAnswers(movieChoice, characterChoice);
-            updateCurrentGameQuote(prevQuote);
-            updateCurrentGameScore(getQCounter());
+            
             
 
             res.redirect("/Sudden-Death");
