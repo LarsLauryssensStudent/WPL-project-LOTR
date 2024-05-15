@@ -15,7 +15,7 @@ export default function blacklistRouter() {
         
         let charactersss: Character[] | undefined = []
         const characters = await getCharacters();
-        charactersss = await toggleIds();
+        charactersss = await toggleIds(userId);
         res.render("blacklist", {
             blacklisted: blacklisted,
             characters: characters
@@ -41,8 +41,8 @@ export default function blacklistRouter() {
     return router
 }
 
-async function toggleIds(): Promise<Character[]> {
-    let userId = "test";
+async function toggleIds(userId: string): Promise<Character[]> {
+    
     const blacklisted: Quote[] = await getBlacklist(userId);
     const characterIds: string[] = blacklisted.map(quote => quote.character);
     let characterss: Character[] = [];

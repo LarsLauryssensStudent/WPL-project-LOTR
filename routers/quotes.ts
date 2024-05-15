@@ -7,7 +7,9 @@ export default function quotesRouter() {
     const router = express.Router();
 
     router.get("/blacklist/:id", async (req, res) => {
-        const quotes: Quote[] = await getBlacklist("test");
+        let userId :string = req.session.user?.username ?? "test";
+
+        const quotes: Quote[] = await getBlacklist(userId);
 
         const characterId: string = req.params.id;
         const quotesFromCharacter: Quote[] = quotes.filter(q => q.character === characterId);
@@ -20,7 +22,9 @@ export default function quotesRouter() {
     });
 
     router.get("/favorites/:id", async (req, res) => {
-        const quotes: Quote[] = await getFavorites("test");
+        let userId :string = req.session.user?.username ?? "test";
+
+        const quotes: Quote[] = await getFavorites(userId);
 
         const characterId: string = req.params.id;
         const quotesFromCharacter: Quote[] = quotes.filter(q => q.character === characterId);

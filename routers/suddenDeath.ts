@@ -1,9 +1,9 @@
 import express from "express";
-import { shuffleArray, generatePossibleAnswers } from "../utils";
-import { getQCounter, setQCounter, returnQuote, setNewQuote, setScore, updateCurrentGameAnswers, updateCurrentGameQuote, updateCurrentGameScore, resetCurrentGame, getCurrentGame } from "../index";
+import { generatePossibleAnswers } from "../utils";
+import { getQCounter, setQCounter, returnQuote, setNewQuote, setScore, updateCurrentGameAnswers, updateCurrentGameQuote, updateCurrentGameScore, resetCurrentGame, getCurrentGame, getScore } from "../index";
 import { Quote, Movie, Character, User, GameResult } from "../interfaces";
 import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, updateHighscore, getHighScore, addToGames } from "../database";
-import { userInfo } from "os";
+
 
 
 export default function suddenDeathRouter() {
@@ -68,13 +68,9 @@ export default function suddenDeathRouter() {
         updateCurrentGameScore(getQCounter());
         if (correctChar === characterChoice && correctMovie === movieChoice) {
             let currentSD: number = getQCounter();
-            try {
-                let userId: string = req.session.user?.username ?? "test";
-                await updateHighscore(userId, currentSD);
-            } catch(error) {
-                console.log(error);
-            }
+            setScore(currentSD);
             currentSD++;
+
             setQCounter(currentSD);
             let quotes: Quote[] = await getQuotes();
             setNewQuote(quotes);
@@ -86,8 +82,8 @@ export default function suddenDeathRouter() {
         else {
             setQCounter(1);
             let userName: string = req.session.user?.username ?? "test";
-            let currentScore: number = await getHighScore(userName);
-            let highScore: number = req.session.user?.highScore ?? 0;
+            let currentScore: number = getQCounter();
+            let highScore: number = await getHighScore(userName);
             let gameResult: GameResult = getCurrentGame();
             try {
                 await addToGames(userName, gameResult);
@@ -106,7 +102,8 @@ export default function suddenDeathRouter() {
     })
     router.get("/blacklist", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let userId = "test";
+        let userId :string = req.session.user?.username ?? "test";
+        
         try {
             await addToBlacklist(currentQuote, userId);
             let quotes: Quote[] = await getQuotes();
@@ -120,7 +117,8 @@ export default function suddenDeathRouter() {
     })
     router.get("/favorites", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let userId = "test";
+        let userId :string = req.session.user?.username ?? "test";
+        
         try {
             await toggleFavorites(currentQuote, userId);
             console.log("Succes Fav")
