@@ -4,6 +4,7 @@ import { Character, Quote } from "../interfaces";
 import { link } from "fs";
 import { getBlacklist, getCharacters, removeFromBlacklist, searchQuoteById } from "../database";
 import { userInfo } from "os";
+import { printFavoritesAndBlacklists } from "../utils";
 
 export default function blacklistRouter() {
     const router = express.Router();
@@ -36,6 +37,15 @@ export default function blacklistRouter() {
         await removeFromBlacklist(quoteToRemove, userId);
         }
         res.redirect("/Blacklist");
+    });
+    router.get("/toFile", async (req,res) => {
+        try {
+            let username: string = req.session.user?.username ?? "test";
+            await printFavoritesAndBlacklists(username);
+        } catch (error) {
+            console.log(error);
+        }
+        res.redirect("back");
     });
 
     return router

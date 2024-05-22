@@ -122,7 +122,7 @@ export default function tenRoundsRouter() {
         catch (error) {
             console.log("error" + error)
         }
-        res.redirect("/10-Rounds");
+        res.redirect("back");
 
     });
 

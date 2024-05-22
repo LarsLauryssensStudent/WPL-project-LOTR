@@ -560,13 +560,13 @@ blockquote {
 }
 .submitButton {
   border-radius: 0 0 28px 28px !important;
-  background-color: #fcecbb7e;
-  width: 96px;
+  background-color: rgba(252, 236, 187, 0.4941176471);
   border: 2px solid green;
-  border-radius: 50%!important;
-  background-color: #fcecbb7e;
-  margin: -2rem;
+  border-radius: 50% !important;
+  background-color: rgba(252, 236, 187, 0.4941176471);
+  
 }
+
 .submitButton img {
   width: 100%;
 }
@@ -672,6 +672,13 @@ header {
 footer {
   grid-area: footer;
   margin-bottom: 0;
+}
+
+.quizzResultNormal {
+  background-image: url("../images/result-backgrounds/gollum.jpg");
+}
+.quizzResultSD {
+  background-image: url("../images/result-backgrounds/saruman.jpg");
 }
 
 main {

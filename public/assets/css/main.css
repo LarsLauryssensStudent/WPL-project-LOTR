@@ -12482,11 +12482,10 @@ blockquote {
 .submitButton {
   border-radius: 0 0 28px 28px !important;
   background-color: rgba(252, 236, 187, 0.4941176471);
-  width: 96px;
   border: 2px solid green;
   border-radius: 50% !important;
   background-color: rgba(252, 236, 187, 0.4941176471);
-  margin: -2rem;
+  
 }
 
 .submitButton img {
@@ -12538,6 +12537,13 @@ blockquote {
 #favoBtn:hover {
   transform: scale(1.2);
   color: red;
+}
+
+.quizzResultNormal {
+  background-image: url("../images/result-backgrounds/gollum.jpg");
+}
+.quizzResultSD {
+  background-image: url("../images/result-backgrounds/saruman.jpg");
 }
 
 @media screen and (max-width: 600px) {

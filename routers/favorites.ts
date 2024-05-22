@@ -1,8 +1,7 @@
 import express from "express";
-import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote } from "../index";
 import { Character, Quote } from "../interfaces";
 import { getCharacters, getFavorites, removeFromFavorites } from "../database";
-
+import { printFavoritesAndBlacklists } from "../utils";
 export default function favoritesRouter() {
     const router = express.Router();
 
@@ -33,5 +32,16 @@ export default function favoritesRouter() {
 
         res.redirect("/Favorites");
     });
+
+    router.get("/toFile", async (req,res) => {
+        try {
+            let username: string = req.session.user?.username ?? "test";
+            await printFavoritesAndBlacklists(username);
+        } catch (error) {
+            console.log(error);
+        }
+        res.redirect("back");
+    });
+
     return router
 }

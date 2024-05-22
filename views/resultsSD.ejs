@@ -5,7 +5,7 @@
 
 
     <section class="col-sm-12 col-lg-8 col-md-10 my-5">
-      <section class="quizzContainer">
+      <section class="quizzContainer quizzResultSD">
         <section class="quizzNav container-fluid resultNav" >
           <h1>Je resultaat van de Quiz!</h1>
 
@@ -15,13 +15,16 @@
 
           <article class="card-body col-12">
 
-            <section>
-            </section>
+       
             <section class="scoreFieldResult ">
-              <p>Uw score</p>
-              <p><%= score %></p>
+              
+              <p style="text-decoration: underline 2px;">Uw score</p>
+              <p style="text-decoration: underline 2px red;"><%= score %></p>
+              
+              <section>
               <p>Uw highscore </p>
               <p><%= highScore %></p>
+              </section>
             </section>
 
           </article>

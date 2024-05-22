@@ -11,28 +11,26 @@ export default function suddenDeathRouter() {
 
 
     router.get("/", async (req, res) => {
-        const randomQuote: Quote = returnQuote();
-        let characters: Character[] = [];
-        let movies: Movie[] = [];
-        let score: number = 0;
-        let userName: string = req.session.user?.username ?? "test";
         try {
-            characters = await getCharacters();
-            movies = await getMovies();
-            score = await getHighScore(userName);
-        } catch (error) {
-            console.log("Er ging iets fout bij Sudden Death: " + error)
-        }
-        const randomChars: Character[] = generatePossibleAnswers(randomQuote, characters);
-        // movie randomen
-        console.log(getQCounter());
-        res.render("quizzSD", {
-            qCounter: getQCounter(),
-            score: score,
-            quote: randomQuote,
-            characters: randomChars,
-            movies: movies
-        });
+            const randomQuote: Quote = returnQuote();
+            const characters: Character[] = await getCharacters();
+            const movies: Movie[] = await getMovies();
+            const userName: string = req.session.user?.username ?? "test";
+            const highScore: number = await getHighScore(userName);
+            console.log(highScore);
+            const randomChars: Character[] = generatePossibleAnswers(randomQuote, characters);
+      
+            res.render("quizzSD", {
+              qCounter: getQCounter(),
+              score: highScore,
+              quote: randomQuote,
+              characters: randomChars,
+              movies: movies
+            });
+          } catch (error) {
+            console.error("Error in Sudden Death initialization: ", error);
+            res.status(500).send("Internal Server Error");
+          }      
 
     });
 
@@ -82,8 +80,10 @@ export default function suddenDeathRouter() {
         else {
             setQCounter(1);
             let userName: string = req.session.user?.username ?? "test";
-            let currentScore: number = getQCounter();
+            let currentScore: number = getScore();
             let highScore: number = await getHighScore(userName);
+            console.log(currentScore, highScore);
+            console.log(req.session.user?.highScore);
             let gameResult: GameResult = getCurrentGame();
             try {
                 await addToGames(userName, gameResult);
@@ -91,10 +91,17 @@ export default function suddenDeathRouter() {
                 console.log(error);
             }
             resetCurrentGame();
+
             if (currentScore > highScore) {
+                console.log("current:" + currentScore + "  high: " + highScore)
                 await updateHighscore(userName, currentScore);
-                setScore(currentScore);
+                req.session.user!.highScore = currentScore;
+                console.log(req.session.user?.highScore);
+
+                console.log(await getHighScore(userName));
+                
             }
+            
             res.redirect("/results/Sudden-Death");
 
         }
@@ -127,7 +134,7 @@ export default function suddenDeathRouter() {
             console.log(error);
         }
         console.log("ben hier");
-        res.redirect("/Sudden-Death");
+        res.redirect("back");
     });
 
     return router

@@ -2,6 +2,7 @@ import { DeleteResult, InsertManyResult, MongoClient, UpdateResult } from "mongo
 import { Character, GameResult, Movie, Quote, User } from "./interfaces";
 import bcrypt from 'bcrypt';
 import dotenv from "dotenv";
+import { Request, Response } from "express";
 
 dotenv.config();
 
@@ -464,7 +465,8 @@ export async function searchQuoteById( id: string) :Promise<Quote|null> {
 
 export async function updateHighscore(id: string, score: number) {
   try {
-    await users.updateOne({username: id}, {$set: {highScore: score}})
+    console.log(score);
+    await users.updateOne({username: id}, {$set: {highScore: score}});
   }
   catch (error) {
     throw new Error("Kon score niet updaten: " + error);
