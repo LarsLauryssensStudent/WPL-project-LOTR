@@ -9,8 +9,20 @@ export default function selectionRouter() {
         
         });
       
-});
-      
+    });
+    
+    router.get("/goToNormal", (req,res) => {
+        setScore(0);
+        setQCounter(1);
+        res.redirect("/10-Rounds");
+    });
+
+    router.get("/goToSD", (req,res) => {
+        setScore(0);
+        res.redirect("/Sudden-Death");        
+    });
+
+
     router.get("/:option", (req, res) => {
         const option: string = typeof req.params.option === "string" ? req.params.option : "error";
         console.log(option);
@@ -26,5 +38,9 @@ export default function selectionRouter() {
             }
       
 });
+
+    
+
+
     return router;
 }

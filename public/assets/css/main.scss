@@ -829,3 +829,11 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
     box-shadow: none;
     background-color: transparent;
 }
+
+.submitButton2 {
+  border-radius: 0 0 24px 24px;
+  width: 95%;
+}
+.submitButton2:hover {
+  background-color: #051b11!important;
+} 

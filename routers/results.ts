@@ -1,5 +1,5 @@
 import express from "express"
-import { getScore } from "..";
+import { getScore, setScore } from "..";
 import { getHighScore } from "../database";
 
 export default function resultRouter() {
@@ -9,6 +9,7 @@ export default function resultRouter() {
     const score: number = getScore();
     //const highscore :number = getHighScore();
     let correctAnswers: number = score;
+    setScore(0);
     res.render("results", {
       score: score,
       correctAnswers: correctAnswers
@@ -18,6 +19,7 @@ export default function resultRouter() {
   router.get("/Sudden-Death", async (req, res) => {
     const score: number = getScore();
     let highscore: number = 0;
+    setScore(0);
     let userName: string = req.session.user?.username ?? "test";
     //const highscore :number = getHighScore();
     try {

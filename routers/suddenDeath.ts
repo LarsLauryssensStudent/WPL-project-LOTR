@@ -73,8 +73,6 @@ export default function suddenDeathRouter() {
             let quotes: Quote[] = await getQuotes();
             setNewQuote(quotes);
             
-            
-
             res.redirect("/Sudden-Death");
         }
         else {
@@ -83,7 +81,7 @@ export default function suddenDeathRouter() {
             let currentScore: number = getScore();
             let highScore: number = await getHighScore(userName);
             console.log(currentScore, highScore);
-            console.log(req.session.user?.highScore);
+            console.log(req.session.user?.highScore?.toLocaleString());
             let gameResult: GameResult = getCurrentGame();
             try {
                 await addToGames(userName, gameResult);

@@ -12068,7 +12068,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: red 2px solid;
+ /* border: red 2px solid;*/
 }
 
 .login-footer .bi {
@@ -12352,7 +12352,7 @@ input[type=color],
   margin: auto;
   padding: auto;
   justify-content: space-between;
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   padding-bottom: 1rem;
 }
 
@@ -12701,11 +12701,11 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
 }
 
 .scoreFieldResult {
-  border: 2px solid red;
+  /*border: 2px solid red;*/
 }
 
 .scoreFieldResult > p:first-of-type {
-  border: 2px solid blue;
+  /*border: 2px solid blue;*/
   text-align: center;
   font-size: 1.8rem;
 }
@@ -12745,3 +12745,11 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   box-shadow: none;
   background-color: transparent;
 }
+
+.submitButton2 {
+  border-radius: 0 0 24px 24px;
+  width: 95%;
+}
+.submitButton2:hover {
+  background-color: #051b11!important;
+} 
