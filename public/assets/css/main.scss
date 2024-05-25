@@ -426,7 +426,7 @@ input[type=color],
   margin: auto;
   padding: auto;
   justify-content: space-between;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   padding-bottom: 1rem;
 }
 .answerRow {
@@ -787,11 +787,11 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   padding-top: 0.4rem!important;
 }
 .scoreFieldResult {
-  border: 2px solid red;
+ /* border: 2px solid red;*/
   
 }
 .scoreFieldResult > p:first-of-type {
-  border: 2px solid blue;
+/*  border: 2px solid blue;*/
   text-align: center;
   font-size: 1.8rem;
 }
