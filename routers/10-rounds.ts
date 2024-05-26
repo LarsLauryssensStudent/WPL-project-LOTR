@@ -48,7 +48,8 @@ export default function tenRoundsRouter() {
                 quote: randomQuote,
                 characters: randomChars,
                 movies: shuffledMovies,
-                score: getScore()
+                score: getScore(),
+                pageTitle: "10-Rounds",
             });
         }
     })

@@ -15,6 +15,7 @@ declare module "express-session" {
     export interface SessionData {
         user?: User;
         message?: FlashMessage;
+        rememberedUsername?: string;
     }
 };
 

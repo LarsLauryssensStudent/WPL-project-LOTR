@@ -25,7 +25,8 @@ export default function suddenDeathRouter() {
               score: highScore,
               quote: randomQuote,
               characters: randomChars,
-              movies: movies
+              movies: movies,
+              pageTitle: "Sudden-Death"
             });
           } catch (error) {
             console.error("Error in Sudden Death initialization: ", error);

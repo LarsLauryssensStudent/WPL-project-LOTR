@@ -12,7 +12,8 @@ export default function favoritesRouter() {
         res.render("favorites",
             {
                 characters: characters,
-                favorites: favorites
+                favorites: favorites,
+                pageTitle: "favorites",
             })
     });
 

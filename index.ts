@@ -15,6 +15,7 @@ import favoritesRouter from "./routers/favorites";
 import resultRouter from "./routers/results";
 import quotesRouter from "./routers/quotes";
 import loginRouter from "./routers/loginRouter";
+import settingsRouter from "./routers/settingsRouter";
 
 dotenv.config();
 
@@ -108,9 +109,10 @@ app.set("port", process.env.PORT ?? 3000);
 
 //routers
 app.use(loginRouter());
+app.use(secureMiddleware, settingsRouter());
 app.use("/selection", secureMiddleware, selectionRouter());
-app.use("/10-Rounds", tenRoundsRouter());
-app.use("/Sudden-Death", suddenDeathRouter());
+app.use("/10-Rounds", secureMiddleware, tenRoundsRouter());
+app.use("/Sudden-Death", secureMiddleware, suddenDeathRouter());
 app.use("/Blacklist", secureMiddleware, blacklistRouter());
 app.use("/Favorites", secureMiddleware, favoritesRouter());
 app.use("/results", resultRouter())
@@ -122,7 +124,7 @@ app.get("/", (req, res) => {
   if (req.session.user) {
     res.redirect("/selection");
   } else {
-    res.render("index");
+    res.render("index", { pageTitle: "Landingspagina" });
   }
 })
 
