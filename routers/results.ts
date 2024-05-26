@@ -12,7 +12,8 @@ export default function resultRouter() {
     setScore(0);
     res.render("results", {
       score: score,
-      correctAnswers: correctAnswers
+      correctAnswers: correctAnswers,
+      pageTitle: "results"
     })
   })
 
@@ -32,7 +33,8 @@ export default function resultRouter() {
     res.render("resultsSD", {
       score: score,
       highScore: highscore,
-      correctAnswers: correctAnswers
+      correctAnswers: correctAnswers,
+      pageTitle: "results"
     })
   })
 
