@@ -10,7 +10,7 @@
   <script defer src="/assets/js/popper.min.js"></script>
   <script defer src="/assets/js/landingpage.js"></script>
 
-  <title>Landingspagina</title>
+  <title><%= pageTitle %></title>
 </head>
 <body class="login-body">
 
@@ -35,7 +35,7 @@
           <label for="username" class="form-label">
             gebruikersnaam<span class="required">*</span>
           </label>
-          <input name="username" type="text" class="form-control rounded" id="username">
+          <input name="username" type="text" class="form-control rounded" id="username" value="<%= savedUsername %>">
         </section>
 
         <section class="mb-3">
@@ -46,8 +46,12 @@
         </section>
 
         <section class="mb-3">
-          <input type="checkbox" class="form-check-input" id="remember-me">
-          <label class="form-check-label" for="rememberMe">remember me</label>
+            <input type="checkbox" class="form-check-input" id="remember-me" name="rememberMe"
+              <% if (savedUsername) { %>
+                  checked 
+              <% } %>
+            </input>
+          <label class="form-check-label" for="remember-me">remember me</label>
         </section>
 
         <section class="mb-2">

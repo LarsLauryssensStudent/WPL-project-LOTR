@@ -19,7 +19,8 @@ export default function blacklistRouter() {
         charactersss = await toggleIds(userId);
         res.render("blacklist", {
             blacklisted: blacklisted,
-            characters: characters
+            characters: characters,
+            pageTitle: "blacklist",
         });
     });
 

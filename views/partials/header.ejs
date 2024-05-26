@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title><%= pageTitle %></title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -77,16 +77,29 @@
                 <li class="headerHover"><a class="dropdown-item " href="/Favorites">Favorited</a></li>
               </ul>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Instellingen
+              </a>
+              <ul class="dropdown-menu">
+                <li class="headerHover"><a class="dropdown-item" href="/email">E-mail veranderen</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li class="headerHover"><a class="dropdown-item " href="/password">Wachtwoord veranderen</a></li>
+              </ul>
+            </li>
             <li class="nav-item">
               <form action="/logout" method="post">
                 <button type="submit" class="nav-link" style="text-decoration: underline red;">Uitloggen</button>
               </form>
             </li>
           </ul>
-          <form class="d-flex mt-3" role="search" action="https://www.google.com/" method="post">
+          <!-- <form class="d-flex mt-3" role="search" action="https://www.google.com/" method="post">
             <input class="form-control me-2" type="search" placeholder="Gandalf kijkt mee..." aria-label="Search">
             <button class="btn searchBtn" type="submit">Zoeken</button>
-          </form>
+          </form> -->
         </section>
       </section>
     </section>

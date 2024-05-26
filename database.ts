@@ -99,6 +99,34 @@ export async function register(username: string, email: string, password: string
   });
 };
 
+export async function updateEmail(currentEmail: string, newEmail: string, confirmEmail: string) {
+    if (newEmail !== confirmEmail) {
+        throw new Error("E-mailadressen komen niet overeen");
+    }
+
+    const existingEmail: User | null = await users.findOne({ email: newEmail });
+    if (existingEmail) {
+        throw new Error("E-mailadres is al geregistreerd");
+    }
+
+    await users.updateOne({ email: currentEmail }, { $set: { email: newEmail } });
+}
+
+export async function updatePassword(currentEmail: string, password: string, newPassword: string) {
+    const user: User | null = await users.findOne({ email: currentEmail });
+    const currentPassword = user?.password;
+
+    if (!(await bcrypt.compare(password, currentPassword!))) {
+        throw new Error("Ongeldig wachtwoord");
+    }
+
+    const saltRounds: number = 10;
+    await users.updateOne(
+        { email: currentEmail },
+        { $set: { password: await bcrypt.hash(newPassword, saltRounds) } }
+    );
+}
+
 export async function connect() {
   await client.connect();
   await createInitialUser();

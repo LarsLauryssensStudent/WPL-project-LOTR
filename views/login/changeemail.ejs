@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+
+<%- include("../partials/header") %>
+
+    <main class="container-fluid quizzMain">
+
+
+        <section class="col-sm-12 col-lg-8 col-md-10 ">
+            <section class="quizzContainer">
+                <section class="quizzNav container-fluid">
+                    <h1 class="mx-auto" style="font-size: 1.6rem; padding-top: 8px;">Wachtwoord veranderen</h1>
+                </section>
+                <section class="card biggerCardBlacklist align-items-center my-0 mx-0 w-100 blacklistmain">
+                    <article class="container login-main">
+                        <form action="/email" method="post" id="loginForm">
+
+                            <% if (message) { %>
+                                <% if (message.type === "success") { %>
+                                    <p class="success-login"><%= message.message %></p>
+                                <% } else if (message.type ==="error") { %>
+                                    <p class="error-login"><%= message.message %></p>
+                                <% } %>
+                            <% } %> 
+
+                            <section class="mb-2">
+                            <label for="newEmail" class="form-label">verander e-mailadres
+                                <span class="required">*</span>
+                            </label>
+                            <input name="newEmail" type="email" class="form-control rounded" id="newEmail" 
+                            value="<%= user.email %>"
+                            </section>
+
+                            <section class="mb-3">
+                            <label for="confirmEmail" class="form-label">bevestig nieuw e-mailadres
+                                <span class="required">*</span>
+                            </label>
+                            <input name="confirmEmail" type="email" class="form-control rounded" id="confirmEmail">
+                            </section>
+
+                            <button type="submit" class="btn border-dark rounded mb-2">opslaan</button>
+                        </form>
+                    </article>
+                </section>
+
+
+            </section>
+        </section>
+
+    </main>
+    </body>
+
+
+    <%- include("../partials/footer") %>
+
+</html>
