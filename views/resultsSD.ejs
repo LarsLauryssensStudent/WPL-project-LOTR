@@ -16,20 +16,20 @@
           <article class="card-body col-12">
 
        
-            <section class="scoreFieldResult ">
+            <section class="scoreFieldResult ">  
+              <p> Uw score </p>
+              <p> <%= score %> </p>
+            </section>
               
-              <p style="text-decoration: underline 2px;">Uw score</p>
-              <p style="text-decoration: underline 2px red;"><%= score %></p>
-              
-              <section>
+              <section class="scoreFieldResult2">
               <p>Uw highscore </p>
               <p><%= highScore %></p>
               </section>
-            </section>
+          
 
           </article>
 
-          <section class="backToSelect"> <a href="/selection">Terug naar de selectionPage</a></section>
+          <section class="backToSelect"> <a href="/selection" class="backLink">Terug naar de selectionPage</a></section>
         </section>
 
 

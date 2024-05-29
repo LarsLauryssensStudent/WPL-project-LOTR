@@ -2,7 +2,7 @@ import express from "express";
 import { generatePossibleAnswers } from "../utils";
 import { getQCounter, setQCounter, returnQuote, setNewQuote, setScore, updateCurrentGameAnswers, updateCurrentGameQuote, updateCurrentGameScore, resetCurrentGame, getCurrentGame, getScore } from "../index";
 import { Quote, Movie, Character, User, GameResult } from "../interfaces";
-import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, updateHighscore, getHighScore, addToGames } from "../database";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, updateHighscore, getHighScore, addToGames, getFavorites } from "../database";
 
 
 
@@ -17,16 +17,17 @@ export default function suddenDeathRouter() {
             const movies: Movie[] = await getMovies();
             const userName: string = req.session.user?.username ?? "test";
             const highScore: number = await getHighScore(userName);
-            console.log(highScore);
+            
             const randomChars: Character[] = generatePossibleAnswers(randomQuote, characters);
-      
+            const favorites: Quote[] = await getFavorites(userName);
             res.render("quizzSD", {
               qCounter: getQCounter(),
               score: highScore,
               quote: randomQuote,
               characters: randomChars,
               movies: movies,
-              pageTitle: "Sudden-Death"
+              pageTitle: "Sudden-Death",
+              favorites: favorites
             });
           } catch (error) {
             console.error("Error in Sudden Death initialization: ", error);

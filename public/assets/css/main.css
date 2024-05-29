@@ -12693,16 +12693,47 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   /* border: 2px solid red;*/
 }
 
+.backLink {
+  text-decoration: underline red;
+  color: #032830;
+  font-size: 1.2rem;
+  transition: 0.4s ease-in-out;
+}
+.backLink:hover {
+  color: yellow;
+  text-shadow: 2px 2px black;
+}
+
 .scoreFieldResult > p:first-of-type {
   /*  border: 2px solid blue;*/
   text-align: center;
   font-size: 1.8rem;
+  text-decoration: red underline 2px;
+  margin-bottom: 0.4rem;
 }
 
 .scoreFieldResult > p:last-of-type {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.4rem;
+  text-decoration: red underline 2px;
   letter-spacing: 0.12rem;
+}
+
+.scoreFieldResult2 > p:first-of-type {
+  /*  border: 2px solid blue;*/
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0;
+  text-decoration: underline red;
+}
+
+.scoreFieldResult2 > p:last-of-type {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 0;
+  letter-spacing: 0.12rem;
+  font-weight: 600;
+  text-decoration: underline 2px solid red;
 }
 
 .backToSelect {
