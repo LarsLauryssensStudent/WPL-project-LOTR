@@ -107,9 +107,9 @@ const blButton = document.getElementById("blackListBtn");
 const formBl = document.getElementById("reasonDropdown");
 
 blButton.addEventListener("click", function () {
-  if (formBl.style.visibility === "visible") {
-    formBl.style.visibility = "hidden";
+  if (formBl.style.display === "none") {
+    formBl.style.display = "block";
   } else {
-    formBl.style.visibility = "visible";
+    formBl.style.display = "none";
   }
 });

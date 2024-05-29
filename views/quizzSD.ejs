@@ -65,10 +65,10 @@
               </footer>
             </blockquote>
           </article>
-          <form action="/Sudden-Death/blacklist" style="visibility: hidden;" id="reasonDropdown" method="post">
-            <label for="text">Reden:</label>
-            <input type=" text" name="reason" id="reason" required>
-            <button type="submit" value="submit">Blacklist!</button>
+          <form action="/Sudden-Death/blacklist" style="display: none;" id="reasonDropdown" method="post">
+            <label for="reason" class="blackListLabel">Reden:</label>
+            <input type="text" name="reason" id="reason" class="blackListField" required>
+            <button type="submit" value="submit" class="blackListButton">Blacklist!</button>
           </form>
         </section>
 

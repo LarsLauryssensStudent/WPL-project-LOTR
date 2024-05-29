@@ -12702,7 +12702,19 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
 .scoreFieldResult {
   /* border: 2px solid red;*/
 }
-
+.blackListButton {
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 4px 8px;
+  opacity: 80%;
+}
+.blackListLabel {
+  font-weight: 500;
+}
+.blackListField {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 24px;
+}
 .backLink {
   text-decoration: underline red;
   color: #032830;
