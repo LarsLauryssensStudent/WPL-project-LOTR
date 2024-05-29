@@ -9,7 +9,7 @@ export let score: number = 0;
 
 export default function tenRoundsRouter() {
     const router = express.Router();
-    
+
     router.get("/", async (req, res) => {
         if (getQCounter() > 10) {
             setQCounter(1);
@@ -18,7 +18,7 @@ export default function tenRoundsRouter() {
             let userId: string = req.session.user?.username ?? "test";
             try {
                 await addToGames(userId, gameResult);
-            } catch(error) {
+            } catch (error) {
                 console.log(error);
             }
             resetCurrentGame();
@@ -130,8 +130,6 @@ export default function tenRoundsRouter() {
         res.redirect("back");
 
     });
-
-
 
     return router
 }

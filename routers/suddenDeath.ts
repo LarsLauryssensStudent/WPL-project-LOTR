@@ -17,22 +17,22 @@ export default function suddenDeathRouter() {
             const movies: Movie[] = await getMovies();
             const userName: string = req.session.user?.username ?? "test";
             const highScore: number = await getHighScore(userName);
-            
+
             const randomChars: Character[] = generatePossibleAnswers(randomQuote, characters);
             const favorites: Quote[] = await getFavorites(userName);
             res.render("quizzSD", {
-              qCounter: getQCounter(),
-              score: highScore,
-              quote: randomQuote,
-              characters: randomChars,
-              movies: movies,
-              pageTitle: "Sudden-Death",
-              favorites: favorites
+                qCounter: getQCounter(),
+                score: highScore,
+                quote: randomQuote,
+                characters: randomChars,
+                movies: movies,
+                pageTitle: "Sudden-Death",
+                favorites: favorites
             });
-          } catch (error) {
+        } catch (error) {
             console.error("Error in Sudden Death initialization: ", error);
             res.status(500).send("Internal Server Error");
-          }      
+        }
 
     });
 
@@ -74,7 +74,7 @@ export default function suddenDeathRouter() {
             setQCounter(currentSD);
             let quotes: Quote[] = await getQuotes();
             setNewQuote(quotes);
-            
+
             res.redirect("/Sudden-Death");
         }
         else {
@@ -87,7 +87,7 @@ export default function suddenDeathRouter() {
             let gameResult: GameResult = getCurrentGame();
             try {
                 await addToGames(userName, gameResult);
-            } catch(error) {
+            } catch (error) {
                 console.log(error);
             }
             resetCurrentGame();
@@ -99,9 +99,9 @@ export default function suddenDeathRouter() {
                 console.log(req.session.user?.highScore);
 
                 console.log(await getHighScore(userName));
-                
+
             }
-            
+
             res.redirect("/results/Sudden-Death");
 
         }
@@ -109,8 +109,8 @@ export default function suddenDeathRouter() {
     })
     router.get("/blacklist", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let userId :string = req.session.user?.username ?? "test";
-        
+        let userId: string = req.session.user?.username ?? "test";
+
         try {
             await addToBlacklist(currentQuote, userId);
             let quotes: Quote[] = await getQuotes();
@@ -124,8 +124,8 @@ export default function suddenDeathRouter() {
     })
     router.get("/favorites", async (req, res) => {
         let currentQuote: Quote = returnQuote();
-        let userId :string = req.session.user?.username ?? "test";
-        
+        let userId: string = req.session.user?.username ?? "test";
+
         try {
             await toggleFavorites(currentQuote, userId);
             console.log("Succes Fav")

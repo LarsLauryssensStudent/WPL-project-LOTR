@@ -12,10 +12,10 @@ export default function blacklistRouter() {
     const router = express.Router();
 
     router.get("/", async (req, res) => {
-        let userId :string = req.session.user?.username ?? "test";
-        
+        let userId: string = req.session.user?.username ?? "test";
+
         const blacklisted: Quote[] = await getBlacklist(userId);
-        
+
         let charactersss: Character[] | undefined = []
         const characters = await getCharacters();
         charactersss = await toggleIds(userId);
@@ -29,20 +29,20 @@ export default function blacklistRouter() {
     router.get("/:id/Remove", async (req, res) => {
         const quoteId: string = req.params.id;
 
-        let userId :string = req.session.user?.username ?? "test";
-        let quoteToRemove : Quote | null = null; 
+        let userId: string = req.session.user?.username ?? "test";
+        let quoteToRemove: Quote | null = null;
         try {
-         quoteToRemove = await searchQuoteById(quoteId);
+            quoteToRemove = await searchQuoteById(quoteId);
         } catch (error) {
             console.log(error);
         }
         if (quoteToRemove) {
-        await removeFromBlacklist(quoteToRemove, userId);
+            await removeFromBlacklist(quoteToRemove, userId);
         }
         res.redirect("/Blacklist");
     });
 
-    router.get("/toFile", async (req,res) => {
+    router.get("/toFile", async (req, res) => {
         try {
             let username: string = req.session.user?.username ?? "test";
             let fileName: string = await printFavoritesAndBlacklists(username);
@@ -50,7 +50,7 @@ export default function blacklistRouter() {
                 if (error) {
                     console.log(error)
                 }
-            fs.unlinkSync(fileName);               
+                fs.unlinkSync(fileName);
             })
         } catch (error) {
             console.log(error);
@@ -61,7 +61,7 @@ export default function blacklistRouter() {
 }
 
 async function toggleIds(userId: string): Promise<Character[]> {
-    
+
     const blacklisted: Quote[] = await getBlacklist(userId);
     const characterIds: string[] = blacklisted.map(quote => quote.character);
     let characterss: Character[] = [];

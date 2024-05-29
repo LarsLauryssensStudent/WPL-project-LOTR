@@ -66,10 +66,10 @@ export function setNewQuote(array: Quote[]) {
 export function returnQuote(): Quote {
   return randomQuote;
 }
-export function updateCurrentGameQuote(value : Quote) {
+export function updateCurrentGameQuote(value: Quote) {
   currentGame.lastQuotes?.push(value);
 }
-export function updateCurrentGameAnswers(valueOfMovie: string, valueOfChar: string){
+export function updateCurrentGameAnswers(valueOfMovie: string, valueOfChar: string) {
   currentGame.lastMovies?.push(valueOfMovie);
   currentGame.lastCharacters?.push(valueOfChar);
 }
@@ -78,9 +78,9 @@ export function updateCurrentGameScore(score: number) {
 }
 export function resetCurrentGame() {
   currentGame.lastCharacters = [],
-  currentGame.lastMovies = [],
-  currentGame.lastQuotes = [],
-  currentGame.score = 0
+    currentGame.lastMovies = [],
+    currentGame.lastQuotes = [],
+    currentGame.score = 0
 }
 export function getCurrentGame(): GameResult {
   return currentGame;
@@ -109,7 +109,7 @@ app.set("port", process.env.PORT ?? 3000);
 
 //routers
 app.use(loginRouter());
-app.use(secureMiddleware, settingsRouter());
+app.use(settingsRouter());
 app.use("/selection", secureMiddleware, selectionRouter());
 app.use("/10-Rounds", secureMiddleware, tenRoundsRouter());
 app.use("/Sudden-Death", secureMiddleware, suddenDeathRouter());
@@ -119,7 +119,6 @@ app.use("/results", resultRouter())
 app.use("/quotes", quotesRouter());
 
 //startup
-
 app.get("/", (req, res) => {
   if (req.session.user) {
     res.redirect("/selection");
@@ -130,13 +129,13 @@ app.get("/", (req, res) => {
 
 app.listen(app.get("port"), async () => {
   try {
-      await connect();
-      await checkData();
-      let quotes : Quote[] = await getQuotes();
-      setNewQuote(quotes);
-      console.log("Server started on http://localhost:" + app.get("port"));
+    await connect();
+    await checkData();
+    let quotes: Quote[] = await getQuotes();
+    setNewQuote(quotes);
+    console.log("Server started on http://localhost:" + app.get("port"));
   } catch (error) {
-      console.error(error);
-      process.exit(1);
+    console.error(error);
+    process.exit(1);
   }
 });

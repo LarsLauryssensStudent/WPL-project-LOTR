@@ -7,7 +7,7 @@ export default function favoritesRouter() {
     const router = express.Router();
 
     router.get("/", async (req, res) => {
-        let userId :string = req.session.user?.username ?? "test";
+        let userId: string = req.session.user?.username ?? "test";
         const favorites: Quote[] = await getFavorites(userId);
         const characters = await getCharacters();
         res.render("favorites",
@@ -27,15 +27,15 @@ export default function favoritesRouter() {
             character: "",
             id2: "",
         }
-        let userId :string = req.session.user?.username ?? "test";
-        
+        let userId: string = req.session.user?.username ?? "test";
+
 
         await removeFromFavorites(quoteToRemove, userId);
 
         res.redirect("/Favorites");
     });
 
-    router.get("/toFile", async (req,res) => {
+    router.get("/toFile", async (req, res) => {
         try {
             let username: string = req.session.user?.username ?? "test";
             let fileName: string = await printFavoritesAndBlacklists(username);

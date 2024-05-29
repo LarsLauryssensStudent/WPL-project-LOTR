@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl-BE">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,77 +11,88 @@
   <script defer src="/assets/js/popper.min.js"></script>
   <script defer src="/assets/js/landingpage.js"></script>
 
-  <title><%= pageTitle %></title>
+  <title>
+    <%= pageTitle %>
+  </title>
 </head>
+
 <body class="login-body">
 
-    <header class="container d-flex justify-content-center align-items-center">
-        <nav>
-          <a href="/" style="text-decoration: none;"><h1 class="landing-title pt-4 my-3">Fellowship of the Code</h1></a>
-        </nav>
-    </header>
+  <header class="container d-flex justify-content-center align-items-center">
+    <nav>
+      <a href="/" style="text-decoration: none;">
+        <h1 class="landing-title pt-4 my-3">Fellowship of the Code</h1>
+      </a>
+    </nav>
+  </header>
 
-    <main class="container login-main">
-      <form action="/login" method="post" id="loginForm">
+  <main class="container login-main">
+    <form action="/login" method="post" id="loginForm">
 
-        <% if (message) { %>
-          <% if (message.type === "success") { %>
-            <p class="alert alert-success"><%= message.message %></p>
-          <% } else if (message.type ==="error") { %>
-            <p class="alert alert-danger"><%= message.message %></p>
-          <% } %>
-        <% } %>
-
-        <section class="mb-2">
-          <label for="username" class="form-label">
-            gebruikersnaam<span class="required">*</span>
-          </label>
-          <input name="username" type="text" class="form-control rounded" id="username" value="<%= savedUsername %>">
-        </section>
-
-        <section class="mb-3">
-          <label for="password" class="form-label">
-            wachtwoord<span class="required">*</span>
-          </label>
-          <input name="password" type="password" class="form-control rounded" id="password">
-        </section>
-
-        <section class="mb-3">
-            <input type="checkbox" class="form-check-input" id="remember-me" name="rememberMe"
-              <% if (savedUsername) { %>
-                  checked 
+      <% if (message) { %>
+        <% if (message.type==="success" ) { %>
+          <p class="alert alert-success">
+            <%= message.message %>
+          </p>
+          <% } else if (message.type==="error" ) { %>
+            <p class="alert alert-danger">
+              <%= message.message %>
+            </p>
+            <% } %>
               <% } %>
-            </input>
-          <label class="form-check-label" for="remember-me">remember me</label>
-        </section>
 
-        <section class="mb-2">
-          <button type="submit" class="btn bg-body-tertiary border-dark rounded">aanmelden</button>
-        </section>
+                <section class="mb-2">
+                  <label for="username" class="form-label">
+                    gebruikersnaam<span class="required">*</span>
+                  </label>
+                  <input name="username" type="text" class="form-control rounded" id="username"
+                    value="<%= savedUsername %>">
+                </section>
 
-        <a id="forgot-password" href="/forgotpassword" class="text-decoration-none">
-          wachtwoord vergeten?
-        </a>
+                <section class="mb-3">
+                  <label for="password" class="form-label">
+                    wachtwoord<span class="required">*</span>
+                  </label>
+                  <input name="password" type="password" class="form-control rounded" id="password">
+                </section>
 
-  
-        <p style="margin: 0;">nog geen account? 
-          <a href="/register" id="showCreateAccountBtn" class="btn-link" style="cursor: pointer;">account aanmaken</a>
-        </p>
-      </form>
-    </main>
+                <section class="mb-3">
+                  <input type="checkbox" class="form-check-input" id="remember-me" name="rememberMe" <% if
+                    (savedUsername) { %>
+                  checked
+                  <% } %>
+                    </input>
+                    <label class="form-check-label" for="remember-me">remember me</label>
+                </section>
 
-<!---footer--->
+                <section class="mb-2">
+                  <button type="submit" class="btn bg-body-tertiary border-dark rounded">aanmelden</button>
+                </section>
+
+                <a id="forgot-password" href="/forgotpassword" class="text-decoration-none">
+                  wachtwoord vergeten?
+                </a>
+
+
+                <p style="margin: 0;">nog geen account?
+                  <a href="/register" id="showCreateAccountBtn" class="btn-link" style="cursor: pointer;">account
+                    aanmaken</a>
+                </p>
+    </form>
+  </main>
+
+  <!---footer--->
   <div>
     <svg class="waves pt-4" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(248,249,250,0.7)" />
-            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248,249,250,0.5)" />
-            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(33, 37, 41, 0.1)" />
-            <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(33, 37, 41)" />
-        </g>
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(248,249,250,0.7)" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248,249,250,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(33, 37, 41, 0.1)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(33, 37, 41)" />
+      </g>
     </svg>
   </div>
 
@@ -88,22 +100,23 @@
     <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg" href="#!">
       <i class="bi bi-twitter-x text-light"></i>
     </a>
-  
+
     <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg" href="#!">
       <i class="bi bi-facebook text-light"></i>
     </a>
-  
+
     <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg" href="#!">
       <i class="bi bi-github text-light"></i>
     </a>
-  
+
     <a data-mdb-ripple-init class="btn btn-link btn-floating btn-lg" href="#!">
       <i class="bi bi-linkedin text-light"></i>
     </a>
-  
+
     <article class="text-center py-1 text-light">
       <p class="mb-0">© 2024 Fellowship of the Code</p>
     </article>
   </footer>
 </body>
+
 </html>

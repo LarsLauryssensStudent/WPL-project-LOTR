@@ -10,7 +10,7 @@ export default function loginRouter() {
     router.get("/login", async (req, res) => {
         const savedUsername = req.session.rememberedUsername || "";
         if (!req.session.user) {
-            res.render("login/login", { 
+            res.render("login/login", {
                 pageTitle: "login",
                 savedUsername: savedUsername
             });
@@ -32,7 +32,7 @@ export default function loginRouter() {
                 delete req.session.rememberedUsername;
             }
 
-            req.session.message = { type: "success", message: "Login successful" };
+            req.session.message = { type: "success", message: "Inloggen succesvol" };
             res.redirect("/selection");
         } catch (error: any) {
             req.session.message = { type: "error", message: error.message };
@@ -57,7 +57,7 @@ export default function loginRouter() {
         const { signupUsername, signupEmail, signupPassword, repeatPassword } = req.body;
         try {
             await register(signupUsername, signupEmail, signupPassword, repeatPassword);
-            req.session.message = { type: "success", message: "Register successful" };
+            req.session.message = { type: "success", message: "Registratie succesvol" };
             res.redirect("/login");
         } catch (error: any) {
             req.session.message = { type: "error", message: error.message };

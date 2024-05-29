@@ -18,10 +18,10 @@ const users = db.collection<User>("users");
 
 async function exit() {
   try {
-      await client.close();
-      console.log("disconnected from database");
+    await client.close();
+    console.log("disconnected from database");
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 
   process.exit(0);
@@ -29,102 +29,102 @@ async function exit() {
 
 export async function createInitialUser() {
   if (await users.countDocuments() > 0) {
-      return;
+    return;
   }
 
   let email: string | undefined = process.env.ADMIN_EMAIL;
-  let password : string | undefined = process.env.ADMIN_PASSWORD;
+  let password: string | undefined = process.env.ADMIN_PASSWORD;
 
-  if (email === undefined || password === undefined ) {
-      throw new Error ("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
+  if (email === undefined || password === undefined) {
+    throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
   }
 
-  const saltRounds : number = 10;
+  const saltRounds: number = 10;
   await users.insertOne({
-      username: "admin",
-      email: email,
-      password: await bcrypt.hash(password, saltRounds),
-      role: "ADMIN",
-      registered: new Date(),
-      blacklisted: [],
-      favorites: []
+    username: "admin",
+    email: email,
+    password: await bcrypt.hash(password, saltRounds),
+    role: "ADMIN",
+    registered: new Date(),
+    blacklisted: [],
+    favorites: []
   });
 };
 
 export async function login(username: string, password: string) {
   if (username === "" || password === "") {
-      throw new Error("Username and password are required")
+    throw new Error("Gebruikersnaam en wachtwoord zijn verplicht")
   }
 
   let existingUser: User | null = await users.findOne({ username: username });
   if (existingUser) {
-      if (await bcrypt.compare(password, existingUser.password!)) {
-          return existingUser;
-      } else {
-          throw new Error("Invalid username or password")
-      }
+    if (await bcrypt.compare(password, existingUser.password!)) {
+      return existingUser;
+    } else {
+      throw new Error("Ongeldige gebruikersnaam of wachtwoord")
+    }
   } else {
-      throw new Error("Invalid username or password")
+    throw new Error("Ongeldige gebruikersnaam of wachtwoord")
   }
 };
 
 export async function register(username: string, email: string, password: string, repeatPassword: string) {
   if (username === "" || email === "" || password === "") {
-      throw new Error("All fields required");
+    throw new Error("Alle velden zijn verplicht");
   }
 
   let existingUsername: User | null = await users.findOne({ username: username });
   if (existingUsername) {
-      throw new Error("Username is already taken");
+    throw new Error("Gebruikersnaam is al in gebruik");
   }
 
   let existingEmail: User | null = await users.findOne({ email: email });
   if (existingEmail) {
-      throw new Error("Email is already registered")
+    throw new Error("E-mail is al geregistreerd")
   }
 
   if (password !== repeatPassword) {
-    throw new Error("Passwords do not match");
+    throw new Error("Wachtwoorden komen niet overeen");
   }
 
   const saltRounds: number = 10;
   await users.insertOne({
-      username: username,
-      email: email,
-      password: await bcrypt.hash(password, saltRounds),
-      role: "USER",
-      registered: new Date(),
-      blacklisted: [],
-      favorites: []
+    username: username,
+    email: email,
+    password: await bcrypt.hash(password, saltRounds),
+    role: "USER",
+    registered: new Date(),
+    blacklisted: [],
+    favorites: []
   });
 };
 
 export async function updateEmail(currentEmail: string, newEmail: string, confirmEmail: string) {
-    if (newEmail !== confirmEmail) {
-        throw new Error("E-mailadressen komen niet overeen");
-    }
+  if (newEmail !== confirmEmail) {
+    throw new Error("E-mailadressen komen niet overeen");
+  }
 
-    const existingEmail: User | null = await users.findOne({ email: newEmail });
-    if (existingEmail) {
-        throw new Error("E-mailadres is al geregistreerd");
-    }
+  const existingEmail: User | null = await users.findOne({ email: newEmail });
+  if (existingEmail) {
+    throw new Error("E-mailadres is al geregistreerd");
+  }
 
-    await users.updateOne({ email: currentEmail }, { $set: { email: newEmail } });
+  await users.updateOne({ email: currentEmail }, { $set: { email: newEmail } });
 }
 
 export async function updatePassword(currentEmail: string, password: string, newPassword: string) {
-    const user: User | null = await users.findOne({ email: currentEmail });
-    const currentPassword = user?.password;
+  const user: User | null = await users.findOne({ email: currentEmail });
+  const currentPassword = user?.password;
 
-    if (!(await bcrypt.compare(password, currentPassword!))) {
-        throw new Error("Ongeldig wachtwoord");
-    }
+  if (!(await bcrypt.compare(password, currentPassword!))) {
+    throw new Error("Ongeldig wachtwoord");
+  }
 
-    const saltRounds: number = 10;
-    await users.updateOne(
-        { email: currentEmail },
-        { $set: { password: await bcrypt.hash(newPassword, saltRounds) } }
-    );
+  const saltRounds: number = 10;
+  await users.updateOne(
+    { email: currentEmail },
+    { $set: { password: await bcrypt.hash(newPassword, saltRounds) } }
+  );
 }
 
 export async function connect() {
@@ -138,245 +138,245 @@ export async function connect() {
 //totaalquotes 2375
 //functie voor datafetchen naar MongoDb van de benodigde quotes
 export async function fetchData() {
-    //token
-    const token = 'mIqYC2hqv_DXksfzJsvn ';
-    const headers = {
-      'Authorization': `Bearer ${token}`
-    };
-  
-    //error handling voor quotes, chars en movies
-    try {
-      const dataQuotesTwoTowers = await fetch("https://the-one-api.dev/v2//movie/5cd95395de30eff6ebccde5b/quote", { headers });
-      if (!dataQuotesTwoTowers.ok) {
-        throw new Error(`Failed to fetch quotes: ${dataQuotesTwoTowers.statusText}`);
+  //token
+  const token = 'mIqYC2hqv_DXksfzJsvn ';
+  const headers = {
+    'Authorization': `Bearer ${token}`
+  };
+
+  //error handling voor quotes, chars en movies
+  try {
+    const dataQuotesTwoTowers = await fetch("https://the-one-api.dev/v2//movie/5cd95395de30eff6ebccde5b/quote", { headers });
+    if (!dataQuotesTwoTowers.ok) {
+      throw new Error(`Failed to fetch quotes: ${dataQuotesTwoTowers.statusText}`);
+    }
+    const responseData = await dataQuotesTwoTowers.json();
+    const quotesTT: any[] = responseData.docs;
+    let correctQuotesTT: Quote[] = [];
+    quotesTT.forEach(element => {
+      let quote: Quote = {
+        id: element._id,
+        dialog: element.dialog,
+        movie: element.movie,
+        character: element.character,
+        id2: element.id
       }
-      const responseData = await dataQuotesTwoTowers.json();
-      const quotesTT: any[]  = responseData.docs;
-      let correctQuotesTT : Quote[] = [];
-      quotesTT.forEach(element => {
-        let quote: Quote = {
-            id: element._id,
-            dialog:    element.dialog,
-            movie:     element.movie,
-            character: element.character,
-            id2: element.id
-        }
-        correctQuotesTT.push(quote);
-      });
-  
-  
-      const dataQuotesFellowShip = await fetch("https://the-one-api.dev/v2//movie/5cd95395de30eff6ebccde5c/quote", { headers });
-      if (!dataQuotesFellowShip.ok) {
-        throw new Error(`Failed to fetch quotes: ${dataQuotesFellowShip.statusText}`);
-      }
-      const responseDataFellowShip = await dataQuotesFellowShip.json();
-      const quotesFS: any[] = responseDataFellowShip.docs;
-      let correctQuotesFS : Quote[] = [];
-      quotesFS.forEach(element => {
-        let quote: Quote = {
-            id: element._id,
-            dialog:    element.dialog,
-            movie:     element.movie,
-            character: element.character,
-            id2: element.id
-        }
-        correctQuotesFS.push(quote);
-      });
+      correctQuotesTT.push(quote);
+    });
 
 
-      const dataQuotesReturnKing = await fetch("https://the-one-api.dev/v2//movie/5cd95395de30eff6ebccde5d/quote", { headers });
-      if (!dataQuotesReturnKing.ok) {
-        throw new Error(`Failed to fetch quotes: ${dataQuotesReturnKing.statusText}`);
+    const dataQuotesFellowShip = await fetch("https://the-one-api.dev/v2//movie/5cd95395de30eff6ebccde5c/quote", { headers });
+    if (!dataQuotesFellowShip.ok) {
+      throw new Error(`Failed to fetch quotes: ${dataQuotesFellowShip.statusText}`);
+    }
+    const responseDataFellowShip = await dataQuotesFellowShip.json();
+    const quotesFS: any[] = responseDataFellowShip.docs;
+    let correctQuotesFS: Quote[] = [];
+    quotesFS.forEach(element => {
+      let quote: Quote = {
+        id: element._id,
+        dialog: element.dialog,
+        movie: element.movie,
+        character: element.character,
+        id2: element.id
       }
-      const responseDataReturnKing = await dataQuotesReturnKing.json();
-      const quotesRK :any[] = responseDataReturnKing.docs;
-      let correctQuotesRK : Quote[] = [];
-      
-      quotesRK.forEach(element => {
-        let quote: Quote = {
-            id: element._id,
-            dialog:    element.dialog,
-            movie:     element.movie,
-            character: element.character,
-            id2: element.id
-        }
-        correctQuotesRK.push(quote);
-        
-      });
-  
-  
-      const dataChars = await fetch("https://the-one-api.dev/v2/character", { headers });
-      if (!dataChars.ok) {
-        throw new Error(`Failed to fetch characters: ${dataChars.statusText}`);
+      correctQuotesFS.push(quote);
+    });
+
+
+    const dataQuotesReturnKing = await fetch("https://the-one-api.dev/v2//movie/5cd95395de30eff6ebccde5d/quote", { headers });
+    if (!dataQuotesReturnKing.ok) {
+      throw new Error(`Failed to fetch quotes: ${dataQuotesReturnKing.statusText}`);
+    }
+    const responseDataReturnKing = await dataQuotesReturnKing.json();
+    const quotesRK: any[] = responseDataReturnKing.docs;
+    let correctQuotesRK: Quote[] = [];
+
+    quotesRK.forEach(element => {
+      let quote: Quote = {
+        id: element._id,
+        dialog: element.dialog,
+        movie: element.movie,
+        character: element.character,
+        id2: element.id
       }
-      const tempchar = await dataChars.json();
-      const characters : any[] = tempchar.docs;
-      let correctCharacters : Character[] = [];
-      characters.forEach(element => {
-        let character = {
-        id:     element._id,
-        height:  element.height,
-        race:    element.race,
-        gender:  element.gender,
-        birth:   element.birth,
-        spouse:  element.spouse,
-        death:   element.death,
-        realm:   element.realm,
-        hair:    element.hair,
-        name:    element.name,
+      correctQuotesRK.push(quote);
+
+    });
+
+
+    const dataChars = await fetch("https://the-one-api.dev/v2/character", { headers });
+    if (!dataChars.ok) {
+      throw new Error(`Failed to fetch characters: ${dataChars.statusText}`);
+    }
+    const tempchar = await dataChars.json();
+    const characters: any[] = tempchar.docs;
+    let correctCharacters: Character[] = [];
+    characters.forEach(element => {
+      let character = {
+        id: element._id,
+        height: element.height,
+        race: element.race,
+        gender: element.gender,
+        birth: element.birth,
+        spouse: element.spouse,
+        death: element.death,
+        realm: element.realm,
+        hair: element.hair,
+        name: element.name,
         wikiUrl: element.wikiUrl
-        }
-        correctCharacters.push(character);
-      });
-  
-      const dataMovies = await fetch("https://the-one-api.dev/v2/movie", { headers });
-      if (!dataMovies.ok) {
-        throw new Error(`Failed to fetch movies: ${dataMovies.statusText}`);
       }
-      const temp = await dataMovies.json();
-      const movies :any[] = temp.docs;
-      let correctMovies: Movie[] = [];
-      movies.forEach(element => {
-        let movie :Movie = {
-            id:                         element._id,
-            name:                       element.name,
-            runtimeInMinutes:           element.runtimeInMinutes,
-            budgetInMillions:           element.budgetInMillions,
-            boxOfficeRevenueInMillions: element.boxOfficeRevenueInMillions,
-            academyAwardNominations:    element.academyAwardNominations,
-            academyAwardWins:           element.academyAwardWins,
-            rottenTomatoesScore:        element.rottenTomatoesScore
-        }
-        correctMovies.push(movie);
-      });
-      //return van opgehaalde data
-      return {
-        correctQuotesTT,
-        correctQuotesFS,
-        correctQuotesRK,
-        correctCharacters,
-        correctMovies
-      };
-  
-    } catch (error: any) {
-      throw new Error(`Could not fetch data: ${error.message}`);
+      correctCharacters.push(character);
+    });
+
+    const dataMovies = await fetch("https://the-one-api.dev/v2/movie", { headers });
+    if (!dataMovies.ok) {
+      throw new Error(`Failed to fetch movies: ${dataMovies.statusText}`);
     }
+    const temp = await dataMovies.json();
+    const movies: any[] = temp.docs;
+    let correctMovies: Movie[] = [];
+    movies.forEach(element => {
+      let movie: Movie = {
+        id: element._id,
+        name: element.name,
+        runtimeInMinutes: element.runtimeInMinutes,
+        budgetInMillions: element.budgetInMillions,
+        boxOfficeRevenueInMillions: element.boxOfficeRevenueInMillions,
+        academyAwardNominations: element.academyAwardNominations,
+        academyAwardWins: element.academyAwardWins,
+        rottenTomatoesScore: element.rottenTomatoesScore
+      }
+      correctMovies.push(movie);
+    });
+    //return van opgehaalde data
+    return {
+      correctQuotesTT,
+      correctQuotesFS,
+      correctQuotesRK,
+      correctCharacters,
+      correctMovies
+    };
+
+  } catch (error: any) {
+    throw new Error(`Could not fetch data: ${error.message}`);
   }
+}
 
-  function fullQuotes(array1: Quote[], array2: Quote[], array3: Quote[]): Quote[] {
-    let quotes: Quote[] = [];
-    for (let i: number = 0; i < array1.length; i++) {
-      quotes.push(array1[i]);
-  
-    }
-    for (let j: number = 0; j < array2.length; j++) {
-      quotes.push(array2[j]);
-  
-    }
-    for (let k: number = 0; k < array3.length; k++) {
-      quotes.push(array3[k]);
-  
-    }
-    console.log(quotes.length)
-  
-    return quotes;
+function fullQuotes(array1: Quote[], array2: Quote[], array3: Quote[]): Quote[] {
+  let quotes: Quote[] = [];
+  for (let i: number = 0; i < array1.length; i++) {
+    quotes.push(array1[i]);
+
   }
-  
-  export function trimCharacters(array: Character[], quotes: Quote[]): Character[] {
-    const characterIds = [...new Set(quotes.map(quote => quote.character))];
-    console.log(characterIds.length);
-  
-    const filteredCharacters = array.filter(character => characterIds.includes(character.id));
-  
-    return filteredCharacters;
+  for (let j: number = 0; j < array2.length; j++) {
+    quotes.push(array2[j]);
+
   }
+  for (let k: number = 0; k < array3.length; k++) {
+    quotes.push(array3[k]);
 
-  export function trimMovies(array: Movie[], quotes: Quote[]): Movie[] {
-    const movieIds = [...new Set(quotes.map(quote => quote.movie))];
-    console.log(movieIds.length);
-    console.log(movieIds);
-  
-    const filteredMovies = array.filter(movie => movieIds.includes(movie.id));
-    return filteredMovies;
   }
-  
+  console.log(quotes.length)
 
-  //functie voor de databank te populeren met de data 
-  export async function checkData() {
-    const countQuotes: number = await quoteCollection.countDocuments();
-    const countChars: number = await characterCollection.countDocuments();
-    const countMovies: number = await movieCollection.countDocuments();
+  return quotes;
+}
 
-    let quotes : Quote[] = [];
-    let characters: Character[] = [];
-    let movies :Movie[] = [];
-    if (countQuotes !== 2375 || countChars !== 52 || countMovies !== 3) {
-        try {
-            let result: DeleteResult = await quoteCollection.deleteMany({});
-            let result2: DeleteResult = await characterCollection.deleteMany({});
-            let result3: DeleteResult = await movieCollection.deleteMany({});
-            
+export function trimCharacters(array: Character[], quotes: Quote[]): Character[] {
+  const characterIds = [...new Set(quotes.map(quote => quote.character))];
+  console.log(characterIds.length);
 
-            const data: any = await fetchData();
-            console.log("Data gefetched");
-            quotes = await fullQuotes(data.correctQuotesTT, data.correctQuotesFS, data.correctQuotesRK);
-            console.log("Quotes gepulled");
-            characters = await trimCharacters(data.correctCharacters, quotes);
-            movies =  await trimMovies(data.correctMovies, quotes);
+  const filteredCharacters = array.filter(character => characterIds.includes(character.id));
 
-            let insertResult: InsertManyResult = await quoteCollection.insertMany(quotes);
-            let insertResult2: InsertManyResult = await characterCollection.insertMany(characters);
-            let insertResult3: InsertManyResult = await movieCollection.insertMany(movies);
-            
-            console.log("Done")
-        } catch (error) {
-            console.log("error: " +error);
-        }
-    } else {
-        console.log("Data in orde!");
-    }
-  }
+  return filteredCharacters;
+}
 
-  export async function getCharacters() :Promise<Character[]> {
-    let characters : Character[] = [];
+export function trimMovies(array: Movie[], quotes: Quote[]): Movie[] {
+  const movieIds = [...new Set(quotes.map(quote => quote.movie))];
+  console.log(movieIds.length);
+  console.log(movieIds);
+
+  const filteredMovies = array.filter(movie => movieIds.includes(movie.id));
+  return filteredMovies;
+}
+
+
+//functie voor de databank te populeren met de data 
+export async function checkData() {
+  const countQuotes: number = await quoteCollection.countDocuments();
+  const countChars: number = await characterCollection.countDocuments();
+  const countMovies: number = await movieCollection.countDocuments();
+
+  let quotes: Quote[] = [];
+  let characters: Character[] = [];
+  let movies: Movie[] = [];
+  if (countQuotes !== 2375 || countChars !== 52 || countMovies !== 3) {
     try {
-       characters = await characterCollection.find({}).toArray() ;
-    }
-    catch (error) {
-        console.log("Error bij ophalen characters: " + error);
-    }
-    return characters;
-  }
+      let result: DeleteResult = await quoteCollection.deleteMany({});
+      let result2: DeleteResult = await characterCollection.deleteMany({});
+      let result3: DeleteResult = await movieCollection.deleteMany({});
 
-  export async function getQuotes() :Promise<Quote[]> {
-    let quotes: Quote[] = [];
 
-    try {
-        quotes = await quoteCollection.find({}).toArray();
-    }
-    catch (error) {
-        console.log("Error bij ophalen quotes: " + error);
-    }
+      const data: any = await fetchData();
+      console.log("Data gefetched");
+      quotes = await fullQuotes(data.correctQuotesTT, data.correctQuotesFS, data.correctQuotesRK);
+      console.log("Quotes gepulled");
+      characters = await trimCharacters(data.correctCharacters, quotes);
+      movies = await trimMovies(data.correctMovies, quotes);
 
-    return quotes;
-  }
+      let insertResult: InsertManyResult = await quoteCollection.insertMany(quotes);
+      let insertResult2: InsertManyResult = await characterCollection.insertMany(characters);
+      let insertResult3: InsertManyResult = await movieCollection.insertMany(movies);
 
-  export async function getMovies(): Promise<Movie[]> {
-    let movies :Movie[] = [];
-    try {
-        movies = await movieCollection.find({}).toArray();
-    
+      console.log("Done")
     } catch (error) {
-        console.log("Error bij ophalen films: " + error );
+      console.log("error: " + error);
     }
-    return movies;
+  } else {
+    console.log("Data in orde!");
+  }
+}
+
+export async function getCharacters(): Promise<Character[]> {
+  let characters: Character[] = [];
+  try {
+    characters = await characterCollection.find({}).toArray();
+  }
+  catch (error) {
+    console.log("Error bij ophalen characters: " + error);
+  }
+  return characters;
+}
+
+export async function getQuotes(): Promise<Quote[]> {
+  let quotes: Quote[] = [];
+
+  try {
+    quotes = await quoteCollection.find({}).toArray();
+  }
+  catch (error) {
+    console.log("Error bij ophalen quotes: " + error);
+  }
+
+  return quotes;
+}
+
+export async function getMovies(): Promise<Movie[]> {
+  let movies: Movie[] = [];
+  try {
+    movies = await movieCollection.find({}).toArray();
+
+  } catch (error) {
+    console.log("Error bij ophalen films: " + error);
+  }
+  return movies;
 }
 
 
 
 export async function getHighScore(id: string): Promise<number> {
   try {
-    let user: User | null = await users.findOne<User>({username: id});
+    let user: User | null = await users.findOne<User>({ username: id });
     if (user) {
       return user.highScore ?? 0;
     }
@@ -384,14 +384,14 @@ export async function getHighScore(id: string): Promise<number> {
       throw new Error("Score kon niet gevonden worden.");
     }
   }
-  catch(error) {
+  catch (error) {
     throw new Error("Er ging iets fout in getScore(): " + error);
   }
 }
 
-export async function addToGames(id:string, game : GameResult) {
+export async function addToGames(id: string, game: GameResult) {
   try {
-    await users.updateOne({username: id}, {$push: {lastGames: game}})
+    await users.updateOne({ username: id }, { $push: { lastGames: game } })
   } catch (error) {
     throw new Error("Er ging iets fout bij het updaten van de games: " + error);
   }
@@ -399,7 +399,7 @@ export async function addToGames(id:string, game : GameResult) {
 
 export async function getBlacklist(userName: string) {
   try {
-    const user: User | null = await users.findOne<User>({username: userName});
+    const user: User | null = await users.findOne<User>({ username: userName });
     if (user) {
       return user.blacklisted
     }
@@ -414,7 +414,7 @@ export async function getBlacklist(userName: string) {
 
 export async function getFavorites(userName: string) {
   try {
-    const user: User | null = await users.findOne({username: userName});
+    const user: User | null = await users.findOne({ username: userName });
     if (user) {
       return user.favorites
     }
@@ -429,7 +429,7 @@ export async function getFavorites(userName: string) {
 
 export async function addToBlacklist(currentQuote: Quote, userId: string) {
   try {
-    let result = await users.findOneAndUpdate({username: userId}, {$push: {blacklisted: currentQuote}});
+    let result = await users.findOneAndUpdate({ username: userId }, { $push: { blacklisted: currentQuote } });
     console.log("Succesvol geblacklist: " + result);
   }
   catch (error) {
@@ -442,7 +442,7 @@ export async function removeFromBlacklist(currentQuote: Quote, userId: string) {
     await users.updateOne(
       { username: userId },
       { $pull: { blacklisted: { id: currentQuote.id } } }
-  );
+    );
   } catch (error) {
     throw new Error("Something went from with removal from blacklist: " + error);
   }
@@ -454,15 +454,15 @@ export async function toggleFavorites(currentQuote: Quote, userId: string) {
     const isQuoteInFavorites: boolean = favorites.some(quote => quote.id === currentQuote.id);
 
     if (isQuoteInFavorites) {
-        // als de quote er al inzit gooien we deze eruit
-        await users.updateOne(
-            { username: userId },
-            { $pull: { favorites: { id: currentQuote.id } } }
-        );
-        console.log("Quote removved from favorites");
+      // als de quote er al inzit gooien we deze eruit
+      await users.updateOne(
+        { username: userId },
+        { $pull: { favorites: { id: currentQuote.id } } }
+      );
+      console.log("Quote removved from favorites");
     } else {
-    
-      let result = await users.findOneAndUpdate({username: userId}, {$push: {favorites: currentQuote}});
+
+      let result = await users.findOneAndUpdate({ username: userId }, { $push: { favorites: currentQuote } });
       console.log("Succesvol gefavorite: " + result);
     }
   }
@@ -476,16 +476,16 @@ export async function removeFromFavorites(currentQuote: Quote, userId: string) {
     await users.updateOne(
       { username: userId },
       { $pull: { favorites: { id: currentQuote.id } } }
-  );
+    );
   } catch (error) {
     throw new Error("Something went from with removal from blacklist: " + error);
   }
 }
 
 
-export async function searchQuoteById( id: string) :Promise<Quote|null> {
+export async function searchQuoteById(id: string): Promise<Quote | null> {
   try {
-    return await quoteCollection.findOne<Quote>({id: id});
+    return await quoteCollection.findOne<Quote>({ id: id });
   } catch (error) {
     throw new Error("Kon quote niet vinden: " + error);
   }
@@ -494,7 +494,7 @@ export async function searchQuoteById( id: string) :Promise<Quote|null> {
 export async function updateHighscore(id: string, score: number) {
   try {
     console.log(score);
-    await users.updateOne({username: id}, {$set: {highScore: score}});
+    await users.updateOne({ username: id }, { $set: { highScore: score } });
   }
   catch (error) {
     throw new Error("Kon score niet updaten: " + error);
