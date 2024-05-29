@@ -12693,7 +12693,7 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   font-weight: 600;
 }
 .quoteLink:hover {
-  text-decoration: 2px solid red underline;
+  text-decoration: 2px solid var(--bs-yellow);
 }
 .quoteLink {
   width: fit-content;
@@ -12716,13 +12716,12 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   border-radius: 24px;
 }
 .backLink {
-  text-decoration: underline red;
   color: #032830;
   font-size: 1.2rem;
   transition: 0.4s ease-in-out;
 }
 .backLink:hover {
-  color: yellow;
+  color: var(--bs-yellow);
   text-shadow: 2px 2px black;
 }
 
@@ -12737,7 +12736,7 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
 .scoreFieldResult > p:last-of-type {
   text-align: center;
   font-size: 2.4rem;
-  text-decoration: red underline 2px;
+  text-decoration: red underline ;
   letter-spacing: 0.12rem;
 }
 
@@ -12755,7 +12754,7 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   margin-top: 0;
   letter-spacing: 0.12rem;
   font-weight: 600;
-  text-decoration: underline 2px solid red;
+  text-decoration: underline solid red;
 }
 
 .backToSelect {
