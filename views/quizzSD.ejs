@@ -78,6 +78,12 @@
               <section class="col-lg-5 col-md-5 col-sm-12">
                 <section class="btn-group-vertical maxWidth" role="group"
                   aria-label="Vertical radio toggle button group">
+                  <% characters.forEach((character, index) => { %>
+                    <% if (character.name === "MINOR_CHARACTER") { %>
+                      <% character.name = "minder belangrijk personage"; %>
+                    <% } %>
+                    <% }) %>
+
                   <label for="nothing" class="labelQuizz"><img src="./assets/images/icons/personSpeech.png" width="48px"
                       alt="Who Said it"></label>
                   <input type="radio" class="btn-check actorRadio" name="actorRadio" id="vbtn-radio1" autocomplete="off"
