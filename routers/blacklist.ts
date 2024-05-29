@@ -1,10 +1,12 @@
 import express from "express";
 import { getQCounter, setQCounter, movies, quotes, characters, tenRoundsBackgrounds, returnQuote, setNewQuote } from "../index";
 import { Character, Quote } from "../interfaces";
-import { link } from "fs";
+import { fstat, link } from "fs";
+import fs from "fs";
 import { getBlacklist, getCharacters, removeFromBlacklist, searchQuoteById } from "../database";
 import { userInfo } from "os";
 import { printFavoritesAndBlacklists } from "../utils";
+import { error } from "console";
 
 export default function blacklistRouter() {
     const router = express.Router();
@@ -39,14 +41,20 @@ export default function blacklistRouter() {
         }
         res.redirect("/Blacklist");
     });
+
     router.get("/toFile", async (req,res) => {
         try {
             let username: string = req.session.user?.username ?? "test";
-            await printFavoritesAndBlacklists(username);
+            let fileName: string = await printFavoritesAndBlacklists(username);
+            res.download(fileName, (error) => {
+                if (error) {
+                    console.log(error)
+                }
+            fs.unlinkSync(fileName);               
+            })
         } catch (error) {
             console.log(error);
         }
-        res.redirect("back");
     });
 
     return router

@@ -2,6 +2,7 @@ import express from "express";
 import { Character, Quote } from "../interfaces";
 import { getCharacters, getFavorites, removeFromFavorites } from "../database";
 import { printFavoritesAndBlacklists } from "../utils";
+import fs from "fs";
 export default function favoritesRouter() {
     const router = express.Router();
 
@@ -37,11 +38,19 @@ export default function favoritesRouter() {
     router.get("/toFile", async (req,res) => {
         try {
             let username: string = req.session.user?.username ?? "test";
-            await printFavoritesAndBlacklists(username);
+            let fileName: string = await printFavoritesAndBlacklists(username);
+
+            res.download(fileName, (error) => {
+                if (error) {
+                    console.log(error);
+                }
+
+                fs.unlinkSync(fileName);
+            })
         } catch (error) {
+            res.status(500).redirect("back");
             console.log(error);
         }
-        res.redirect("back");
     });
 
     return router

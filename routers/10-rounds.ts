@@ -2,14 +2,14 @@ import express from "express";
 import { generatePossibleAnswers, shuffleArray } from "../utils";
 import { getQCounter, setQCounter, tenRoundsBackgrounds, returnQuote, setNewQuote, setScore, getScore, updateCurrentGameAnswers, updateCurrentGameQuote, updateCurrentGameScore, resetCurrentGame, getCurrentGame } from "../index";
 import { Quote, Movie, Character, GameResult } from "../interfaces";
-import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, searchQuoteById, addToGames } from "../database";
+import { getCharacters, getMovies, getQuotes, addToBlacklist, getBlacklist, toggleFavorites, searchQuoteById, addToGames, getFavorites } from "../database";
 
 export let score: number = 0;
 
 
 export default function tenRoundsRouter() {
     const router = express.Router();
-
+    
     router.get("/", async (req, res) => {
         if (getQCounter() > 10) {
             setQCounter(1);
@@ -30,7 +30,10 @@ export default function tenRoundsRouter() {
             }
             let characters: Character[] = [];
             let movies: Movie[] = [];
+            let favorites: Quote[] = [];
+            let username: string = req.session.user?.username ?? "test";
             try {
+                favorites = await getFavorites(username);
                 characters = await getCharacters();
                 movies = await getMovies();
             } catch (error) {
@@ -50,6 +53,7 @@ export default function tenRoundsRouter() {
                 movies: shuffledMovies,
                 score: getScore(),
                 pageTitle: "10-Rounds",
+                favorites: favorites
             });
         }
     })
