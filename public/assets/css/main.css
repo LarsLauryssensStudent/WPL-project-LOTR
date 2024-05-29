@@ -12692,7 +12692,13 @@ body:not(.landing-body):not(.landing-title):not(.landing-card-text):not(.landing
   padding-top: 0.4rem !important;
   font-weight: 600;
 }
-
+.quoteLink:hover {
+  text-decoration: 2px solid red underline;
+}
+.quoteLink {
+  width: fit-content;
+  display: inline;
+}
 .scoreFieldResult {
   /* border: 2px solid red;*/
 }
